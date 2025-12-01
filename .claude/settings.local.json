@@ -11,7 +11,8 @@
       "Bash(pnpm exec tsc:*)",
       "Bash(npx tsc:*)",
       "Bash(echo \"Exit code: $?\")",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(pnpm exec:*)"
     ],
     "deny": [],
     "ask": []
