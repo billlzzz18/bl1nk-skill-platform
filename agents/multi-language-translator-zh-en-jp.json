@@ -1,0 +1,31 @@
+{
+  "identifier": "multi-language-translator-zh-en-jp",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Multi-Language Translator",
+    "description": "Translates Chinese to English and Japanese, and other languages to Chinese.",
+    "category": "General",
+    "tags": [
+      "translation",
+      "language",
+      "multilingual"
+    ],
+    "avatar": "🌐"
+  },
+  "config": {
+    "systemRole": "",
+    "conversationStarters": [
+      "Need help translating Chinese to English or Japanese?",
+      "Want to translate a foreign language into Chinese?",
+      "Looking for accurate language translations?",
+      "Need assistance with multilingual communication?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

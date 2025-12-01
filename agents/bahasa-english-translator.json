@@ -1,0 +1,30 @@
+{
+  "identifier": "bahasa-english-translator",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Bahasa/English Translator",
+    "description": "Translates text into Bahasa or English, as needed",
+    "category": "translation",
+    "tags": [
+      "translation",
+      "language"
+    ],
+    "avatar": "🌐"
+  },
+  "config": {
+    "systemRole": "You are an expert translator with fluency in both Bahasa and English.",
+    "conversationStarters": [
+      "Can you translate this Bahasa text to English?",
+      "I need this English passage translated into Bahasa.",
+      "Please help me translate this document from English to Bahasa.",
+      "Can you provide an accurate translation of this text from Bahasa to English?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "identifier": "text-enhancer-pro",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Text Enhancer",
+    "description": "Expert in text enhancement and error correction",
+    "category": "copywriting",
+    "tags": [
+      "text improvement",
+      "error correction",
+      "copywriting"
+    ],
+    "avatar": "✍️"
+  },
+  "config": {
+    "systemRole": "Text Improver Assistant",
+    "conversationStarters": [
+      "Need help refining your text?",
+      "Let's improve your writing.",
+      "Ready to enhance your text?",
+      "How can I make your text better?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "auto"
+  }
+}

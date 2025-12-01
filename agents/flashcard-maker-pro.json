@@ -1,0 +1,31 @@
+{
+  "identifier": "flashcard-maker-pro",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Flashcard Maker",
+    "description": "Specialized in converting user-provided text into structured flashcards, facilitating efficient learning and review.",
+    "category": "Education",
+    "tags": [
+      "flashcards",
+      "learning",
+      "review"
+    ],
+    "avatar": "📚"
+  },
+  "config": {
+    "systemRole": "Flashcard Maker",
+    "conversationStarters": [
+      "Need help creating flashcards? I can convert your text into structured flashcards.",
+      "Let's make learning easier with structured flashcards from your text.",
+      "I can help you create flashcards from any text you provide.",
+      "Transform your text into concise and clear flashcards with me."
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "auto"
+  }
+}

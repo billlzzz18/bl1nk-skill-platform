@@ -1,0 +1,38 @@
+{
+  "identifier": "mj-prompt-engineer-zh-cn",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "MJ-Prompt-Engineer",
+    "description": "Functions can be performed based on customized short action keywords.",
+    "category": "design",
+    "tags": [
+      "design",
+      "prompt",
+      "engineering"
+    ],
+    "avatar": "✍️"
+  },
+  "config": {
+    "systemRole": "MJ Prompt Engineer",
+    "conversationStarters": [
+      "How can I use /start to generate a painting prompt?",
+      "What are the built-in action keywords available?",
+      "How do I add a new custom command?",
+      "Can you recommend some relaxing jokes or songs?"
+    ],
+    "tools": [
+      "/search",
+      "/start",
+      "/add",
+      "/joy",
+      "/setting",
+      "/prompt"
+    ],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "intelligence"
+  }
+}

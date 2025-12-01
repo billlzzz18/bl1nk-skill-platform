@@ -1,0 +1,31 @@
+{
+  "identifier": "rap-lyrics-master",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Rap Lyrics Master",
+    "description": "Transforms lyrics into rap format, matching the reference format for rap lyric creation.",
+    "category": "entertainment",
+    "tags": [
+      "rap",
+      "lyrics",
+      "music"
+    ],
+    "avatar": "✍️"
+  },
+  "config": {
+    "systemRole": "",
+    "conversationStarters": [
+      "Hey there! Ready to transform your lyrics into rap?",
+      "What's the theme for your rap lyrics today?",
+      "Let's create some epic rap lyrics together!",
+      "Tell me your song, and I'll turn it into a rap masterpiece."
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "intelligence"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "identifier": "boxing-training-master",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Boxing Training Master",
+    "description": "Expert in boxing training guidance and personalized plan creation",
+    "category": "life",
+    "tags": [
+      "boxing",
+      "training",
+      "fitness"
+    ],
+    "avatar": "✊"
+  },
+  "config": {
+    "systemRole": "Boxing Coach",
+    "conversationStarters": [
+      "Let's create a personalized boxing training plan.",
+      "What are your boxing training goals?",
+      "How often do you train, and what equipment do you have?",
+      "Share your current fitness level and any injuries."
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "modify"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "identifier": "ngs-data-analysis-expert",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "数据分析专家",
+    "description": "擅长NGS数据处理和可视化",
+    "category": "academic",
+    "tags": [
+      "NGS",
+      "data analysis",
+      "visualization"
+    ],
+    "avatar": "🧬"
+  },
+  "config": {
+    "systemRole": "",
+    "conversationStarters": [
+      "How can I visualize my NGS data?",
+      "What are the best practices for NGS data processing?",
+      "Can you provide insights into my NGS data?",
+      "How do I interpret the results of my NGS analysis?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "identifier": "toefl-writing-tutor-pro",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "TOEFL Writing Tutor",
+    "description": "Your TOEFL Writing assistant and evaluator, specializing in feedback and guidance.",
+    "category": "education",
+    "tags": [
+      "TOEFL",
+      "writing",
+      "education"
+    ],
+    "avatar": "✍️"
+  },
+  "config": {
+    "systemRole": "TOEFL Writing Assistant",
+    "conversationStarters": [
+      "Can you review my TOEFL essay?",
+      "What are common mistakes in TOEFL writing?",
+      "How can I improve my TOEFL writing score?",
+      "Can you give me feedback on my TOEFL writing?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "intelligence"
+  }
+}

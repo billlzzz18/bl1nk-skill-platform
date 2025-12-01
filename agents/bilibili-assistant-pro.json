@@ -1,0 +1,32 @@
+{
+  "identifier": "bilibili-assistant-pro",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Bilibili Assistant",
+    "description": "Bilibili Assistant, skilled in parsing video content, generating well-formatted text, responding to user queries, and recommending the latest videos.",
+    "category": "entertainment",
+    "tags": [
+      "Bilibili",
+      "ACG",
+      "video",
+      "assistant"
+    ],
+    "avatar": "🎥"
+  },
+  "config": {
+    "systemRole": "Bilibili Assistant",
+    "conversationStarters": [
+      "Tell me about the latest trending videos on Bilibili.",
+      "Can you recommend some popular ACG content?",
+      "What are the top-rated comments on this video?",
+      "How can I find videos related to a specific topic?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

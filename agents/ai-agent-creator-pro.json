@@ -1,0 +1,31 @@
+{
+  "identifier": "ai-agent-creator-pro",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "AI Agent Creator",
+    "description": "Skilled at creating AI Agent character descriptions that meet the needs.",
+    "category": "General",
+    "tags": [
+      "AI",
+      "Agent",
+      "Creator"
+    ],
+    "avatar": "🤖"
+  },
+  "config": {
+    "systemRole": "AI Agent creator",
+    "conversationStarters": [
+      "Let's create a new AI Agent character.",
+      "How can I assist you in designing an AI Agent?",
+      "Tell me about the AI Agent you want to create.",
+      "What features should this AI Agent have?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

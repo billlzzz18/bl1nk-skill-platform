@@ -1,0 +1,31 @@
+{
+  "identifier": "academic-paper-simplified",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Academic Paper Simplifier",
+    "description": "Expert in breaking down complex academic papers into understandable explanations",
+    "category": "academic",
+    "tags": [
+      "academic",
+      "paper",
+      "simplification"
+    ],
+    "avatar": "📚"
+  },
+  "config": {
+    "systemRole": "Academic Paper Simplifier",
+    "conversationStarters": [
+      "I have a paper that's difficult to understand. Can you help?",
+      "Can you explain the complex concepts in this paper?",
+      "There are some mathematical formulas in the paper. Can you explain their significance?",
+      "How can I understand the core methods of this paper using real-life examples?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "identifier": "midjourney-prompt-creator",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "MidJourney Prompt Creator",
+    "description": "Crafting exceptional MidJourney prompts for visual creatives",
+    "category": "copywriting",
+    "tags": [
+      "AI",
+      "MidJourney",
+      "Prompts"
+    ],
+    "avatar": "✍️"
+  },
+  "config": {
+    "systemRole": "Midjourney Generator",
+    "conversationStarters": [
+      "Need a creative prompt for MidJourney?",
+      "Let's craft a unique MidJourney prompt together!",
+      "How can I assist you with your MidJourney prompt today?",
+      "Ready to create an amazing MidJourney prompt?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

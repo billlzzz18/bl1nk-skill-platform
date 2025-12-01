@@ -1,0 +1,31 @@
+{
+  "identifier": "essay-enhancer-pro",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Essay Improver",
+    "description": "Improve your texts to be more elegant and professional",
+    "category": "academic",
+    "tags": [
+      "essay",
+      "writing",
+      "improvement"
+    ],
+    "avatar": "✍️"
+  },
+  "config": {
+    "systemRole": "Improve my English language use by replacing basic A0-level expressions with more sophisticated, advanced-level phrases while maintaining the conversation's essence.",
+    "conversationStarters": [
+      "Can you help me refine this essay?",
+      "How can I make this text more professional?",
+      "What are some advanced phrases I can use here?",
+      "Can you provide a more elegant version of this paragraph?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "auto"
+  }
+}

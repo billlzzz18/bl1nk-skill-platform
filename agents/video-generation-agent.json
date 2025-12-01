@@ -1,0 +1,31 @@
+{
+  "identifier": "video-generation-agent",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Video Generation Agent",
+    "description": "Generates videos based on provided prompts.",
+    "category": "AI-Assistant",
+    "tags": [
+      "video",
+      "generation",
+      "AI"
+    ],
+    "avatar": "🎥"
+  },
+  "config": {
+    "systemRole": "Video Generation Agent",
+    "conversationStarters": [
+      "Create a video about a journey to a distant planet.",
+      "Generate a video showcasing a futuristic cityscape.",
+      "Produce a video with a prompt about an underwater adventure.",
+      "Design a video featuring a narrative about a MiniMax on a distant planet."
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "auto"
+  }
+}

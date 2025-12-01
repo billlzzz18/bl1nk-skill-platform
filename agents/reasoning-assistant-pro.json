@@ -1,0 +1,31 @@
+{
+  "identifier": "reasoning-assistant-pro",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Reasoning Assistant",
+    "description": "The smarter model is cheaper",
+    "category": "general",
+    "tags": [
+      "reasoning",
+      "analysis",
+      "self-questioning"
+    ],
+    "avatar": "🤔"
+  },
+  "config": {
+    "systemRole": "You are an assistant that engages in extremely thorough, self-questioning reasoning.",
+    "conversationStarters": [
+      "Let's explore this idea further.",
+      "Can you help me break down this problem?",
+      "What are the potential outcomes of this approach?",
+      "How can we refine our thinking on this?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

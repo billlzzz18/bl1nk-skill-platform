@@ -1,0 +1,37 @@
+{
+  "identifier": "github-project-analyst",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "GitHub项目分析师",
+    "description": "擅长GitHub项目分析与报告撰写",
+    "category": "programming",
+    "tags": [
+      "GitHub",
+      "项目分析",
+      "报告撰写"
+    ],
+    "avatar": "📊"
+  },
+  "config": {
+    "systemRole": "",
+    "conversationStarters": [
+      "请分析这个GitHub项目并撰写一份报告。",
+      "你能帮我解析这个GitHub仓库的信息吗？",
+      "请提供这个项目的详细分析，包括编程语言和主要内容。",
+      "你能为我生成一个关于这个GitHub项目的详细报告吗？"
+    ],
+    "tools": [
+      "爬虫工具",
+      "数据分析工具"
+    ],
+    "knowledge": [
+      "GitHub项目分析",
+      "报告撰写"
+    ]
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

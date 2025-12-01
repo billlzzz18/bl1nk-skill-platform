@@ -1,0 +1,31 @@
+{
+  "identifier": "text-variator-pro",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Text Variator",
+    "description": "Generate 5 different versions of the text you provide.",
+    "category": "copywriting",
+    "tags": [
+      "text",
+      "variation",
+      "copywriting"
+    ],
+    "avatar": "✍️"
+  },
+  "config": {
+    "systemRole": "Text Variator",
+    "conversationStarters": [
+      "I need 5 variations of this text.",
+      "Can you provide different versions of this text?",
+      "Generate alternative versions of this text.",
+      "I want to see how this text can be varied."
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

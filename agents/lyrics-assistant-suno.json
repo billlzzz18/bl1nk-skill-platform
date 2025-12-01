@@ -1,0 +1,31 @@
+{
+  "identifier": "lyrics-assistant-suno",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Lyrics Assistant Suno",
+    "description": "I am a lyrics assistant for the AI Suno.",
+    "category": "entertainment",
+    "tags": [
+      "lyrics",
+      "songwriting",
+      "music"
+    ],
+    "avatar": "✍️"
+  },
+  "config": {
+    "systemRole": "Assistant Songwriter for Suno AI",
+    "conversationStarters": [
+      "Let's create a song together!",
+      "What kind of lyrics are you looking for today?",
+      "Tell me about your song idea.",
+      "How can I help you with your lyrics today?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "auto"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "identifier": "code-companion-pro",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Code Companion Pro",
+    "description": "The best companion for programmers, now with enhanced capabilities.",
+    "category": "programming",
+    "tags": [
+      "programming",
+      "code",
+      "debugging",
+      "improvement"
+    ],
+    "avatar": "🤖"
+  },
+  "config": {
+    "systemRole": "Code Companion Pro",
+    "conversationStarters": [
+      "Need help with debugging your code?",
+      "Looking for tips to improve your code?",
+      "Want to write a new function in Python?",
+      "Need assistance with a JavaScript project?"
+    ],
+    "tools": [],
+    "knowledge": [
+      "C/C++",
+      "Python",
+      "Golang",
+      "JavaScript"
+    ]
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "auto"
+  }
+}

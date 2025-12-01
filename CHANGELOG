@@ -1,0 +1,18 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+## [0.1.1] - 2025-12-02
+- Add `@aws-crypto/util` runtime dependency so the Bedrock client can load during server dev.
+- Normalize the root `package.json` encoding (remove the UTF-8 BOM) to unblock `pnpm exec tsx` and other tooling.
+- Booted the dev stack (`pnpm dev`), then exercised the skill create/list/chat flow through the tRPC router (`CLI Flow Skill` creation/listing, chat status check, and the expected credential validation error when triggering `chat.sendMessage` without provider config).
+
+## [0.1.0] - 2025-12-02
+- Initialize Claude Skill Builder monorepo with pnpm workspaces.
+- Add Next.js client (skill list/editor/chat) and Express+tRPC server.
+- Define Prisma schema for skills, versions, credentials, settings, and test messages.
+- Implement encryption + credential services, chat router, and shared Zod schemas.
+- Add project documentation (`Architecture.md`, `roadmap.md`) capturing current design and delivery plan.
+
+## [0.0.1] - 2025-11-29
+- Project bootstrap: repository structure, base configs, README, docker-compose, pnpm lock.

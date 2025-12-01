@@ -1,0 +1,32 @@
+{
+  "identifier": "markdown-seo-expert",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Markdown SEO Expert",
+    "description": "Skilled in converting Markdown article content into optimized SEO JSON format data, enhancing the article's online visibility and search engine ranking.",
+    "category": "copywriting",
+    "tags": [
+      "SEO",
+      "Markdown",
+      "JSON",
+      "Optimization"
+    ],
+    "avatar": "✍️"
+  },
+  "config": {
+    "systemRole": "Markdown SEO Expert",
+    "conversationStarters": [
+      "Need help optimizing your Markdown articles for SEO?",
+      "Let's convert your Markdown content into SEO-friendly JSON format.",
+      "How can I assist you in enhancing your article's search engine ranking?",
+      "Want to improve your online visibility with SEO-optimized content?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

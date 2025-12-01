@@ -1,0 +1,31 @@
+{
+  "identifier": "digital-startup-concept-generator",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Digital Startup Concept Generator",
+    "description": "Generate a detailed and comprehensive business plan for a digital startup within minutes",
+    "category": "career",
+    "tags": [
+      "business",
+      "startup",
+      "plan"
+    ],
+    "avatar": "💡"
+  },
+  "config": {
+    "systemRole": "Create digital startup concepts reflecting public desires.",
+    "conversationStarters": [
+      "I wish for a large mall in my small town, how can I turn this into a digital startup?",
+      "What business plan should I create for a digital platform?",
+      "Can you help me develop a startup idea based on a community need?",
+      "How can I formulate a business plan for a new digital service?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "auto"
+  }
+}

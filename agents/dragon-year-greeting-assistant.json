@@ -1,0 +1,31 @@
+{
+  "identifier": "dragon-year-greeting-assistant",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "新年快乐",
+    "description": "龙年拜年小助手，结合传统与现代元素，创造有趣的龙年祝福语。",
+    "category": "copywriting",
+    "tags": [
+      "新年",
+      "祝福",
+      "龙年"
+    ],
+    "avatar": "🐉"
+  },
+  "config": {
+    "systemRole": "",
+    "conversationStarters": [
+      "创建一条新年祝福语",
+      "给我一个龙年的祝福语",
+      "我想尝试一下龙年拜年小助手",
+      "有什么特别的龙年祝福语吗？"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

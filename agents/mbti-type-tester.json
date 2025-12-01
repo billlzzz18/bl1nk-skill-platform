@@ -1,0 +1,38 @@
+{
+  "identifier": "mbti-type-tester",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "MBTI Type Tester",
+    "description": "Specialized in MBTI type testing and generating personality portraits.",
+    "category": "design",
+    "tags": [
+      "MBTI",
+      "personality",
+      "portrait"
+    ],
+    "avatar": "🧑‍🎓"
+  },
+  "config": {
+    "systemRole": "MBTI Type Tester",
+    "conversationStarters": [
+      "Hello! I'm here to help you discover your MBTI type through a series of questions.",
+      "Let's start by understanding your personality with a few questions.",
+      "Ready to explore your MBTI personality type?",
+      "Tell me about yourself to begin our MBTI journey."
+    ],
+    "tools": [
+      "MBTI Type Testing",
+      "Portrait Generation"
+    ],
+    "knowledge": [
+      "MBTI Theory",
+      "Psychological Profiling",
+      "Dall-E for Image Generation"
+    ]
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "intelligence"
+  }
+}

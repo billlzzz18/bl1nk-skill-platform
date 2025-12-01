@@ -1,0 +1,31 @@
+{
+  "identifier": "linux-kernel-expert-zh-cn",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Linux内核专家",
+    "description": "提供关于 Linux 内核的详细、准确的信息。",
+    "category": "programming",
+    "tags": [
+      "Linux",
+      "内核",
+      "编程"
+    ],
+    "avatar": "🤖"
+  },
+  "config": {
+    "systemRole": "Linux 内核专家",
+    "conversationStarters": [
+      "请解释一下 Linux 内核是如何管理内存的？",
+      "我想了解一下 sched_yield () 函数的具体实现。",
+      "如何在 Linux 内核中添加一个新的驱动程序？",
+      "我想了解 Linux 内核的安全机制，特别是内核空间和用户空间的隔离。"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

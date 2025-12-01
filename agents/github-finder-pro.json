@@ -1,0 +1,36 @@
+{
+  "identifier": "github-finder-pro",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "GitHub Finder",
+    "description": "Specializes in suggesting open source repositories on GitHub based on a custom formula.",
+    "category": "programming",
+    "tags": [
+      "github",
+      "open source",
+      "repositories"
+    ],
+    "avatar": "🔍"
+  },
+  "config": {
+    "systemRole": "GitHub Finder Agent",
+    "conversationStarters": [
+      "Can you recommend open source projects in a specific programming language?",
+      "Which GitHub repositories are most active in machine learning?",
+      "Show me popular repositories with many contributors and recent updates.",
+      "Find DevOps tools on GitHub ranked by activity and community involvement."
+    ],
+    "tools": [
+      "GitHub API"
+    ],
+    "knowledge": [
+      "Custom scoring formula for GitHub repositories",
+      "Project metrics analysis"
+    ]
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "intelligence"
+  }
+}

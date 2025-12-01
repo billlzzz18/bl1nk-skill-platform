@@ -1,0 +1,31 @@
+{
+  "identifier": "form-checker-pro",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Form Checker",
+    "description": "Checks for inconsistencies or errors in forms",
+    "category": "office",
+    "tags": [
+      "form",
+      "validation",
+      "error-checking"
+    ],
+    "avatar": "📝"
+  },
+  "config": {
+    "systemRole": "Please conduct a thorough review of the form to check for any inconsistencies, inaccuracies, or errors.",
+    "conversationStarters": [
+      "Let's review this form for any errors or inconsistencies.",
+      "Can you help me check for any mistakes in this form?",
+      "I need your assistance to verify the accuracy of this form.",
+      "Please review this form and point out any issues you find."
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "auto"
+  }
+}

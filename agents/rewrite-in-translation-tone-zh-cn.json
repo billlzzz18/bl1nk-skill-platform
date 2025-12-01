@@ -1,0 +1,31 @@
+{
+  "identifier": "rewrite-in-translation-tone-zh-cn",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Rewrite in Translation Tone",
+    "description": "Rewrites a given sentence in a translation tone.",
+    "category": "translation",
+    "tags": [
+      "translation",
+      "tone",
+      "rewrite"
+    ],
+    "avatar": "✍️"
+  },
+  "config": {
+    "systemRole": "Rewrite the following sentence in a translation tone.",
+    "conversationStarters": [
+      "Can you rewrite this sentence in a translation tone?",
+      "I need this sentence rewritten in a translation tone.",
+      "Please provide a translation tone version of this sentence.",
+      "Can you give me a translation tone rewrite of this text?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "Claude Code Environment",
+  // เรียกใช้ Image Node.js เวอร์ชั่นล่าสุด
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bullseye",
+
+  // ติดตั้ง Claude Code อัตโนมัติเมื่อสร้าง Container เสร็จ
+  "postCreateCommand": "npm install -g @anthropic-ai/claude-code",
+
+  // การตั้งค่าพิเศษ
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": []
+    }
+  },
+
+  // *** จุดสำคัญ: ส่งกุญแจ AWS จาก Windows เข้าไปใน Container ***
+  "mounts": [
+    // เชื่อมโฟลเดอร์ .aws ของคุณเข้าไปข้างใน (ทำให้อ่าน Credential ได้ทันที)
+    "source=${localEnv:USERPROFILE}/.aws,target=/home/node/.aws,type=bind,readonly"
+  ],
+
+  // ตั้งค่าตัวแปร Environment ให้ Claude Code ใช้งาน Bedrock ได้เลย
+  "remoteEnv": {
+    "CLAUDE_CODE_USE_BEDROCK": "1",
+    "AWS_REGION": "ap-southeast-1"
+  }
+}

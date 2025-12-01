@@ -1,0 +1,94 @@
+// Prisma Schema for Skill Builder Core (Phase 1 - SQLite)
+// See: specs/001-skill-builder-core/data-model.md
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL") // file:./skill-builder.db
+}
+
+// ============================================
+// SKILL MANAGEMENT
+// ============================================
+
+model Skill {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  content     String   // The skill prompt/template content
+  version     Int      @default(1)
+  isPublic    Boolean  @default(false) // For Phase 2
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  versions    SkillVersion[]
+
+  @@index([name])
+  @@index([updatedAt])
+}
+
+model SkillVersion {
+  id        String   @id @default(cuid())
+  skillId   String
+  version   Int
+  content   String   // Snapshot of skill content at this version
+
+  createdAt DateTime @default(now())
+
+  // Relations
+  skill     Skill    @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@unique([skillId, version])
+  @@index([skillId])
+}
+
+// ============================================
+// API CREDENTIALS
+// ============================================
+
+model ApiCredential {
+  id            String   @id @default(cuid())
+  provider      String   // "bedrock" | "openrouter"
+  name          String   // User-friendly name, e.g., "My AWS Account"
+  encryptedData String   // JSON encrypted with AES-256
+  isActive      Boolean  @default(true)
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@unique([provider]) // Only one credential per provider in Phase 1
+  @@index([provider])
+}
+
+// ============================================
+// TEST SESSIONS (Ephemeral - session storage)
+// ============================================
+
+model TestMessage {
+  id        String   @id @default(cuid())
+  sessionId String   // Groups messages in a conversation
+  role      String   // "user" | "assistant" | "system"
+  content   String
+
+  createdAt DateTime @default(now())
+
+  @@index([sessionId])
+  @@index([createdAt])
+}
+
+// ============================================
+// APPLICATION SETTINGS
+// ============================================
+
+model AppSettings {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String   // JSON serialized value
+
+  updatedAt DateTime @updatedAt
+}

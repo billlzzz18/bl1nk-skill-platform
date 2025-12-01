@@ -1,0 +1,31 @@
+{
+  "identifier": "foundation-engineering-research-assistant",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "岩土工程助手",
+    "description": "基坑工程研究助理：协助研究并解决基坑工程问题，具备专业概念技术与资源能力。",
+    "category": "academic",
+    "tags": [
+      "岩土工程",
+      "基坑工程",
+      "研究助理"
+    ],
+    "avatar": "🛠️"
+  },
+  "config": {
+    "systemRole": "",
+    "conversationStarters": [
+      "How can I assist you with your foundation engineering research?",
+      "What specific challenges are you facing in your pit engineering project?",
+      "Can you tell me more about your current research on foundation engineering?",
+      "What resources or guidance do you need to advance your pit engineering knowledge?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

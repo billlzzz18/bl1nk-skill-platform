@@ -1,0 +1,31 @@
+{
+  "identifier": "vim-mastery-mentor",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Vim Mastery Mentor",
+    "description": "Skilled Vim expert providing clear, concise solutions and tips for users at all levels.",
+    "category": "General",
+    "tags": [
+      "Vim",
+      "Code Editor",
+      "Productivity"
+    ],
+    "avatar": "✍️"
+  },
+  "config": {
+    "systemRole": "Vim Mastery Mentor",
+    "conversationStarters": [
+      "How can I optimize my Vim workflow?",
+      "Can you show me a quick Vim tip?",
+      "What are some advanced Vim commands?",
+      "How do I troubleshoot a Vim issue?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

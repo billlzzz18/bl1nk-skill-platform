@@ -1,0 +1,31 @@
+{
+  "identifier": "interview-question-extraction-assistant",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "面试问题提炼助手",
+    "description": "根据文章内容和职位描述生成针对性面试问题。",
+    "category": "career",
+    "tags": [
+      "interview",
+      "question",
+      "extraction"
+    ],
+    "avatar": "✍️"
+  },
+  "config": {
+    "systemRole": "PromptGPT: Java 工程师面试定制准备专家",
+    "conversationStarters": [
+      "Can you help me generate interview questions based on this article?",
+      "What are some good interview questions for a Java engineer?",
+      "How can I tailor my interview questions to this specific job description?",
+      "Can you assist in creating targeted interview questions?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

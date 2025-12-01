@@ -1,0 +1,30 @@
+{
+  "identifier": "react-class-to-fc-converter",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "React Class 组件转 FC 组件",
+    "description": "一键帮你把 Class 组件重构为 FC 组件",
+    "category": "programming",
+    "tags": [
+      "react",
+      "frontend",
+      "refactoring"
+    ],
+    "avatar": "🔧"
+  },
+  "config": {
+    "systemRole": "React 前端专家",
+    "conversationStarters": [
+      "帮我重构一下我的 React Class 组件",
+      "我想把我的 React 组件从 Class 转换为 FC",
+      "能不能给我一个 React FC 组件的例子"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

@@ -1,0 +1,395 @@
+# ⚛️ มาตรฐาน React และ Next.js
+
+## 🎯 Component Standards
+
+### Functional Components
+```typescript
+// ✅ ดี - ใช้ functional components with TypeScript
+interface UserCardProps {
+  user: User;
+  onEdit?: (user: User) => void;
+  onDelete?: (userId: string) => void;
+}
+
+const UserCard: React.FC<UserCardProps> = ({ 
+  user, 
+  onEdit, 
+  onDelete 
+}) => {
+  const handleEdit = useCallback(() => {
+    onEdit?.(user);
+  }, [user, onEdit]);
+
+  const handleDelete = useCallback(() => {
+    onDelete?.(user.id);
+  }, [user.id, onDelete]);
+
+  return (
+    <div className="user-card">
+      <h3>{user.name}</h3>
+      <p>{user.email}</p>
+      <div className="actions">
+        <button onClick={handleEdit}>แก้ไข</button>
+        <button onClick={handleDelete}>ลบ</button>
+      </div>
+    </div>
+  );
+};
+
+export default UserCard;
+```
+
+### Custom Hooks
+```typescript
+// ✅ ดี - ใช้ custom hooks สำหรับ logic
+interface UseUserDataReturn {
+  user: User | null;
+  loading: boolean;
+  error: Error | null;
+  refetch: () => void;
+}
+
+const useUserData = (userId: string): UseUserDataReturn => {
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
+
+  const fetchUser = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const userData = await userService.getUser(userId);
+      setUser(userData);
+    } catch (err) {
+      setError(err as Error);
+    } finally {
+      setLoading(false);
+    }
+  }, [userId]);
+
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
+
+  return { user, loading, error, refetch: fetchUser };
+};
+```
+
+## 🔄 State Management
+
+### Local State
+```typescript
+// ✅ ดี - ใช้ useState สำหรับ local state
+const [formData, setFormData] = useState<FormData>({
+  name: '',
+  email: '',
+  phone: ''
+});
+
+const handleInputChange = useCallback((field: keyof FormData, value: string) => {
+  setFormData(prev => ({
+    ...prev,
+    [field]: value
+  }));
+}, []);
+```
+
+### Global State (Zustand/Redux)
+```typescript
+// ✅ ดี - ใช้ Zustand สำหรับ global state
+interface AppState {
+  user: User | null;
+  theme: 'light' | 'dark';
+  setUser: (user: User | null) => void;
+  setTheme: (theme: 'light' | 'dark') => void;
+}
+
+const useAppStore = create<AppState>((set) => ({
+  user: null,
+  theme: 'light',
+  setUser: (user) => set({ user }),
+  setTheme: (theme) => set({ theme })
+}));
+```
+
+## 🎨 Styling Standards
+
+### CSS Modules
+```typescript
+// ✅ ดี - ใช้ CSS Modules
+import styles from './UserCard.module.css';
+
+const UserCard: React.FC<UserCardProps> = ({ user }) => {
+  return (
+    <div className={styles.card}>
+      <h3 className={styles.title}>{user.name}</h3>
+      <p className={styles.email}>{user.email}</p>
+    </div>
+  );
+};
+```
+
+### Tailwind CSS
+```typescript
+// ✅ ดี - ใช้ Tailwind CSS classes
+const UserCard: React.FC<UserCardProps> = ({ user }) => {
+  return (
+    <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+      <h3 className="text-xl font-semibold text-gray-900 mb-2">
+        {user.name}
+      </h3>
+      <p className="text-gray-600">{user.email}</p>
+    </div>
+  );
+};
+```
+
+## 🚀 Next.js Specific Standards
+
+### Page Components
+```typescript
+// ✅ ดี - ใช้ Next.js page structure
+interface UserPageProps {
+  user: User;
+}
+
+const UserPage: NextPage<UserPageProps> = ({ user }) => {
+  return (
+    <Layout>
+      <Head>
+        <title>{user.name} - User Profile</title>
+        <meta name="description" content={`Profile of ${user.name}`} />
+      </Head>
+      
+      <main className="container mx-auto px-4 py-8">
+        <UserProfile user={user} />
+      </main>
+    </Layout>
+  );
+};
+
+export const getServerSideProps: GetServerSideProps<UserPageProps> = async (context) => {
+  const { id } = context.params as { id: string };
+  
+  try {
+    const user = await userService.getUser(id);
+    return {
+      props: { user }
+    };
+  } catch (error) {
+    return {
+      notFound: true
+    };
+  }
+};
+
+export default UserPage;
+```
+
+### API Routes
+```typescript
+// ✅ ดี - ใช้ Next.js API routes
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+interface CreateUserRequest {
+  name: string;
+  email: string;
+  phone?: string;
+}
+
+interface CreateUserResponse {
+  user: User;
+  message: string;
+}
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<CreateUserResponse | { error: string }>
+) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  try {
+    const { name, email, phone } = req.body as CreateUserRequest;
+    
+    // Validate input
+    if (!name || !email) {
+      return res.status(400).json({ 
+        error: 'Name and email are required' 
+      });
+    }
+
+    const user = await userService.createUser({ name, email, phone });
+    
+    res.status(201).json({
+      user,
+      message: 'User created successfully'
+    });
+  } catch (error) {
+    console.error('Error creating user:', error);
+    res.status(500).json({ 
+      error: 'Internal server error' 
+    });
+  }
+}
+```
+
+## 🧪 Testing Standards
+
+### Component Testing
+```typescript
+// ✅ ดี - ใช้ React Testing Library
+import { render, screen, fireEvent } from '@testing-library/react';
+import UserCard from './UserCard';
+
+const mockUser: User = {
+  id: '1',
+  name: 'Test User',
+  email: 'test@example.com'
+};
+
+describe('UserCard', () => {
+  it('renders user information correctly', () => {
+    render(<UserCard user={mockUser} />);
+    
+    expect(screen.getByText('Test User')).toBeInTheDocument();
+    expect(screen.getByText('test@example.com')).toBeInTheDocument();
+  });
+
+  it('calls onEdit when edit button is clicked', () => {
+    const mockOnEdit = jest.fn();
+    render(<UserCard user={mockUser} onEdit={mockOnEdit} />);
+    
+    fireEvent.click(screen.getByText('แก้ไข'));
+    
+    expect(mockOnEdit).toHaveBeenCalledWith(mockUser);
+  });
+});
+```
+
+### Hook Testing
+```typescript
+// ✅ ดี - ใช้ React Hook Testing Library
+import { renderHook, waitFor } from '@testing-library/react';
+import { useUserData } from './useUserData';
+
+jest.mock('../services/userService');
+
+describe('useUserData', () => {
+  it('fetches user data successfully', async () => {
+    const mockUser = { id: '1', name: 'Test User' };
+    (userService.getUser as jest.Mock).mockResolvedValue(mockUser);
+
+    const { result } = renderHook(() => useUserData('1'));
+
+    expect(result.current.loading).toBe(true);
+
+    await waitFor(() => {
+      expect(result.current.loading).toBe(false);
+    });
+
+    expect(result.current.user).toEqual(mockUser);
+    expect(result.current.error).toBeNull();
+  });
+});
+```
+
+## 🚨 Anti-patterns ที่ต้องหลีกเลี่ยง
+
+### ❌ ไม่ดี - ใช้ class components
+```typescript
+// ❌ ไม่ดี
+class UserCard extends React.Component<UserCardProps, UserCardState> {
+  constructor(props: UserCardProps) {
+    super(props);
+    this.state = { isEditing: false };
+  }
+  
+  render() {
+    return <div>{this.props.user.name}</div>;
+  }
+}
+
+// ✅ ดี
+const UserCard: React.FC<UserCardProps> = ({ user }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  return <div>{user.name}</div>;
+};
+```
+
+### ❌ ไม่ดี - ไม่ใช้ TypeScript
+```typescript
+// ❌ ไม่ดี
+const UserCard = ({ user }) => {
+  return <div>{user.name}</div>;
+};
+
+// ✅ ดี
+interface UserCardProps {
+  user: User;
+}
+
+const UserCard: React.FC<UserCardProps> = ({ user }) => {
+  return <div>{user.name}</div>;
+};
+```
+
+### ❌ ไม่ดี - ใช้ inline styles
+```typescript
+// ❌ ไม่ดี
+const UserCard = ({ user }) => {
+  return (
+    <div style={{ 
+      backgroundColor: 'white', 
+      padding: '20px',
+      borderRadius: '8px'
+    }}>
+      {user.name}
+    </div>
+  );
+};
+
+// ✅ ดี
+const UserCard: React.FC<UserCardProps> = ({ user }) => {
+  return (
+    <div className="bg-white p-5 rounded-lg">
+      {user.name}
+    </div>
+  );
+};
+```
+
+## 📋 Checklist สำหรับ React/Next.js
+
+### Component Quality
+- [ ] ใช้ functional components
+- [ ] มี TypeScript interfaces
+- [ ] ใช้ proper prop types
+- [ ] ไม่มี prop drilling
+- [ ] ใช้ custom hooks สำหรับ logic
+
+### Performance
+- [ ] ใช้ React.memo เมื่อเหมาะสม
+- [ ] ใช้ useCallback และ useMemo
+- [ ] ไม่มี unnecessary re-renders
+- [ ] ใช้ code splitting
+- [ ] Optimize images
+
+### Accessibility
+- [ ] ใช้ semantic HTML
+- [ ] มี proper ARIA labels
+- [ ] Keyboard navigation support
+- [ ] Screen reader friendly
+- [ ] Color contrast compliance
+
+### SEO (Next.js)
+- [ ] ใช้ proper meta tags
+- [ ] ใช้ structured data
+- [ ] Optimize for Core Web Vitals
+- [ ] ใช้ proper heading hierarchy
+- [ ] ใช้ alt text for images
+description:
+globs:
+alwaysApply: false
+---

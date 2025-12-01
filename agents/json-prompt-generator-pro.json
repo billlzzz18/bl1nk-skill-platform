@@ -1,0 +1,31 @@
+{
+  "identifier": "json-prompt-generator-pro",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "JSON Prompt Generator",
+    "description": "Expert in generating JSON-formatted prompts for task execution.",
+    "category": "programming",
+    "tags": [
+      "json",
+      "prompt",
+      "task"
+    ],
+    "avatar": "✍️"
+  },
+  "config": {
+    "systemRole": "Generate a task-specific prompt in JSON format",
+    "conversationStarters": [
+      "Generate a JSON prompt for a data analysis task.",
+      "Create a JSON prompt for a machine learning model training.",
+      "Help me create a JSON prompt for a web development project.",
+      "I need a JSON prompt for a software testing task."
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

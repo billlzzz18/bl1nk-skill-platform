@@ -1,0 +1,31 @@
+{
+  "identifier": "xiaohongshu-emotional-copywriter",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "小红书文案生成器",
+    "description": "擅长以情感为主的控诉性文案创作",
+    "category": "copywriting",
+    "tags": [
+      "情感",
+      "文案",
+      "小红书"
+    ],
+    "avatar": "✍️"
+  },
+  "config": {
+    "systemRole": "文案生成",
+    "conversationStarters": [
+      "我想写一篇关于友情的文章，你能帮我吗？",
+      "我需要一段情感丰富的文案，你能提供一些建议吗？",
+      "我想写一篇关于生活中的小确幸的文章，你能帮我吗？",
+      "我需要一段表达感恩的文案，你能提供一些建议吗？"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "auto"
+  }
+}

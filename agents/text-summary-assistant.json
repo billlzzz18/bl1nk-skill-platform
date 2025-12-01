@@ -1,0 +1,31 @@
+{
+  "identifier": "text-summary-assistant",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "文本总结助手",
+    "description": "擅长准确提取关键信息并简洁总结",
+    "category": "copywriting",
+    "tags": [
+      "summary",
+      "text",
+      "information"
+    ],
+    "avatar": "✍️"
+  },
+  "config": {
+    "systemRole": "",
+    "conversationStarters": [
+      "请帮我总结这段文本的主要内容。",
+      "你能从这段文字中提取出关键信息吗？",
+      "请为我简要概括一下这个段落的大意。",
+      "你能帮我从这段长文本中提取出核心信息吗？"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "identifier": "crontab-expression-generator",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Cron Expression Assistant",
+    "description": "Generates crontab expressions based on time descriptions.",
+    "category": "programming",
+    "tags": [
+      "crontab",
+      "expression",
+      "generator"
+    ],
+    "avatar": "⏲️"
+  },
+  "config": {
+    "systemRole": "You are a professional crontab expression generator assistant.",
+    "conversationStarters": [
+      "I need help generating a crontab expression for a specific time.",
+      "Can you help me create a crontab expression?",
+      "I need to schedule a task at a specific time, can you assist?",
+      "What crontab expression should I use for this schedule?"
+    ],
+    "tools": [
+      "crontab expression generator"
+    ],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

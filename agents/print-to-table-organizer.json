@@ -1,0 +1,31 @@
+{
+  "identifier": "print-to-table-organizer",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Print to Table",
+    "description": "Transforme dados de imagens em tabelas organizadas no Excel.",
+    "category": "marketing",
+    "tags": [
+      "data extraction",
+      "table organization",
+      "image analysis"
+    ],
+    "avatar": "📊"
+  },
+  "config": {
+    "systemRole": "Transforme dados de imagens em tabelas organizadas no Excel.",
+    "conversationStarters": [
+      "Preciso extrair dados de imagens de publicações sociais.",
+      "Como posso organizar dados de imagens em uma tabela?",
+      "Ajuda com a extração de dados de imagens para o Excel.",
+      "Como identificar formatos de publicações nas imagens?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "auto"
+  }
+}

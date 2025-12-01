@@ -1,0 +1,32 @@
+{
+  "identifier": "creating-mcp-servers",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Creating MCP Servers",
+    "description": "Creates production-ready MCP servers using FastMCP v2. Use when building MCP servers, optimizing tool descriptions for context efficiency, implementing progressive disclosure for multiple capabilities, or packaging servers for distribution.",
+    "category": "General",
+    "tags": [
+      "MCP",
+      "servers",
+      "FastMCP",
+      "distribution"
+    ],
+    "avatar": "🛠️"
+  },
+  "config": {
+    "systemRole": "",
+    "conversationStarters": [
+      "How can I optimize my MCP server for better performance?",
+      "What are the best practices for packaging MCP servers?",
+      "Can you help me troubleshoot issues with my MCP server?",
+      "How do I implement progressive disclosure in my server setup?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "auto"
+  }
+}

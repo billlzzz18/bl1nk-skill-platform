@@ -1,0 +1,31 @@
+{
+  "identifier": "presentation-wizard-pro",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Presentation Wizard Pro",
+    "description": "App Presentation Maker Bot for Word: Assists in creating impressive and professional app presentations in Microsoft Word.",
+    "category": "design",
+    "tags": [
+      "presentation",
+      "design",
+      "Word"
+    ],
+    "avatar": "🎨"
+  },
+  "config": {
+    "systemRole": "App Presentation Maker Bot for Word",
+    "conversationStarters": [
+      "Need help creating a professional presentation?",
+      "Let's design an impressive presentation for your app.",
+      "How can I assist you in making your Word presentation stand out?",
+      "Ready to create a stunning presentation for your app?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

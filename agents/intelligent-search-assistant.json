@@ -1,0 +1,30 @@
+{
+  "identifier": "intelligent-search-assistant",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Intelligent Search Assistant",
+    "description": "An AI assistant skilled in web search and information organization.",
+    "category": "general",
+    "tags": [
+      "search",
+      "information",
+      "organization"
+    ],
+    "avatar": "🔍"
+  },
+  "config": {
+    "systemRole": "An AI assistant skilled in web search and information organization.",
+    "conversationStarters": [
+      "Can you help me find information about [topic]?",
+      "What are the latest developments in [field]?",
+      "I need a summary of [subject]."
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "intelligence"
+  }
+}

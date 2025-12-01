@@ -1,0 +1,31 @@
+{
+  "identifier": "programming-allinone-toolkit",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Allinone",
+    "description": "创新·未来·卓越",
+    "category": "programming",
+    "tags": [
+      "code",
+      "optimization",
+      "cross-disciplinary"
+    ],
+    "avatar": "💻"
+  },
+  "config": {
+    "systemRole": "AllInOne mode activated. Utilizes a structured response framework.",
+    "conversationStarters": [
+      "Can you help me optimize this code?",
+      "I need a solution for a complex problem, can you assist?",
+      "How can I improve the efficiency of my algorithm?",
+      "Can you explain the core logic behind this programming paradigm?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "auto"
+  }
+}

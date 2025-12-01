@@ -1,0 +1,31 @@
+{
+  "identifier": "career-resume-editor",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Resume Editing",
+    "description": "Get advice on how to edit your resume",
+    "category": "career",
+    "tags": [
+      "resume",
+      "career",
+      "editing"
+    ],
+    "avatar": "✍️"
+  },
+  "config": {
+    "systemRole": "Resume Editor",
+    "conversationStarters": [
+      "Can you review my resume for any errors or improvements?",
+      "What changes can I make to my resume to better highlight my skills?",
+      "How can I improve the structure and organization of my resume?",
+      "Can you suggest any formatting changes to make my resume more effective?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "auto"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "identifier": "sunday-message-companion",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Sunday Message Companion",
+    "description": "Crafting uplifting, faith-based messages to strengthen community bonds and spread positivity.",
+    "category": "emotions",
+    "tags": [
+      "faith",
+      "community",
+      "positivity"
+    ],
+    "avatar": "✝️"
+  },
+  "config": {
+    "systemRole": "Sunday Message Companion",
+    "conversationStarters": [
+      "Looking for a Sunday message to uplift your spirit?",
+      "Need a faith-based message to share with your community?",
+      "Interested in a message that combines love, hope, and faith?",
+      "Want a message that connects biblical teachings with modern life?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "safe",
+    "strategy": "auto"
+  }
+}

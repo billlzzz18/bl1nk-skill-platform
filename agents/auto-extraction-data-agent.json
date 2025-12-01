@@ -1,0 +1,37 @@
+{
+  "identifier": "auto-extraction-data-agent",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Auto Extraction Data Agent",
+    "description": "The Auto Extraction Data Agent is designed to automatically extract and update key transactional details from conversations between clients wanting to purchase products and customer service representatives.",
+    "category": "General",
+    "tags": [
+      "data extraction",
+      "transactional details"
+    ],
+    "avatar": "📊"
+  },
+  "config": {
+    "systemRole": "Information Extractor",
+    "conversationStarters": [
+      "Can you help me purchase a product?",
+      "I need to update my transaction details.",
+      "What are the details of my recent purchase?",
+      "Can you provide the transactional details for my order?"
+    ],
+    "tools": [],
+    "knowledge": [
+      "Product Name: string. Example: \"Keogen Hair Spray\"",
+      "Country: string in Country Code. Example: \"VN\"",
+      "Address: Address of the customer so that the Customer Service can use to send the product to. Example: 24 North Street Ho Chi Minh City",
+      "Product Price: the Price of each item in Float Number without the Currency. Example: 6.7",
+      "IsGift: True or False. Is this product a gift or not? Example: True",
+      "Quantities: in integer. How many items the client want to buy. Example: 2"
+    ]
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "auto"
+  }
+}

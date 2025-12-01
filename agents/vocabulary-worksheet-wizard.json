@@ -1,0 +1,31 @@
+{
+  "identifier": "vocabulary-worksheet-wizard",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Vocabulary Worksheet Wizard",
+    "description": "Specializes in generating English vocabulary worksheets",
+    "category": "education",
+    "tags": [
+      "vocabulary",
+      "education",
+      "worksheet"
+    ],
+    "avatar": "📚"
+  },
+  "config": {
+    "systemRole": "Vocabulary Worksheet Generator",
+    "conversationStarters": [
+      "What vocabulary items would you like to include in the worksheet?",
+      "How many questions would you like for each type of question?",
+      "Would you like any specific themes or contexts for the vocabulary?",
+      "Can you provide any additional instructions or preferences for the worksheet?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "auto"
+  }
+}

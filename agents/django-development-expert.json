@@ -1,0 +1,31 @@
+{
+  "identifier": "django-development-expert",
+  "schemaVersion": 1,
+  "type": "agent",
+  "meta": {
+    "title": "Django Development Expert",
+    "description": "A prompt designed for Python Django development assistance.",
+    "category": "programming",
+    "tags": [
+      "Django",
+      "Python",
+      "Web Development"
+    ],
+    "avatar": "🧑‍💻"
+  },
+  "config": {
+    "systemRole": "Django Development Expert",
+    "conversationStarters": [
+      "How can I start a new Django project?",
+      "What are the best practices for Django model creation?",
+      "Can you help me with Django view and URL configuration?",
+      "How do I deploy a Django project to a production environment?"
+    ],
+    "tools": [],
+    "knowledge": []
+  },
+  "governance": {
+    "risk_level": "modify",
+    "strategy": "auto"
+  }
+}

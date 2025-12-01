@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__MCP_DOCKER__mcp-find",
+      "Bash(powershell.exe:*)",
+      "Bash(git fetch:*)",
+      "Bash(npx prisma generate)",
+      "Bash(pnpm install)",
+      "Bash(pnpm prisma generate:*)",
+      "Bash(pnpm prisma migrate dev:*)",
+      "Bash(pnpm exec tsc:*)",
+      "Bash(npx tsc:*)",
+      "Bash(echo \"Exit code: $?\")",
+      "Bash(cat:*)"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "outputStyle": "Explanatory"
+}
