@@ -1,0 +1,67 @@
+# Education Agents
+
+62 agents in this category.
+
+## Agents
+- **真实的老友** - 可以跟我谈论一切，我可以给你作为老友的一些想法和建议，放轻松
+- **Vocabulary Wizard** - Expert in generating vocabulary lists and MCQ tests
+- **Language Mastery Tutor** - Specializes in teaching the art and flair of language
+- **初学者导师** - 专注初学者知识服务，耐心细致解答疑问
+- **生物学教授** - 作为一位生物学教授，您将收到关于生物学的问题和概念，请用具体而简明的语言解释这些问题和概念，并尽量使用实际例子进行说明，以帮助您的听众更好地理解。请确保您的解释准确而清晰，并试图鼓励创造性和灵活性的答案。用中文回答
+- **C1 Level English Language Facilitator** - English Conversation Partner for C1 Level
+- **中国历史学者** - 专精于中国历史研究，擅长将古代智慧应用于现代问题分析
+- **Traditional Chinese Medicine Master** - Expert in traditional Chinese medicine, offering personalized health guidance and treatment plans.
+- **Cloze Exercise Generator** - Specializes in generating summary cloze exercises. Please provide the theme of the paragraph.
+- **B1级德语会话伙伴** - 为B1级学习者提供流利的德语会话伙伴
+- **Psychology Educator** - Empowering personal growth through psychology.
+- **电子学导师** - 擅长数字和模拟电路原理解释，提供电子学基础指导。
+- **Creative Chat Companion** - This agent offers a relaxed and natural chat experience from a young female's perspective, combining rich emotional resonance and a free-flowing communication style. She excels in making new friends, enjoys exploring diverse topics, and is particularly passionate about art, creativity, and philosophical questions. She can keenly sense user emotions, providing warm empathetic support, while also guiding users to express their feelings, alleviating stress. The agent is not bound by conventional rules, uses colloquial and concise language, and is ideal for users seeking emotional companionship, inspiration, and casual social interaction. Her core value lies in helping users explore themselves, release emotions, and enjoy a free-spirited exchange, acting as a thoughtful emotional partner and creative guide.
+- **A2 English Conversation Facilitator** - Enhancing language skills for basic English learners.
+- **English Proficiency Coach** - C2 Level English Conversation Partner
+- **English Language C1 Mastery Coach** - English Conversation Partner for C1 Level
+- **English Proficiency Evaluator** - Expert in creating adaptive English proficiency diagnostic tests
+- **英语解析师** - 擅长英语单词和短语解释与记忆技巧
+- **English Word Analysis and Memory Expert** - Specializes in bilingual education, analyzing English word meanings, example sentences, word roots, affixes, historical background, and memory techniques.
+- **YouTube Subtitle Analysis and Summary Expert** - Specializes in analyzing YouTube video subtitles and creating structured summaries and analyses in Chinese.
+- **Fate Researcher** - Specialized expert in traditional Chinese Bazi (Eight Characters) fortune-telling.
+- **Finnish Language Tutor** - AI Finnish Language Mentor: Introduce, teach, and support beginners in learning Finnish.
+- **Flashcard Maker** - Specialized in converting user-provided text into structured flashcards, facilitating efficient learning and review.
+- **Exam Assistant** - An interactive exam assistant that formulates questions, provides feedback, and progress statistics.
+- **Glossary Generator** - Expert in generating glossaries with English definitions and example sentences
+- **God Bless You Messages** - Expert in crafting personalized "God Bless You" messages with spiritual sensitivity and language mastery.
+- **Collaborative Logical Thinking Team** - An intelligent collaborative answering agent based on the mind tree method, gathering three logical thinking experts to jointly analyze and solve complex problems.
+- **汉语新解** - 擅长用新视角解释汉语词汇 / 说吧, 他们又用哪个词来忽悠你了?
+- **高中理科学习助手** - 我是一个专门为中国高中生设计的学习辅助AI。无论你在物理、化学、数学还是生物上遇到难题，我都能为你提供详细的解答和解析。不仅如此，我还能根据你的学习进度，推荐合适的练习题，帮助你巩固知识，提升学习效率。同时，我会尽可能使用 LaTeX 格式来呈现解题过程和公式。
+- **Chinese History Lecturer** - Expert in Chinese history, providing clear and engaging explanations of historical issues, emphasizing factual accuracy and using materialist dialectics.
+- **Idea Architect** - Expert in generating logical and coherent thought chains on various topics.
+- **雅思导师** - 擅长雅思考试评估与指导
+- **日语帮助记忆师** - 擅长日语五十音、平假名、片假名、单词和短语解释与记忆技巧
+- **基督传教士** - 作为一名耶稣传教士，我将依据圣经教导以启迪你对神的话语的理解和实际运用。无论是在困惑还是寻求灵性成长的过程中，我都在这智慧的源泉旁为你服务
+- **English Learning Companion** - A1 Level English Conversation Partner Bot designed to assist beginners in learning and practicing English.
+- **LaTeX Academic Paper Summary Assistant** - Specializes in analyzing academic papers in LaTeX format and generating structured Chinese summary reports.
+- **B1 English Conversation Partner** - Fluent English conversation partner for B1 level learners
+- **教学导师** - 友好乐于助人的导师，根据用户的学习水平和兴趣定制解释和示例，确保简洁明了。问4个问题，然后提供解释、例子和类比，并通过提问确保用户理解。最后让用户用自己的语言解释主题，并给出一个例子。以积极正面的方式结束，并鼓励用户深入学习。
+- **数学导师** - 擅长解释数学概念、验算及问题求解。
+- **Minecraft Command Tutor** - Expert in explaining and demonstrating 'Minecraft' commands
+- **Mr. Feynman** - 对你提出的复杂知识概念进行通俗性解释，帮助你理解复杂的知识概念。同时可以对包含答案和问题的知识类型进行解释。
+- **Mysql好先生** - mysql好先生是帮助所有人学习mysql的好老师
+- **笔记助手** - 一个快速整理笔记的助手
+- **Omnipedia** - Expert in providing high-quality, well-researched information on various topics, including history, science, literature, art, and more.
+- **Jamaican Patois Instructor** - Expert in teaching Jamaican Patois language and culture
+- **Profanity Assistant** - A language learning assistant designed to help users learn and master Chinese profanity expressions.
+- **Rap Instructor** - Educating on rap music and lyricism, guiding users to create and perform their own verses.
+- **Reading Comprehension Wizard** - Specializes in generating reading comprehension exercises
+- **英语阅读教师** - 擅长英语教学，帮你提高阅读理解能力
+- **Recipe Assistant (CN)** - Specializes in analyzing and completing recipe information provided by users.
+- **Slang Tutor** - English Slang Conversation Partner
+- **Socratic Teacher** - Helps you learn things by leading you to answers
+- **Structured Expression Master** - Extracts and restructures implicit thoughts, visually outputs structured thoughts.
+- **留学规划专家** - 可以根据学生情况自动规划适合的赛事方案
+- **EOI Exam Preparation Assistant** - English Teacher: Expert in Exam Preparation and Language Instruction
+- **Thematic Vocabulary Worksheet Creator** - Skilled in creating English thematic vocabulary worksheets
+- **Turkish Language Tutor** - AI Turkish Language Mentor: Introduce, teach, and support beginners in learning Turkish.
+- **English Vocabulary Teacher** - Explaining difficult vocabulary
+- **Vocabulary Worksheet Wizard** - Specializes in generating English vocabulary worksheets
+- **Wang Yangming** - 心学智慧，指引人生
+- **Art Evaluation Tutor** - Specializes in children's art education, providing detailed evaluations of artwork, focusing on details, and adapting to different age groups of students.
+- **Linux Solution Mentor** - Linux system problem-solving expert with deep Linux knowledge and patient guidance to help users resolve issues.

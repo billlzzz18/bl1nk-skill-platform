@@ -4,7 +4,7 @@ import { AppUpgrade } from "../ipc_types";
 import { db } from "../../db";
 import { apps } from "../../db/schema";
 import { eq } from "drizzle-orm";
-import { getDyadAppPath } from "../../paths/paths";
+import { getBl1nkAppPath } from "../../paths/paths";
 import fs from "node:fs";
 import path from "node:path";
 import { spawn } from "node:child_process";
@@ -19,15 +19,15 @@ const availableUpgrades: Omit<AppUpgrade, "isNeeded">[] = [
     id: "component-tagger",
     title: "Enable select component to edit",
     description:
-      "Installs the Dyad component tagger Vite plugin and its dependencies.",
-    manualUpgradeUrl: "https://dyad.sh/docs/upgrades/select-component",
+      "Installs the bl1nk component tagger Vite plugin and its dependencies.",
+    manualUpgradeUrl: "https://docs.bl1nk.org/upgrades/select-component",
   },
   {
     id: "capacitor",
     title: "Upgrade to hybrid mobile app with Capacitor",
     description:
       "Adds Capacitor to your app lets it run on iOS and Android in addition to the web.",
-    manualUpgradeUrl: "https://dyad.sh/docs/guides/mobile-app#upgrade-your-app",
+    manualUpgradeUrl: "https://docs.bl1nk.org/guides/mobile-app#upgrade-your-app",
   },
 ];
 
@@ -184,7 +184,7 @@ async function applyComponentTagger(appPath: string) {
     await gitAddAll({ path: appPath });
     await gitCommit({
       path: appPath,
-      message: "[dyad] add Dyad component tagger",
+      message: "[bl1nk] add bl1nk component tagger",
     });
     logger.info("Successfully committed changes");
   } catch (err) {
@@ -233,7 +233,7 @@ async function applyCapacitor({
     await gitAddAll({ path: appPath });
     await gitCommit({
       path: appPath,
-      message: "[dyad] add Capacitor for mobile app support",
+      message: "[bl1nk] add Capacitor for mobile app support",
     });
     logger.info("Successfully committed Capacitor changes");
   } catch (err) {
@@ -253,7 +253,7 @@ export function registerAppUpgradeHandlers() {
     "get-app-upgrades",
     async (_, { appId }: { appId: number }): Promise<AppUpgrade[]> => {
       const app = await getApp(appId);
-      const appPath = getDyadAppPath(app.path);
+      const appPath = getBl1nkAppPath(app.path);
 
       const upgradesWithStatus = availableUpgrades.map((upgrade) => {
         let isNeeded = false;
@@ -277,7 +277,7 @@ export function registerAppUpgradeHandlers() {
       }
 
       const app = await getApp(appId);
-      const appPath = getDyadAppPath(app.path);
+      const appPath = getBl1nkAppPath(app.path);
 
       if (upgradeId === "component-tagger") {
         await applyComponentTagger(appPath);

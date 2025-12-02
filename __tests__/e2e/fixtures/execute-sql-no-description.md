@@ -1,7 +1,7 @@
 No description!
 
-<dyad-execute-sql>
+<bl1nk-execute-sql>
 DROP TABLE users;
-</dyad-execute-sql>
+</bl1nk-execute-sql>
 
 Done.

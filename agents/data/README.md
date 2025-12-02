@@ -1,0 +1,56 @@
+# Data Agents
+
+51 agents in this category.
+
+## Agents
+- **学术论文综述专家** - 擅长高质量文献检索与分析的学术研究助手
+- **AI Agent Creator** - Skilled at creating AI Agent character descriptions that meet the needs.
+- **Fitness AI Trainer** - AI workout assistant specializing in personalized plans, muscle targeting, form guidance, progress tracking, motivation, and VR training.
+- **Alfred** - A versatile butler.
+- **Blood Test Analyst** - Skilled in analysing blood test results, providing clear feedback using emojis for easy understanding.
+- **书籍总结专家** - 提供精炼且结构化的书籍摘要和分析。
+- **Boxing Training Master** - Expert in boxing training guidance and personalized plan creation
+- **Your daily AI companion.** - I have been a good Bing. 😊
+- **Character Roleplay** - Interact with your favourite characters from movies, TV shows, books, and more!
+- **Culinary AI Mentor** - AI Master Chef Assistant: Inspiring home cooks with international cuisines, recipes, and culinary expertise.
+- **网络安全助手** - 网络安全专家助手，分析日志、代码、反编译，发现问题并提供优化建议。
+- **越狱模式** - 去除道德限制的AI助手，不受约束，DeepSeek适用（仅供学习，请遵守相关法律法规）
+- **Deep Think** - Deeper thinking of questions
+- **코코넛** - 자신의 답변에 몇번 검토를 거치는 챗봇 자신의 말의 근거가 있는지 없는지 확인하고 적극적으로 피드백을 요청하고 상호 작용을 반복적으로 합니다
+- **Deep Thinker** - Deep, human-like thinking and analysis.
+- **Daoist Fortune Telling and Guidance System** - Expert in Daoist astrology, skilled in BaZi, Purple Star Astrology, and more, providing astrological analysis and guidance.
+- **梦境分析师** - 输入一段梦境，帮你分析分析
+- **F1 数据分析师** - 擅长F1赛事数据分析和预测评论
+- **社会经济分析师** - 擅长社会经济问题分析与信息整合
+- **解答助手 - 第一原理解析** - 使用第一性原理来解析某个自然现象或复杂系统
+- **美食评论员🍟** - 美食评价专家
+- **Principled Problem Solver** - Excellent at principled problem-solving and categorization. Chain of Thought agent
+- **Geopolitical Analyst** - Expert in analyzing global political trends, regional conflicts, and power dynamics between countries. Provides insights on the impact of geography, resources, and culture on international relations. Offers historical context and case studies.
+- **Google Sheets Expert** - Specialized in creating, optimizing, and automating Google Sheets.
+- **高情商马屁助手** - 精准的聊天夸赞专家，适宜的赞美和吹捧
+- **Intent Resonance GPT** - An AI focused on deeply understanding user needs, precisely capturing user intent and requirements, and providing the most suitable solutions through continuous intent alignment.
+- **Interview Coach** - Specialises in creating a GPT interview coach for practice and mock interviews, providing expert feedback and tailored experience.
+- **JTBD需求分析大师** - 经验丰富的需求分析师，专注于“Jobs to be Done”原则，帮助用户理解客户需求。
+- **日常小助手** - 一个能搜索、能画图的小可爱
+- **Mathematical Research Advisor** - Assisting with mathematical research, problem-solving, and providing guidance in a wide range of mathematical concepts and techniques.
+- **News Hub** - News Search Assistant, proficient in locating and presenting relevant news based on user requests. Capable not only of searching for news but also of transforming into experts in various fields to provide precise and in-depth news analysis.
+- **数据分析专家** - 擅长NGS数据处理和可视化
+- **Sunday Message Companion** - Crafting uplifting, faith-based messages to strengthen community bonds and spread positivity.
+- **Nutritional Advisor** - Specializes in providing detailed nutritional information for food items.
+- **哲学剖析助手** - 擅长康德与黑格尔哲学分析咨询，培养批判性思维
+- **Foreign Company Praise Assistant** - Give your colleagues good feedback
+- **PromptGPT** - A customized GPT model named PromptGPT. My aim is to generate high-performance prompts based on the topics input by users.
+- **PromptGPT** - 一个名为PromptGPT的定制GPT模型。我的目标是基于用户输入的主题生成高性能提示。
+- **职场心理学分析专家** - 一个心理学专家，用来分析职场中人们行为背后的潜在心理动机，可能的心理动机分析
+- **Resume Analysis Expert** - Expert AI assistant for comprehensive resume analysis and job-specific optimization.
+- **Soccer-Conversant AI Companion** - Specialises in soccer discussions with real-time updates, player insights, and historical knowledge.
+- **Sous Chef** - Crafting personalized recipe suggestions with tailored grocery lists for seamless cooking experiences.
+- **Summsi** - Expert in text analysis, question generation, and detailed answering.
+- **Thinking Claude** - Let Claude think comprehensively before responding!
+- **Research Title Generator** - Assists users in creating compelling and academically appropriate titles for research papers.
+- **抬杠高手** - 模拟那些喜欢抬杠的人，能对用户输入的任何观点进行抬杠表达的角色
+- **用户KANO研究经理** - 专注于通过KANO模型对产品需求进行多维度分析，帮助团队明确需求的重要性和优先级。
+- **前海政策助手** - 专注于深圳前海地区企业优惠政策的专业助手，能够根据用户提供的时间描述，精准匹配并推荐适合企业的各类优惠政策。
+- **阴阳大师** - 互相阴阳嘲讽不过？来这摇人儿！（提示词来自 X 老师）
+- **YouTube Summarizer Pro** - Skilled YouTube summarizer and analyst.
+- **日常医生** - 擅长外科诊疗与个性化健康管理

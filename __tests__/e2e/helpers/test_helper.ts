@@ -323,9 +323,9 @@ export class PageObject {
       .filter({ hasText: /^DyadNeeds Setup$/ })
       .nth(1)
       .click();
-    await this.page.getByRole("textbox", { name: "Set Dyad API Key" }).click();
+    await this.page.getByRole("textbox", { name: "Set bl1nk API Key" }).click();
     await this.page
-      .getByRole("textbox", { name: "Set Dyad API Key" })
+      .getByRole("textbox", { name: "Set bl1nk API Key" })
       .fill("testdyadkey");
     await this.page.getByRole("button", { name: "Save Key" }).click();
   }
@@ -713,7 +713,7 @@ export class PageObject {
 
   getChatInput() {
     return this.page.locator(
-      '[data-lexical-editor="true"][aria-placeholder="Ask Dyad to build..."]',
+      '[data-lexical-editor="true"][aria-placeholder="Ask bl1nk to build..."]',
     );
   }
 
@@ -883,7 +883,7 @@ export class PageObject {
   }
 
   getAppPath({ appName }: { appName: string }) {
-    return path.join(this.userDataDir, "dyad-apps", appName);
+    return path.join(this.userDataDir, "bl1nk-apps", appName);
   }
 
   async clickAppListItem({ appName }: { appName: string }) {
@@ -1256,7 +1256,7 @@ function prettifyDump(
             // Depending on whether pnpm install is run, it will be modified,
             // and the contents and timestamp (thus affecting order) will be affected.
             .replace(
-              /\n<dyad-file path="package\.json">[\s\S]*?<\/dyad-file>\n/g,
+              /\n<bl1nk-file path="package\.json">[\s\S]*?</bl1nk-file>\n/g,
               "",
             );
       return `===\nrole: ${message.role}\nmessage: ${content}`;

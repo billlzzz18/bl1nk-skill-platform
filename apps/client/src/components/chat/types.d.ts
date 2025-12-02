@@ -4,24 +4,24 @@ import type { ReactNode } from "react";
 // Extend the ReactMarkdown Components type to include our custom components
 declare module "react-markdown" {
   interface Components extends ReactMarkdownComponents {
-    "dyad-write"?: (props: {
+    "bl1nk-write"?: (props: {
       children?: ReactNode;
       node?: any;
       path?: string;
       description?: string;
     }) => JSX.Element;
-    "dyad-rename"?: (props: {
+    "bl1nk-rename"?: (props: {
       children?: ReactNode;
       node?: any;
       from?: string;
       to?: string;
     }) => JSX.Element;
-    "dyad-delete"?: (props: {
+    "bl1nk-delete"?: (props: {
       children?: ReactNode;
       node?: any;
       path?: string;
     }) => JSX.Element;
-    "dyad-add-dependency"?: (props: {
+    "bl1nk-add-dependency"?: (props: {
       children?: ReactNode;
       node?: any;
       package?: string;

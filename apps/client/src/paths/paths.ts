@@ -2,13 +2,16 @@ import path from "node:path";
 import os from "node:os";
 import { IS_TEST_BUILD } from "../ipc/utils/test_utils";
 
-export function getDyadAppPath(appPath: string): string {
+export function getBl1nkAppPath(appPath: string): string {
   if (IS_TEST_BUILD) {
     const electron = getElectron();
-    return path.join(electron!.app.getPath("userData"), "dyad-apps", appPath);
+    return path.join(electron!.app.getPath("userData"), "bl1nk-apps", appPath);
   }
-  return path.join(os.homedir(), "dyad-apps", appPath);
+  return path.join(os.homedir(), "bl1nk-apps", appPath);
 }
+
+// Backward compatibility alias
+export const getBl1nkAppPath = getBl1nkAppPath;
 
 export function getTypeScriptCachePath(): string {
   const electron = getElectron();

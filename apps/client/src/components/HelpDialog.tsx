@@ -44,7 +44,7 @@ export function HelpDialog({ isOpen, onClose }: HelpDialogProps) {
   const selectedChatId = useAtomValue(selectedChatIdAtom);
   const { settings } = useSettings();
 
-  const isDyadProUser = settings?.providerSettings?.["auto"]?.apiKey?.value;
+  const isBl1nkProUser = settings?.providerSettings?.["auto"]?.apiKey?.value;
 
   // Function to reset all dialog state
   const resetDialogState = () => {
@@ -97,7 +97,7 @@ Issues that do not meet these requirements will be closed and may need to be res
 <!-- Screenshot of the bug -->
 
 ## System Information
-- Dyad Version: ${debugInfo.dyadVersion}
+- bl1nk Version: ${debugInfo.bl1nkVersion}
 - Platform: ${debugInfo.platform}
 - Architecture: ${debugInfo.architecture}
 - Node Version: ${debugInfo.nodeVersion || "n/a"}
@@ -116,10 +116,10 @@ ${debugInfo.logs.slice(-3_500) || "No logs available"}
       const encodedBody = encodeURIComponent(issueBody);
       const encodedTitle = encodeURIComponent("[bug] <WRITE TITLE HERE>");
       const labels = ["bug"];
-      if (isDyadProUser) {
+      if (isBl1nkProUser) {
         labels.push("pro");
       }
-      const githubIssueUrl = `https://github.com/dyad-sh/dyad/issues/new?title=${encodedTitle}&labels=${labels}&body=${encodedBody}`;
+      const githubIssueUrl = `https://github.com/bl1nk-org/bl1nk/issues/new?title=${encodedTitle}&labels=${labels}&body=${encodedBody}`;
 
       // Open the pre-filled GitHub issue page
       IpcClient.getInstance().openExternalUrl(githubIssueUrl);
@@ -127,7 +127,7 @@ ${debugInfo.logs.slice(-3_500) || "No logs available"}
       console.error("Failed to prepare bug report:", error);
       // Fallback to opening the regular GitHub issue page
       IpcClient.getInstance().openExternalUrl(
-        "https://github.com/dyad-sh/dyad/issues/new",
+        "https://github.com/bl1nk-org/bl1nk/issues/new",
       );
     } finally {
       setIsLoading(false);
@@ -173,7 +173,7 @@ ${debugInfo.logs.slice(-3_500) || "No logs available"}
 
       // Get signed URL
       const response = await fetch(
-        "https://upload-logs.dyad.sh/generate-upload-url",
+        "https://upload-logs.bl1nk.org/generate-upload-url",
         {
           method: "POST",
           headers: {
@@ -240,10 +240,10 @@ Session ID: ${sessionId}
     const encodedBody = encodeURIComponent(issueBody);
     const encodedTitle = encodeURIComponent("[session report] <add title>");
     const labels = ["support"];
-    if (isDyadProUser) {
+    if (isBl1nkProUser) {
       labels.push("pro");
     }
-    const githubIssueUrl = `https://github.com/dyad-sh/dyad/issues/new?title=${encodedTitle}&labels=${labels}&body=${encodedBody}`;
+    const githubIssueUrl = `https://github.com/bl1nk-org/bl1nk/issues/new?title=${encodedTitle}&labels=${labels}&body=${encodedBody}`;
 
     IpcClient.getInstance().openExternalUrl(githubIssueUrl);
     handleClose();
@@ -345,7 +345,7 @@ Session ID: ${sessionId}
             <div className="border rounded-md p-3">
               <h3 className="font-medium mb-2">System Information</h3>
               <div className="text-sm bg-slate-50 dark:bg-slate-900 rounded p-2 max-h-32 overflow-y-auto">
-                <p>Dyad Version: {chatLogsData.debugInfo.dyadVersion}</p>
+                <p>bl1nk Version: {chatLogsData.debugInfo.bl1nkVersion}</p>
                 <p>Platform: {chatLogsData.debugInfo.platform}</p>
                 <p>Architecture: {chatLogsData.debugInfo.architecture}</p>
                 <p>
@@ -387,13 +387,13 @@ Session ID: ${sessionId}
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Need help with Dyad?</DialogTitle>
+          <DialogTitle>Need help with bl1nk?</DialogTitle>
         </DialogHeader>
         <DialogDescription className="">
           If you need help or want to report an issue, here are some options:
         </DialogDescription>
         <div className="flex flex-col space-y-4 w-full">
-          {isDyadProUser ? (
+          {isBl1nkProUser ? (
             <div className="flex flex-col space-y-2">
               <Button
                 variant="default"
@@ -402,11 +402,11 @@ Session ID: ${sessionId}
                 }}
                 className="w-full py-6 border-primary/50 shadow-sm shadow-primary/10 transition-all hover:shadow-md hover:shadow-primary/15"
               >
-                <SparklesIcon className="mr-2 h-5 w-5" /> Chat with Dyad help
+                <SparklesIcon className="mr-2 h-5 w-5" /> Chat with bl1nk help
                 bot (Pro)
               </Button>
               <p className="text-sm text-muted-foreground px-2">
-                Opens an in-app help chat assistant that searches through Dyad's
+                Opens an in-app help chat assistant that searches through bl1nk's
                 docs.
               </p>
             </div>
@@ -416,7 +416,7 @@ Session ID: ${sessionId}
                 variant="outline"
                 onClick={() => {
                   IpcClient.getInstance().openExternalUrl(
-                    "https://www.dyad.sh/docs",
+                    "https://docs.bl1nk.org",
                   );
                 }}
                 className="w-full py-6 bg-(--background-lightest)"

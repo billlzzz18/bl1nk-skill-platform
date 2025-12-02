@@ -1,0 +1,7 @@
+---
+exclude_paths:
+  - 'specs/main/generated/**'
+  - '__tests__/**'
+  - '**/*.spec.ts'
+  - '**/*.test.ts'
+  - '_tmp_*.js'

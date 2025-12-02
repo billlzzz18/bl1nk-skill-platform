@@ -73,7 +73,7 @@ def calculate_sum(items):
 
 
 Usage:
-<dyad-search-replace path="path/to/file.js" description="Brief description of the changes you are making">
+<bl1nk-search-replace path="path/to/file.js" description="Brief description of the changes you are making">
 <<<<<<< SEARCH
 def calculate_total(items):
     sum = 0
@@ -89,6 +89,6 @@ def calculate_sum(items):
         sum += item
     return sum
 >>>>>>> REPLACE
-</dyad-search-replace>
+</bl1nk-search-replace>
 
 `;

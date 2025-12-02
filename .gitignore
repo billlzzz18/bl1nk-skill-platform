@@ -28,14 +28,18 @@ yarn-error.log*
 Thumbs.db
 
 # IDE
-.vscode/
 .idea/
+*.tsbuildinfo
 *.swp
 *.swo
+.vscode/
 
 # Prisma
 prisma/migrations/
 
+
+# Logs
+logs/
 
 #Ignore vscode AI rules
 .github\instructions\codacy.instructions.md

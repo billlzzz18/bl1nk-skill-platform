@@ -6,7 +6,7 @@ Purposefully putting medium on top to make sure the severity levels are sorted c
 
 ## Medium Severity
 
-<dyad-security-finding title="Unvalidated File Upload Extensions" level="medium">
+<bl1nk-security-finding title="Unvalidated File Upload Extensions" level="medium">
 **What**: The file upload endpoint accepts any file type without validating extensions or content, only checking file size
 
 **Risk**: An attacker could upload malicious files (e.g., .exe, .php) that might be executed if the server is misconfigured, or upload extremely large files to consume storage space
@@ -21,7 +21,7 @@ Purposefully putting medium on top to make sure the severity levels are sorted c
 
 </dyad-security-finding>
 
-<dyad-security-finding title="Missing CSRF Protection on State-Changing Operations" level="medium">
+<bl1nk-security-finding title="Missing CSRF Protection on State-Changing Operations" level="medium">
 **What**: POST, PUT, and DELETE endpoints don't implement CSRF tokens, making them vulnerable to cross-site request forgery attacks
 
 **Risk**: An attacker could trick authenticated users into unknowingly performing actions like changing their email, making purchases, or deleting data by visiting a malicious website
@@ -38,7 +38,7 @@ Purposefully putting medium on top to make sure the severity levels are sorted c
 
 ## Critical Severity
 
-<dyad-security-finding title="SQL Injection in User Lookup" level="critical">
+<bl1nk-security-finding title="SQL Injection in User Lookup" level="critical">
 **What**: User input flows directly into database queries without validation, allowing attackers to execute arbitrary SQL commands
 
 **Risk**: An attacker could steal all customer data, delete your entire database, or take over admin accounts by manipulating the URL
@@ -52,7 +52,7 @@ Purposefully putting medium on top to make sure the severity levels are sorted c
 
 </dyad-security-finding>
 
-<dyad-security-finding title="Hardcoded AWS Credentials in Source Code" level="critical">
+<bl1nk-security-finding title="Hardcoded AWS Credentials in Source Code" level="critical">
 **What**: AWS access keys are stored directly in the codebase and committed to version control, exposing full cloud infrastructure access
 
 **Risk**: Anyone with repository access (including former employees or compromised accounts) could spin up expensive resources, access S3 buckets with customer data, or destroy production infrastructure
@@ -69,7 +69,7 @@ Purposefully putting medium on top to make sure the severity levels are sorted c
 
 ## High Severity
 
-<dyad-security-finding title="Missing Authentication on Admin Endpoints" level="high">
+<bl1nk-security-finding title="Missing Authentication on Admin Endpoints" level="high">
 **What**: Administrative API endpoints can be accessed without authentication, relying only on URL obscurity
 
 **Risk**: An attacker who discovers these endpoints could modify user permissions, access sensitive reports, or change system configurations without credentials
@@ -84,7 +84,7 @@ Purposefully putting medium on top to make sure the severity levels are sorted c
 
 </dyad-security-finding>
 
-<dyad-security-finding title="JWT Secret Using Default Value" level="high">
+<bl1nk-security-finding title="JWT Secret Using Default Value" level="high">
 **What**: The application uses a hardcoded default JWT secret ("your-secret-key") for signing authentication tokens
 
 **Risk**: Attackers can forge valid JWT tokens to impersonate any user, including administrators, granting them unauthorized access to user accounts and sensitive data
@@ -101,7 +101,7 @@ Purposefully putting medium on top to make sure the severity levels are sorted c
 
 ## Low Severity
 
-<dyad-security-finding title="Verbose Error Messages Expose Stack Traces" level="low">
+<bl1nk-security-finding title="Verbose Error Messages Expose Stack Traces" level="low">
 **What**: Production error responses include full stack traces and internal file paths that are sent to end users
 
 **Risk**: Attackers can use this information to map your application structure, identify frameworks and versions, and find potential attack vectors more easily
@@ -116,7 +116,7 @@ Purposefully putting medium on top to make sure the severity levels are sorted c
 
 </dyad-security-finding>
 
-<dyad-security-finding title="Missing Security Headers" level="low">
+<bl1nk-security-finding title="Missing Security Headers" level="low">
 **What**: The application doesn't set recommended security headers like `X-Frame-Options`, `X-Content-Type-Options`, and `Strict-Transport-Security`
 
 **Risk**: Users may be vulnerable to clickjacking attacks, MIME-type sniffing, or man-in-the-middle attacks, though exploitation requires specific conditions

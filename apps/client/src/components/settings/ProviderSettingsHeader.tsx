@@ -22,21 +22,21 @@ interface ProviderSettingsHeaderProps {
   isLoading: boolean;
   hasFreeTier?: boolean;
   providerWebsiteUrl?: string;
-  isDyad: boolean;
+  isBl1nk: boolean;
   onBackClick: () => void;
 }
 
 function getKeyButtonText({
   isConfigured,
-  isDyad,
+  isBl1nk,
 }: {
   isConfigured: boolean;
-  isDyad: boolean;
+  isBl1nk: boolean;
 }) {
-  if (isDyad) {
+  if (isBl1nk) {
     return isConfigured
-      ? "Manage Dyad Pro Subscription"
-      : "Setup Dyad Pro Subscription";
+      ? "Manage bl1nk Pro Subscription"
+      : "Setup bl1nk Pro Subscription";
   }
   return isConfigured ? "Manage API Keys" : "Setup API Key";
 }
@@ -47,7 +47,7 @@ export function ProviderSettingsHeader({
   isLoading,
   hasFreeTier,
   providerWebsiteUrl,
-  isDyad,
+  isBl1nk,
   onBackClick,
 }: ProviderSettingsHeaderProps) {
   const handleGetApiKeyClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -63,7 +63,7 @@ export function ProviderSettingsHeader({
       className="mb-4 cursor-pointer py-5 w-full ring-4 ring-primary/60 shadow-lg shadow-primary/30 border-primary/60"
     >
       <KeyRound className="mr-2 h-4 w-4" />
-      {getKeyButtonText({ isConfigured, isDyad })}
+      {getKeyButtonText({ isConfigured, isBl1nk })}
       <ExternalLink className="ml-2 h-4 w-4" />
     </Button>
   );

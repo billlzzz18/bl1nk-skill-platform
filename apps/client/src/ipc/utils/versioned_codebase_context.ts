@@ -13,13 +13,13 @@ export interface VersionedFiles {
   messageIndexToFilePathToFileId: Record<number, Record<string, string>>;
 }
 
-interface DyadEngineProviderOptions {
+interface Bl1nkEngineProviderOptions {
   sourceCommitHash: string;
 }
 
 /**
  * Parse file paths from assistant message content.
- * Extracts files from <dyad-read> and <dyad-code-search-result> tags.
+ * Extracts files from <bl1nk-read> and <bl1nk-code-search-result> tags.
  */
 export function parseFilesFromMessage(content: string): string[] {
   const filePaths: string[] = [];
@@ -32,8 +32,8 @@ export function parseFilesFromMessage(content: string): string[] {
   }
   const matches: TagMatch[] = [];
 
-  // Parse <dyad-read path="$filePath"></dyad-read>
-  const dyadReadRegex = /<dyad-read\s+path="([^"]+)"\s*><\/dyad-read>/gs;
+  // Parse <bl1nk-read path="$filePath"></bl1nk-read>
+  const dyadReadRegex = /<bl1nk-read\s+path="([^"]+)"\s*></bl1nk-read>/gs;
   let match: RegExpExecArray | null;
   while ((match = dyadReadRegex.exec(content)) !== null) {
     const filePath = normalizePath(match[1].trim());
@@ -45,9 +45,9 @@ export function parseFilesFromMessage(content: string): string[] {
     }
   }
 
-  // Parse <dyad-code-search-result>...</dyad-code-search-result>
+  // Parse <bl1nk-code-search-result>...</bl1nk-code-search-result>
   const codeSearchRegex =
-    /<dyad-code-search-result>(.*?)<\/dyad-code-search-result>/gs;
+    /<bl1nk-code-search-result>(.*?)<\/bl1nk-code-search-result>/gs;
   while ((match = codeSearchRegex.exec(content)) !== null) {
     const innerContent = match[1];
     const paths: string[] = [];
@@ -132,8 +132,8 @@ export async function processChatMessagesWithVersionedFiles({
 
     // Extract sourceCommitHash from providerOptions
     const engineOptions = message.providerOptions?.[
-      "dyad-engine"
-    ] as unknown as DyadEngineProviderOptions;
+      "bl1nk-engine"
+    ] as unknown as Bl1nkEngineProviderOptions;
     const sourceCommitHash = engineOptions?.sourceCommitHash;
 
     // Skip messages without sourceCommitHash

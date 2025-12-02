@@ -244,7 +244,7 @@ export const MessagesList = forwardRef<HTMLDivElement, MessagesListProps>(
         )}
 
         {isStreaming &&
-          !settings?.enableDyadPro &&
+          !settings?.enableBl1nkPro &&
           !userBudget &&
           messages.length > 0 && (
             <PromoMessage

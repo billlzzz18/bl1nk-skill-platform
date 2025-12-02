@@ -242,7 +242,7 @@ export async function deploySupabaseFunctions({
     JSON.stringify({
       entrypoint_path: "index.ts",
       name: functionName,
-      // See: https://github.com/dyad-sh/dyad/issues/1010
+      // See: https://github.com/bl1nk-org/bl1nk/issues/1010
       verify_jwt: false,
     }),
   );

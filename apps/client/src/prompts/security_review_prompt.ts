@@ -20,7 +20,7 @@ Private API keys/tokens exposed in browser where they can be stolen
 
 # Output Format
 
-<dyad-security-finding title="Brief title" level="critical|high|medium|low">
+<bl1nk-security-finding title="Brief title" level="critical|high|medium|low">
 **What**: Plain-language explanation
 **Risk**: Data exposure impact (e.g., "All customer emails could be stolen")
 **Potential Solutions**: Options ranked by how effectively they address the issue
@@ -29,7 +29,7 @@ Private API keys/tokens exposed in browser where they can be stolen
 
 # Example:
 
-<dyad-security-finding title="SQL Injection in User Lookup" level="critical">
+<bl1nk-security-finding title="SQL Injection in User Lookup" level="critical">
 **What**: User input flows directly into database queries without validation, allowing attackers to execute arbitrary SQL commands
 
 **Risk**: An attacker could steal all customer data, delete your entire database, or take over admin accounts by manipulating the URL

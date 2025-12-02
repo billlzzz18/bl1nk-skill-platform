@@ -1,6 +1,6 @@
-<dyad-rename from="src/App.tsx" to="src/Renamed.tsx">
-</dyad-rename>
+<bl1nk-rename from="src/App.tsx" to="src/Renamed.tsx">
+</bl1nk-rename>
 
-<dyad-write path="src/Renamed.tsx">
+<bl1nk-write path="src/Renamed.tsx">
 // newly added content to renamed file should exist
-</dyad-write>
+</bl1nk-write>

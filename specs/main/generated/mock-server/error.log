@@ -1,2 +1,0 @@
-{"level":"error","message":{"code":500,"error":"controllers[controllerName] is not a constructor"},"service":"user-service","timestamp":"2025-12-01T22:05:19.909Z"}
-{"level":"error","message":"operation 'registerUser' not found on controller 'AuthController'","service":"user-service","timestamp":"2025-12-01T22:06:38.454Z"}

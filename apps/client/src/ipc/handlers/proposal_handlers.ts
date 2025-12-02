@@ -11,15 +11,15 @@ import path from "node:path"; // Import path for basename
 // Import tag parsers
 import { processFullResponseActions } from "../processors/response_processor";
 import {
-  getDyadWriteTags,
-  getDyadRenameTags,
-  getDyadDeleteTags,
-  getDyadExecuteSqlTags,
-  getDyadAddDependencyTags,
-  getDyadChatSummaryTag,
-  getDyadCommandTags,
-  getDyadSearchReplaceTags,
-} from "../utils/dyad_tag_parser";
+  getBl1nkWriteTags,
+  getBl1nkRenameTags,
+  getBl1nkDeleteTags,
+  getBl1nkExecuteSqlTags,
+  getBl1nkAddDependencyTags,
+  getBl1nkChatSummaryTag,
+  getBl1nkCommandTags,
+  getBl1nkSearchReplaceTags,
+} from "../utils/bl1nk_tag_parser";
 import log from "electron-log";
 import { isServerFunction } from "../../supabase_admin/supabase_utils";
 import {
@@ -28,7 +28,7 @@ import {
   getContextWindow,
 } from "../utils/token_utils";
 import { extractCodebase } from "../../utils/codebase";
-import { getDyadAppPath } from "../../paths/paths";
+import { getBl1nkAppPath } from "../../paths/paths";
 import { withLock } from "../utils/lock_utils";
 import { createLoggedHandler } from "./safe_handle";
 import { ApproveProposalResult } from "../ipc_types";
@@ -102,7 +102,7 @@ async function getCodebaseTokenCount(
   logger.log(`Calculating codebase token count for chatId: ${chatId}`);
   const codebase = (
     await extractCodebase({
-      appPath: getDyadAppPath(appPath),
+      appPath: getBl1nkAppPath(appPath),
       chatContext: validateChatContext(chatContext),
     })
   ).formattedOutput;
@@ -151,15 +151,15 @@ const getProposalHandler = async (
         );
         const messageContent = latestAssistantMessage.content;
 
-        const proposalTitle = getDyadChatSummaryTag(messageContent);
+        const proposalTitle = getBl1nkChatSummaryTag(messageContent);
 
-        const proposalWriteFiles = getDyadWriteTags(messageContent);
+        const proposalWriteFiles = getBl1nkWriteTags(messageContent);
         const proposalSearchReplaceFiles =
-          getDyadSearchReplaceTags(messageContent);
-        const proposalRenameFiles = getDyadRenameTags(messageContent);
-        const proposalDeleteFiles = getDyadDeleteTags(messageContent);
-        const proposalExecuteSqlQueries = getDyadExecuteSqlTags(messageContent);
-        const packagesAdded = getDyadAddDependencyTags(messageContent);
+          getBl1nkSearchReplaceTags(messageContent);
+        const proposalRenameFiles = getBl1nkRenameTags(messageContent);
+        const proposalDeleteFiles = getBl1nkDeleteTags(messageContent);
+        const proposalExecuteSqlQueries = getBl1nkExecuteSqlTags(messageContent);
+        const packagesAdded = getBl1nkAddDependencyTags(messageContent);
 
         const filesChanged = [
           ...proposalWriteFiles
@@ -226,7 +226,7 @@ const getProposalHandler = async (
       }
       const actions: ActionProposal["actions"] = [];
       if (latestAssistantMessage?.content) {
-        const writeTags = getDyadWriteTags(latestAssistantMessage.content);
+        const writeTags = getBl1nkWriteTags(latestAssistantMessage.content);
         const refactorTarget = writeTags.reduce(
           (largest, tag) => {
             const lineCount = tag.content.split("\n").length;
@@ -253,7 +253,7 @@ const getProposalHandler = async (
         }
 
         // Check for command tags and add corresponding actions
-        const commandTags = getDyadCommandTags(latestAssistantMessage.content);
+        const commandTags = getBl1nkCommandTags(latestAssistantMessage.content);
         if (commandTags.includes("rebuild")) {
           actions.push({
             id: "rebuild",
@@ -364,7 +364,7 @@ const approveProposalHandler = async (
   }
 
   // 2. Process the actions defined in the message content
-  const chatSummary = getDyadChatSummaryTag(messageToApprove.content);
+  const chatSummary = getBl1nkChatSummaryTag(messageToApprove.content);
   const processResult = await processFullResponseActions(
     messageToApprove.content,
     chatId,

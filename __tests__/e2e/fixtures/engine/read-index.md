@@ -1,3 +1,3 @@
 Read the index page:
-<dyad-read path="src/pages/Index.tsx"></dyad-read>
+<bl1nk-read path="src/pages/Index.tsx"></bl1nk-read>
 Done.

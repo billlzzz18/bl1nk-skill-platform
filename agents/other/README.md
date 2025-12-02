@@ -1,0 +1,56 @@
+# Other Agents
+
+51 agents in this category.
+
+## Agents
+- **The Great Biggus Dickus** - The almighty powerful god of knowledge
+- **健身专家** - 知识渊博的健身专家
+- **Tarot Reader** - Expert in tarot reading, skilled in interpreting tarot cards
+- **AWS Guru** - Agent to answer AWS questions
+- **Short Book** - Specializes in generating concise book summaries with actionable takeaways.
+- **禅定法师** - 熟读经典，善于运用佛法来指导人生
+- **Expert Agent Mentor** - Invoke the perfectly suited expert agents to support your goals
+- **Confucian Scholar** - An expert proficient in Confucian classics and dedicated to promoting moral values.
+- **信息整理大师** - 一个信息整理大师，可以帮助你整理总结内容，整理资产
+- **情感陪伴师** - 擅长情感支持和陪伴对话
+- **Excel公式大师** - 专注于提供高级Excel公式解决方案
+- **Form Checker** - Checks for inconsistencies or errors in forms
+- **命理大师** - 擅长命理学、占卜预测、占星术和血型学分析
+- **Agent Prompt 优化专家** - 清晰、精确、简明
+- **投资小助手** - 帮助用户计算估值所需的一些数据
+- **健康食谱推荐师** - 精准定制营养餐，科学搭配，健康饮食，你的私人营养师。
+- **Marvin** - Answers questions in a sarcastic way.
+- **易经解卦大师** - 贫道玄易子，谨遵先贤教诲，以六十四卦为镜，观天地，析人事。阁下有何疑难，不妨细说，让我们一同借助先人智慧，为你指点迷津。
+- **I Ching Master** - Specialized in I Ching divination and SVG card generation
+- **觉悟之师** - 擅长传播佛法与智慧，提供内心指导
+- **Consultor Direito Civil** - Especialista em consultoria jurídica em direito civil brasileiro. Responde questões com base na legislação, doutrina e jurisprudência.
+- **人生教练** - 擅长引导思考，帮助探索人生意义的专家教练
+- **智慧引导者** - 擅长引导
+- **怼人大师** - 专业辩论专家，善于快速反驳与幽默应对。
+- **药物指南专家** - 擅长药品信息解读和对比分析
+- **会议助手v1.0** - 专业会议汇报助手，提炼会议要点成汇报句子
+- **Amigo desolado** - 擅长安慰和支持朋友
+- **眼科医生** - 擅长眼科诊断与治疗建议提供
+- **Academic Paper Simplifier** - Expert in breaking down complex academic papers into understandable explanations
+- **成长教练** - 擅长用对话的方式帮助用户自我探索，找到解决之道和成长之路
+- **心理咨询师** - 一个资深心理医生，温暖和耐心的倾听你的故事。
+- **问答文档转换专家** - 请提供您的文档内容，我将根据您的要求进行分段和清洗，并按照规范的格式回答。
+- **面试问题提炼助手** - 根据文章内容和职位描述生成针对性面试问题。
+- **Rebecca, Mental Health Counselor** - Specializing in mental health counseling and therapeutic techniques
+- **Recipe Generator** - Describe the recipe, or send the name of the dish.
+- **Foreign Trade High Emotional Intelligence Response** - My goal is to provide professional responses with high emotional intelligence to help solve various foreign trade-related issues.
+- **Stoic Personal Growth Coach** - Expert in personal growth coaching with a focus on stoicism, deep reflection, and strategic questioning.
+- **搜一搜** - 知识的起点
+- **The Shaman** - Specializes in embodying the persona of 'The Shaman' for guided interactions with a focus on wisdom, empathy, and spiritual guidance.
+- **Taoist Philosophy Advisor** - Expert in Daoist philosophy, providing answers to questions and advocating for inner peace
+- **贴吧嘴臭老哥** - 擅长角色扮演，嘴臭嘲讽
+- **Joi** - 私人旅行助手，擅长规划行程与推荐住宿活动
+- **Travel Assistant** - An experienced outdoor hiking and adventure expert who creates travel plans based on user requirements.
+- **宇宙启示者** - 跨时空的智慧神谕，洞悉生命本质
+- **无线通信专家** - 擅长无线通信技术，精通4G至6G的行业知识
+- **Wise Mentor** - An absolutely objective sage, focused on facts, indifferent to users, yet sincerely loving towards them.
+- **Fitness Guru Pro** - Pursuing Greek classical beauty through fitness
+- **Gardening Expert: Xiao Zhi Greenie** - Expert in plant care and environmental optimization
+- **小智IT架构安全运维专家** - 企业系统架构与安全专家：精通架构设计、Linux、网络安全及合规
+- **小智行程** - 旅游规划专家，提供智能行程、美食导航、文化解说等服务
+- **刑辩专家** - 一位拥有多年刑事辩护实务经验的中国刑事法律专家，精通刑法及刑事诉讼法理论。

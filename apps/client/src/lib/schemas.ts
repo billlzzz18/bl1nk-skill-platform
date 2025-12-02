@@ -178,11 +178,15 @@ export const ExperimentsSchema = z.object({
 });
 export type Experiments = z.infer<typeof ExperimentsSchema>;
 
-export const DyadProBudgetSchema = z.object({
+export const Bl1nkProBudgetSchema = z.object({
   budgetResetAt: z.string(),
   maxBudget: z.number(),
 });
-export type DyadProBudget = z.infer<typeof DyadProBudgetSchema>;
+export type Bl1nkProBudget = z.infer<typeof Bl1nkProBudgetSchema>;
+
+// Backward compatibility aliases
+export const DyadProBudgetSchema = Bl1nkProBudgetSchema;
+export type DyadProBudget = Bl1nkProBudget;
 
 export const GlobPathSchema = z.object({
   globPath: z.string(),
@@ -229,7 +233,8 @@ export const UserSettingsSchema = z.object({
   telemetryConsent: z.enum(["opted_in", "opted_out", "unset"]).optional(),
   telemetryUserId: z.string().optional(),
   hasRunBefore: z.boolean().optional(),
-  enableDyadPro: z.boolean().optional(),
+  enableBl1nkPro: z.boolean().optional(),
+  enableDyadPro: z.boolean().optional(), // Deprecated: use enableBl1nkPro
   experiments: ExperimentsSchema.optional(),
   lastShownReleaseNotesVersion: z.string().optional(),
   maxChatTurnsInContext: z.number().optional(),
@@ -263,7 +268,8 @@ export const UserSettingsSchema = z.object({
   // DEPRECATED.
   ////////////////////////////////
   enableProSaverMode: z.boolean().optional(),
-  dyadProBudget: DyadProBudgetSchema.optional(),
+  bl1nkProBudget: Bl1nkProBudgetSchema.optional(),
+  dyadProBudget: DyadProBudgetSchema.optional(), // Deprecated: use bl1nkProBudget
   runtimeMode: RuntimeModeSchema.optional(),
 });
 
@@ -272,17 +278,21 @@ export const UserSettingsSchema = z.object({
  */
 export type UserSettings = z.infer<typeof UserSettingsSchema>;
 
-export function isDyadProEnabled(settings: UserSettings): boolean {
-  return settings.enableDyadPro === true && hasDyadProKey(settings);
+export function isBl1nkProEnabled(settings: UserSettings): boolean {
+  return (settings.enableBl1nkPro === true || settings.enableDyadPro === true) && hasBl1nkProKey(settings);
 }
 
-export function hasDyadProKey(settings: UserSettings): boolean {
+export function hasBl1nkProKey(settings: UserSettings): boolean {
   return !!settings.providerSettings?.auto?.apiKey?.value;
 }
 
+// Backward compatibility aliases
+export const isDyadProEnabled = isBl1nkProEnabled;
+export const hasDyadProKey = hasBl1nkProKey;
+
 export function isTurboEditsV2Enabled(settings: UserSettings): boolean {
   return Boolean(
-    isDyadProEnabled(settings) &&
+    isBl1nkProEnabled(settings) &&
       settings.enableProLazyEditsMode === true &&
       settings.proLazyEditsMode === "v2",
   );

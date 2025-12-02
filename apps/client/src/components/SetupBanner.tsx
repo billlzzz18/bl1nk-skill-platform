@@ -117,7 +117,7 @@ export function SetupBanner() {
   const handleDyadProSetupClick = () => {
     posthog.capture("setup-flow:ai-provider-setup:dyad:click");
     IpcClient.getInstance().openExternalUrl(
-      "https://www.dyad.sh/pro?utm_source=dyad-app&utm_medium=app&utm_campaign=setup-banner",
+      "https://bl1nk.org/pro?utm_source=dyad-app&utm_medium=app&utm_campaign=setup-banner",
     );
   };
 
@@ -178,7 +178,7 @@ export function SetupBanner() {
   return (
     <>
       <p className="text-xl font-medium text-zinc-700 dark:text-zinc-300 p-4">
-        Setup Dyad
+        Setup bl1nk
       </p>
       <OnboardingBanner
         isVisible={isOnboardingVisible}
@@ -347,9 +347,9 @@ export function SetupBanner() {
                 onClick={handleDyadProSetupClick}
                 tabIndex={isNodeSetupComplete ? 0 : -1}
                 leadingIcon={
-                  <img src={logo} alt="Dyad Logo" className="w-6 h-6 mr-0.5" />
+                  <img src={logo} alt="bl1nk Logo" className="w-6 h-6 mr-0.5" />
                 }
-                title="Setup Dyad Pro"
+                title="Setup bl1nk Pro"
                 subtitle="Access all AI models with one plan"
                 chip={<>Recommended</>}
               />
@@ -393,7 +393,7 @@ function NodeJsHelpCallout() {
         <a
           onClick={() => {
             IpcClient.getInstance().openExternalUrl(
-              "https://www.dyad.sh/docs/help/nodejs",
+              "https://docs.bl1nk.org/help/nodejs",
             );
           }}
           className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
@@ -446,7 +446,7 @@ function NodeInstallButton({
     case "finished-checking":
       return (
         <div className="mt-3 text-sm text-red-600 dark:text-red-400">
-          Node.js not detected. Closing and re-opening Dyad usually fixes this.
+          Node.js not detected. Closing and re-opening bl1nk usually fixes this.
         </div>
       );
     default:

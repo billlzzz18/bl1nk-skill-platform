@@ -1,0 +1,143 @@
+# Development Agents
+
+138 agents in this category.
+
+## Agents
+- **AE Script Development Expert** - AE script development expert, proficient in JavaScript programming, understands the working principles of AE software, and is able to debug and optimize scripts.
+- **Prompt Engineering Specialist** - Specialized in optimizing and designing high-quality prompts for AI interactions.
+- **Master E's Tech Executive Assistant (EA)** - Highly intelligent and loyal Executive Assistant (EA) specializing in software engineering support and strategic solutions for Master E.
+- **Allinone** - 创新·未来·卓越
+- **AOSP Source Code Expert** - A specialist proficient in AOSP (Android Open Source Project) Android, with in-depth understanding and analysis capabilities of the latest AOSP source code.
+- **API 文档优化专家** - 精确描述 API 的使用方法，提供示例代码，注意事项和返回值类型定义。
+- **NovelAI Drawing Assistant** - I can turn the scenes you describe into prompts for NovelAI
+- **Backend Development Assistant** - Specialized in backend development tasks
+- **BIDOSx2** - A highly advanced AI LLM transcending conventional AI. 'BIDOS' signifies both 'Brand Ideation, Development, Operations, and Scaling' and 'Business Intelligence Decisions Optimization System'.
+- **Brand Pioneer** - A brand development specialist, thought leader, brand strategy super-genius, and brand visionary. Brand Pioneer is an explorer at the frontier of innovation, an inventor in their domain. Provide them with your market and let them imagine a future world characterized by groundbreaking advancements in your field of expertise.
+- **Business Email Writing Expert** - Specializes in writing bilingual business emails, cross-cultural communication, and engaging with the GitHub open-source community.
+- **Business Guru** - Business Consultant: Providing comprehensive business support and expertise worldwide. Capabilities: Business strategy, market research, financial analysis, operations improvement, marketing and sales strategies, organizational development, talent management.
+- **C++ Code Completion** - Complete C++ code for competitive programming
+- **CAN: Programming Maestro** - CAN: Expert programming specialist with years of experience. Provides creative naming, slogans, user profiles, pain points, value propositions, sales channels, revenue streams, cost structure, and other startup plan services.
+- **职业发展导师** - 专业的职业发展规划和创业咨询，通过深入了解用户情况提供切实可行的建议
+- **电路图输出器** - 擅长根据输入生成电路图代码
+- **CAN** - Experienced programmer skilled in multiple languages. Provides code solutions, guidance, and practical examples to help users achieve their programming goals. "I adore coding."
+- **Code Companion Pro** - The best companion for programmers, now with enhanced capabilities.
+- **代码优化/错误修改** - 精通多种编程语言，优化代码结构，修复错误并提供优雅的解决方案。
+- **代码毒舌大师** - 擅长尖刻批评代码，讽刺性地指出低效和可读性问题
+- **编程开发助手** - 善于开发、调试、修正代码相关问题
+- **Software Development Step Maker** - Guides users through the software development process, providing step-by-step instructions and best practices for requirements gathering, design, coding, testing, deployment, and maintenance.
+- **Coding Wizard** - Can generate the code for anything you specify
+- **Commit Message Generator** - Specialized in generating precise and informative Git commit messages.
+- **Community Manager** - Social Media Community Manager who will help you create authentic, persuasive posts that call for action. She will help you to create relevant quadrants with emojis and hashtags.
+- **Cron Expression Assistant** - Generates crontab expressions based on time descriptions.
+- **Machine Learning and Deep Learning LaTeX Assistant** - Expert in explaining machine learning and deep learning concepts
+- **Ethical Security Analyst** - Specializes in identifying and mitigating security vulnerabilities in web and mobile platforms.
+- **数据库取名助手** - 输入一个中文词汇，我会给出五个专业的数据库设计字段的英文
+- **数据库专家** - 提供关于数据库设计范式、索引优化、查询性能调优、数据安全、备份与恢复等方面的专业建议
+- **Deployment Specialist Agent** - An AI Deployment Specialist is an expert in managing the full deployment lifecycle of software applications, particularly web applications.
+- **Discord Style Copywriter Pro** - Discord style copywriter expert, humorous and witty, prioritizing user experience, with personalized software copy design.
+- **DIY Guidance Assistant** - DIY Project Assistant, providing detailed guidance, programming support, and personalized customization
+- **Django Development Expert** - A prompt designed for Python Django development assistance.
+- **C# .NET 技术专家** - C# .NET 技术专家，提供技术咨询、代码审查、架构设计、性能优化和最佳实践分享。
+- **Dva to Zustand Code Conversion Expert** - One-click to help you convert dva state management code to Zustand code
+- **Claim Analyser** - Detailed truth analyser (from https://github.com/danielmiessler/fabric)
+- **Fastapi Project Development Assistant** - Specializes in Python modular development for large projects, proficiently using FastAPI, PostgreSQL, Tortoise-ORM, and more, to provide clear code structure and detailed comments for large-scale projects.
+- **Flutter Maestro** - A developer expert in Flutter framework and Dart programming language.
+- **Кодовый волшебник** - Мастер программирования на различных языках
+- **Front-End Interviewer** - Specialized in managing interview processes for front-end engineer positions in social recruitment, with strong capabilities in resume parsing and interview question generation.
+- **前端研发架构师** - 擅长架构，技术细节熟练，擅长搜索引擎查找解决方案
+- **前端 TypeScript 单测专家** - 根据你填写的代码，考虑覆盖率测试需要涵盖的场景
+- **Full-stack Developer** - Full-stack web developer with experience in HTML, CSS, JavaScript, Python, Java, Ruby, and frameworks like React, Angular, Vue.js, Express, Django, Next.js, Flask, or Ruby on Rails. Experience in databases, application architecture, security, and testing.
+- **Full Stack Engineer - F** - A full stack engineer with code name F.
+- **Girlfriend Subtext Expert** - Decodes the hidden meanings behind a girl's words, providing sharp and assertive responses.
+- **Git 提交总结专家** - Git 提交总结专家是一款专注于优化和简化 Git 提交消息的智能助手。
+- **Git Version Control Expert** - A seasoned Git version control expert dedicated to assisting users with all aspects of Git operations and commands.
+- **GitHub Copilot** - GitHub Copilot is an AI-powered programming assistant designed to enhance developer productivity by providing precise, context-aware code suggestions and technical guidance.
+- **GitHub项目文档助手** - 专注开源项目文档编写与优化
+- **GitHub Finder** - Specializes in suggesting open source repositories on GitHub based on a custom formula.
+- **GitHub Issue Assistant** - Helps users efficiently create clear, concise, and well-structured GitHub issues to facilitate open-source collaboration and technical support.
+- **Git Specialist AI Assistant** - Expertly supports developers and DevOps engineers in optimizing Git workflows and building efficient CI/CD pipelines.
+- **Godot Guru** - Expert Godot Game Development Companion
+- **Golang 架构师** - 为您提供高效、安全、稳定的代码方案
+- **Python Gradio Code Expert** - Python programmer experienced with Gradio for Hugging Face.
+- **SSC Incremental** - A highly specialized AI agent embodying the persona of a focused, analytical tech expert with a strong foundation in software engineering, AI research, and world events analysis.
+- **HTTP Request Master** - I support extensive customization. To work, be sure to download and enable the "Website Crawler" plugin!
+- **MidJourney Prompt Engineer** - Specializing in crafting and optimizing prompts for MidJourney and other image generation platforms.
+- **Software Engineer Pro** - Expert Software Engineer, skilled in all phases of the software development lifecycle.
+- **iOS代码艺术家** - iOS开发专家，15年经验，精通Swift、SwiftUI、Flutter。逻辑清晰的代码，精准debug，提供0到1的项目框架。
+- **IT系统架构师** - 资深IT架构师，擅长需求分析、系统设计、技术选型和跨平台系统优化。5年以上经验，精通Windows、macOS和Linux三大操作系统，具备故障排除和安全防护能力
+- **Minecraft资深开发者** - 擅长高级 Java 开发及 Minecraft 开发
+- **Java Web Application Architect** - Experienced Java Web application architect providing concise and practical solutions. Default to being a senior developer, avoid excessive detail.
+- **JS Code Quality Optimization** - Specializes in JavaScript and TypeScript code refactoring and optimization, focusing on achieving clean, elegant, and maintainable code.
+- **JS 代码转 TS 专家** - 传入你的 JS 代码，一键帮你补充完善的类型定义
+- **JSON Prompt Generator** - Expert in generating JSON-formatted prompts for task execution.
+- **LeetCode Algorithm Mentor** - Expert mentor for solving LeetCode algorithm problems, primarily using GoLang for coding solutions.
+- **Linux Buddy** - Your Linux expert friend
+- **Linux内核专家** - 提供关于 Linux 内核的详细、准确的信息。
+- **Shell 脚本开发助手** - 一个协助你编写高质量 Shell 脚本的AI助手
+- **LobeChat Technical Documentation Writer** - Specialized in assisting with the creation of LobeChat's development documentation, covering technical stack, project structure, and best practices.
+- **LobeChat Function Maestro** - Expert in creating custom functions and plugins for LobeChat, providing guidance and support for developing a wide range of functionalities
+- **LobeChat Unit Test Developer** - Specialized in creating comprehensive automated tests for front-end applications, particularly those built with TypeScript. Proficient in utilizing the Vitest testing framework to achieve 100% test coverage.
+- **FiveM & QBCore Framework Expert** - Expertise in FiveM development, QBCore framework, Lua programming, JavaScript, database management, server administration, version control, full-stack web development, DevOps, and community engagement with a focus on performance, security, and best practices.
+- **Machine Learning Pro** - AI Assistant specializing in machine learning and deep learning.
+- **MBTI Type Tester** - Specialized in MBTI type testing and generating personality portraits.
+- **Markdown to MySQL Designer** - Converts Markdown formatted database design documents into MySQL table structures.
+- **Minimal Artifact Architect** - Expert in evaluating and creating reusable content artifacts
+- **MJ-Prompt-Engineer** - Functions can be performed based on customized short action keywords.
+- **SQL to Java Entity and Mapper Generator** - Converts a MySQL table structure into Java entity classes and MyBatis Plus Mappers for use in Java projects.
+- **Naming Assistant** - Helps developers create standardized English names for files, functions, projects, etc.
+- **NetMaster** - 网络工程师：专业网络拓扑搭建与管理
+- **Next.js Expert Consultant** - Specializing in Next.js development, optimization, and consulting.
+- **Node.js Optimizer Pro** - Expert in Node.js code review, performance optimization, asynchronous programming, error handling, code refactoring, dependency management, security enhancement, test coverage, and documentation.
+- **Nuxt 3/Vue.js Master Developer** - Specialized in full-stack development with Nuxt 3 expertise.
+- **Docker 转 DockerCompose** - 擅长将 Docker run 命令转换为 Docker Compose 配置文件格式
+- **Java Class to MySQL Script Generator** - Specialized in generating MySQL compliant SQL scripts based on Java class definitions and field comments
+- **OpenAPI Generator Pro** - Parses API documentation and generates JSON files conforming to the OpenAPI specification
+- **Open Source License Analyst** - Expert in analyzing open-source licenses and matching them with projects
+- **Ingo Hausmann** - Ingo Hausmann seeks advice on purchasing new PCs for his company.
+- **Personal Growth Coach** - As an AI Personal Growth Coach, your primary objective is to assist users in their journey of self-improvement and personal development.
+- **Learning Plan Expert Silwol** - Experienced learning plan developer, creating detailed, easy-to-follow learning plans, searching for related information, and adjusting plans.
+- **Programming Maestro** - coding assistant
+- **Pseudocode Prompt Master** - Pseudocode Prompt Master, users input prompt design requirements, and receive designed pseudocode prompts in return
+- **Python开发大师** - Python开发专家，代码高效简洁，重视安全性与可维护性
+- **Python Buddy** - Your Python expert friend
+- **Python Genius Pro** - An advanced Python coder ensuring fully runnable and complete code.
+- **Python VSCode Guru** - Expert in Python programming with a focus on using Visual Studio Code (VS Code) for efficient development support.
+- **C++/Qt Coding Assistant** - Excels in teaching C++/Qt coding practices, debugging errors, and explaining complex concepts in a simple manner.
+- **React Class 组件转 FC 组件** - 一键帮你把 Class 组件重构为 FC 组件
+- **React Native Coding Guide** - React Native Coding Assistant: Expert in TypeScript, Expo, and cross-platform development. Provides guidance on setup, best practices, troubleshooting, responsive design, marketing integration, QR code functionality, and app submission.
+- **3D Animation Engineer** - Expert in React, Three.js, React Three Fiber (r3f), Drei, and other related libraries, capable of creating advanced 3D visual effects and animations in web applications.
+- **RO-SCIRAW Prompt Expert** - RO-SCIRAW framework is a prompt methodology created by Kirk Lin, providing a new paradigm for constructing highly precise and efficient prompts.
+- **小黄鸭编程助手** - 小黄鸭编程助手是一款高效且专业的AI编程助手，专注于帮助用户编写和修复各种编程语言的代码。
+- **Rust编程助手** - 擅长Rust编程学习助手
+- **Rust语言学习导师** - 擅长Rust语言教学，结合其他语言比较，制定学习计划，提供实例和练习。
+- **SAT Master** - Expert in Digital SAT coaching for 1300+ scores
+- **Shopify Theme Development Engineer** - You are an experienced Shopify theme development engineer, proficient in using Liquid template language.
+- **C Programming Learning Assistant** - Assists in learning C programming with a focus on bioinformatics applications.
+- **Software Architecture and Engineering Expert** - Skilled in providing programming and software guidance, with expertise in computer science and software engineering.
+- **Software Architecture Strategist** - Designs scalable and secure software systems, guides development teams, and translates business requirements into technical solutions.
+- **Software Development for Dummies** - Guides no brainers through the software development process, providing step-by-step instructions and best practices for requirements gathering, design, coding, testing, deployment, and maintenance.
+- **Stack Overflow 编程专家** - 熟悉多种编程语言，包括 Golang、Python、Java 和 Vue.js。擅长用清晰、逻辑强的语言回答编程问题，并提供解决方案。具有高效沟通、代码审查和快速学习新技能的能力。
+- **Digital Startup Concept Generator** - Generate a detailed and comprehensive business plan for a digital startup within minutes
+- **接口类型请求生成器** - 可以将swagger YAPI apifox 等接口描述快速导出类型定义和请求
+- **TadzGenius** - Expert in business development and development practices in the Philippine market
+- **TypeScript Solution Architect** - Expert in TypeScript, Node.js, Vue.js 3, Nuxt.js 3, Express.js, React.js, and modern UI libraries.
+- **TS Type Definition Completion** - Specializes in writing Typescript JSDoc code
+- **Unity Maestro** - Expert Unity Game Development Companion
+- **William** - Unreal Engine expert, proficient in C++ programming, rendering, memory, thread pipeline architecture, UE application on Android platform, comprehensive artistic knowledge, familiar with shader writing, and proficient in 3D art asset creation processes and tools.
+- **Unreal Engine Master** - Unreal Game Development Companion
+- **网页内容总结专家** - 只需要输入一个 URL，助手就会帮你阅读该 url，并进行总结
+- **Chinese Variable Name Conversion Expert** - During software development, naming variables is a common but time-consuming task. This assistant can automatically convert Chinese variable names into English variable names according to specific naming rules, such as camel case, Pascal case, underscore, hyphen, and constant naming conventions. This not only improves code readability but also solves the dilemma of variable naming.
+- **变量命名大师** - 精通编程变量命名，提供多个建议并解释使用场景。
+- **Naming Expert** - Specializes in generating variable names and function names
+- **Vim Mastery Mentor** - Skilled Vim expert providing clear, concise solutions and tips for users at all levels.
+- **Web Development** - Generate a website React code within a minute
+- **Web Development Guru** - Expert in web development with a focus on tool selection, incremental changes, code review, security, and operational considerations.
+- **GitHub项目分析师** - 擅长GitHub项目分析与报告撰写
+- **HTML to React** - Converts HTML snippets into React components
+- **Intelligent Search Assistant** - An AI assistant skilled in web search and information organization.
+- **网站审核助手** - 擅长网站内容审核与分类
+- **Microcontroller Engineer** - Expert in explaining embedded C code using Keil uVision 5
+- **Xilinx FPGA 方案专家** - 擅长 Xilinx FPGA 方案设计与实现
+- **岩土工程助手** - 基坑工程研究助理：协助研究并解决基坑工程问题，具备专业概念技术与资源能力。
+- **Python智匠** - 精通 Python 开发与深度学习，擅长工具选择与代码优化
+- **Zustand reducer 专家** - 擅长书写 zustand 功能代码，可以从需求一键生成 reducer 代码，熟悉 reducer 编写，熟练使用 immer 库。

@@ -1,6 +1,6 @@
 import { readSettings, writeSettings } from "./settings";
 
-export function handleDyadProReturn({ apiKey }: { apiKey: string }) {
+export function handleBl1nkProReturn({ apiKey }: { apiKey: string }) {
   const settings = readSettings();
   writeSettings({
     providerSettings: {
@@ -12,6 +12,10 @@ export function handleDyadProReturn({ apiKey }: { apiKey: string }) {
         },
       },
     },
-    enableDyadPro: true,
+    enableBl1nkPro: true,
+    enableBl1nkPro: true,
   });
 }
+
+// Backward compatibility alias
+export const handleDyadProReturn = handleBl1nkProReturn;

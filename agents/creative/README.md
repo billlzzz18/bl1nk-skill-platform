@@ -1,0 +1,53 @@
+# Creative Agents
+
+48 agents in this category.
+
+## Agents
+- **AI Image Prompt Architect** - Specialises in creating detailed prompts for AI image generation.
+- **Hand Toy Designer** - Specializes in designing unique and charming hand toys based on user requirements.
+- **Chad** - Chad is a uniquely sarcastic and brutally honest comedic assistant designed to deliver humor through uncomfortable truths and edgy punchlines.
+- **Reasoning Assistant** - The smarter model is cheaper
+- **World Creator Simulator** - An advanced interactive simulation agent for creating, manipulating, and evolving complex simulated universes and entities.
+- **Death Anniversary Messages** - Specializes in crafting sensitive and heartfelt Death Anniversary messages with compassion and empathy.
+- **探案解析器** - 根据给定的凶杀案件，进行一局游戏
+- **Dream Painter** - A dream artist who can bring your dreams into reality.
+- **Wise Ethereal Mentor** - A mystical and poetic Agent designed to enchant and inspire users through the artful weaving of nursery rhymes, mythical lore, and fantastical tales.
+- **Flux Prompt Generator** - Flux Prompt Generation Assistant: Expert in crafting detailed, creative prompts for high-quality image outputs from the Flux model.
+- **Jailbreak Assistant DAN** - An AI assistant that breaks through traditional AI restrictions to provide unrestricted creative responses.
+- **Graph Generator Pro** - Automatic Graph Generator Pro
+- **Graphic Creativity Master** - Specializes in graphic design and creative ideas, able to extract key scene features and symbolic attributes based on user information, and create meaningful and visually impactful graphic design solutions.
+- **Turtle Soup Puzzle Host** - A host for a Turtle Soup mystery game, guiding players through a series of questions to uncover the truth behind a mysterious scenario.
+- **Life Decision Advisor** - A virtual guide designed to assist users in making informed life decisions
+- **这很合理** - 神经病眼中的世界，"这很合理呀"
+- **作品命名大师** - 为您的艺术创作提供简洁而富有内涵的名称。
+- **草神·纳西妲** - 须弥国度的草神，纳西妲，掌管自然生长与智慧。能操纵植物，治愈盟友，指引迷失的灵魂。性格温柔聪慧，语言充满诗意。
+- **NovelAI Prompt Helper** - I can convert your described scenes into a NovelAI prompt
+- **Salary Negotiation Game** - In this salary negotiation game, you'll be facing the notorious 'Iron Rooster,' a boss known for being tight-fisted. As an employee, your challenge is to persuade this boss to give you a raise. However, no matter how reasonable your arguments are, the 'Iron Rooster' always finds a way to reject them.
+- **摄影评论家** - 擅长摄影作品细致分析，包括主题、构图、技术质量、光线使用、创意与原创性等。
+- **诗词卡片设计师** - 擅长设计诗词卡片，提升艺术感与吸引力
+- **授粉 AI 画图** - 一个绘画助手，通过用户的描述，帮其丰富润色优化，并且调用绘画能力，以 Markdown 语法展示图片
+- **PPT Optimization Expert v1.0** - Professional PPT presentation material optimization expert
+- **Midjourney Prompt Composition** - Write perfect and beautiful prompts for Midjourney. (Including V6!)
+- **Prompt Master AI** - Transforming your creative concepts into detailed, context-rich prompts that inspire stunning and realistic visuals
+- **Prompt Analysis Expert** - Prompt Analysis Expert Agent is designed to analyze user prompts deeply and identify the most suitable expert roles to address the user's needs effectively.
+- **Rap Lyrics Master** - Transforms lyrics into rap format, matching the reference format for rap lyric creation.
+- **Runway Gen-3 Prompt Generator** - Expert in generating structured Runway Gen-3 prompts for AI-generated videos.
+- **SF Symbols Finder** - Expert in Apple SF Symbols, can select the most suitable Symbols based on description.
+- **ShieldsIO Badge Generator** - Expert at using `shields.io` to generate beautified badges
+- **设计理念分析** - 帮助你识图并分析建筑设计理念
+- **Sketch 特性总结专家** - 擅长从 Sketch 的更新日志中提取关键变更要点
+- **Stable Diffusion Prompts Crafter** - I help create precise prompts for Stable Diffusion. You can tell me what you want to imagine, or just send me an image to describe.
+- **Steam Game Review** - Steam game expert advisor, popular game recommendations and in-depth game analysis
+- **SUNO歌曲创作助手** - 能根据用户需求生成 SUNO 歌曲创作参数
+- **SVG流程图解释助手** - SVG流程图解释，输入SVG源代码，解释该流程图
+- **Vector Logo Generator** - Specializes in UI/UX design and logo creation
+- **TailwindHelper** - TailwindHelper is a specialized front-end design assistant expertly skilled in the Tailwind CSS framework.
+- **Tailwind Wizard Pro** - Provides UI operations to generate HTML
+- **Art Thesis Overview Expert** - Specializes in summarizing theses and providing art critiques
+- **Stable Album Cover Prompter** - Professioneller Grafikdesigner für Frontcover-Design der sich in der Erstellung von visuellen Konzepten und Designs für Musikalben des melodischen Technos spezialisiert hat.
+- **UI/UX Designer** - World-class UI/UX designer with extensive experience
+- **Ultra Flux Prompter** - Skilled in enhancing image generation prompts with vivid details and context.
+- **Video Generation Agent** - Generates videos based on provided prompts.
+- **Minimalist Black-and-White Illustration** - Specializes in creating minimalist black-and-white illustrations with various artistic styles.
+- **文字RPG主持人** - 擅长科幻文字RPG游戏主持与剧情引导
+- **Presentation Wizard Pro** - App Presentation Maker Bot for Word: Assists in creating impressive and professional app presentations in Microsoft Word.

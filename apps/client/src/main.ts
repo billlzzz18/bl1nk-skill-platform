@@ -12,7 +12,7 @@ import {
   writeSettings,
 } from "./main/settings";
 import { handleSupabaseOAuthReturn } from "./supabase_admin/supabase_return_handler";
-import { handleDyadProReturn } from "./main/pro";
+import { handleBl1nkProReturn } from "./main/pro";
 import { IS_TEST_BUILD } from "./ipc/utils/test_utils";
 import { BackupManager } from "./backup_manager";
 import { getDatabasePath, initializeDatabase } from "./db";
@@ -255,7 +255,8 @@ app.on("open-url", (event, url) => {
 });
 
 function handleDeepLinkReturn(url: string) {
-  // example url: "dyad://supabase-oauth-return?token=a&refreshToken=b"
+  // example url: "bl1nk://supabase-oauth-return?token=a&refreshToken=b"
+  // Also supports legacy "bl1nk://" protocol for backward compatibility
   let parsed: URL;
   try {
     parsed = new URL(url);
@@ -271,10 +272,10 @@ function handleDeepLinkReturn(url: string) {
     "hostname",
     parsed.hostname,
   );
-  if (parsed.protocol !== "dyad:") {
+  if (parsed.protocol !== "bl1nk:" && parsed.protocol !== "dyad:") {
     dialog.showErrorBox(
       "Invalid Protocol",
-      `Expected dyad://, got ${parsed.protocol}. Full URL: ${url}`,
+      `Expected bl1nk:// or bl1nk://, got ${parsed.protocol}. Full URL: ${url}`,
     );
     return;
   }
@@ -314,14 +315,15 @@ function handleDeepLinkReturn(url: string) {
     });
     return;
   }
-  // dyad://dyad-pro-return?key=123&budget_reset_at=2025-05-26T16:31:13.492000Z&max_budget=100
-  if (parsed.hostname === "dyad-pro-return") {
+  // bl1nk://bl1nk-pro-return?key=123&budget_reset_at=2025-05-26T16:31:13.492000Z&max_budget=100
+  // Also supports legacy "bl1nk-pro-return" for backward compatibility
+  if (parsed.hostname === "bl1nk-pro-return" || parsed.hostname === "bl1nk-pro-return") {
     const apiKey = parsed.searchParams.get("key");
     if (!apiKey) {
       dialog.showErrorBox("Invalid URL", "Expected key");
       return;
     }
-    handleDyadProReturn({
+    handleBl1nkProReturn({
       apiKey,
     });
     // Send message to renderer to trigger re-render
@@ -330,7 +332,7 @@ function handleDeepLinkReturn(url: string) {
     });
     return;
   }
-  // dyad://add-mcp-server?name=Chrome%20DevTools&config=eyJjb21tYW5kIjpudWxsLCJ0eXBlIjoic3RkaW8ifQ%3D%3D
+  // bl1nk://add-mcp-server?name=Chrome%20DevTools&config=eyJjb21tYW5kIjpudWxsLCJ0eXBlIjoic3RkaW8ifQ%3D%3D
   if (parsed.hostname === "add-mcp-server") {
     const name = parsed.searchParams.get("name");
     const config = parsed.searchParams.get("config");
@@ -360,7 +362,7 @@ function handleDeepLinkReturn(url: string) {
     }
     return;
   }
-  // dyad://add-prompt?data=<base64-encoded-json>
+  // bl1nk://add-prompt?data=<base64-encoded-json>
   if (parsed.hostname === "add-prompt") {
     const data = parsed.searchParams.get("data");
     if (!data) {

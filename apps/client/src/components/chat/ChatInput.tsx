@@ -262,7 +262,7 @@ export function ChatInput({ chatId }: { chatId?: number }) {
         <ChatErrorBox
           onDismiss={dismissError}
           error={error}
-          isDyadProEnabled={settings.enableDyadPro ?? false}
+          isBl1nkProEnabled={settings.enableBl1nkPro ?? false}
         />
       )}
       {/* Display loading or error state for proposal */}
@@ -323,7 +323,7 @@ export function ChatInput({ chatId }: { chatId?: number }) {
               onChange={setInputValue}
               onSubmit={handleSubmit}
               onPaste={handlePaste}
-              placeholder="Ask Dyad to build..."
+              placeholder="Ask bl1nk to build..."
               excludeCurrentApp={true}
               disableSendButton={disableSendButton}
             />
@@ -485,7 +485,7 @@ function WriteCodeProperlyButton() {
       return;
     }
     streamMessage({
-      prompt: `Write the code in the previous message in the correct format using \`<dyad-write>\` tags!`,
+      prompt: `Write the code in the previous message in the correct format using \`<bl1nk-write>\` tags!`,
       chatId,
       redo: false,
     });

@@ -38,7 +38,7 @@ or to provide a custom fetch implementation for e.g. testing.
   fetch?: FetchFunction;
 
   originalProviderId: string;
-  dyadOptions: {
+  bl1nkOptions: {
     enableLazyEdits?: boolean;
     enableSmartFilesContext?: boolean;
     enableWebSearch?: boolean;
@@ -47,7 +47,7 @@ or to provide a custom fetch implementation for e.g. testing.
   settings: UserSettings;
 }
 
-export interface DyadEngineProvider {
+export interface Bl1nkEngineProvider {
   /**
 Creates a model for text generation.
 */
@@ -65,11 +65,11 @@ Creates a chat model for text generation.
   ): LanguageModelV2;
 }
 
-export function createDyadEngine(
+export function createBl1nkEngine(
   options: ExampleProviderSettings,
-): DyadEngineProvider {
+): Bl1nkEngineProvider {
   const baseURL = withoutTrailingSlash(options.baseURL);
-  logger.info("creating dyad engine with baseURL", baseURL);
+  logger.info("creating bl1nk engine with baseURL", baseURL);
 
   // Track request ID attempts
   const requestIdAttempts = new Map<string, number>();
@@ -91,7 +91,7 @@ export function createDyadEngine(
   }
 
   const getCommonModelConfig = (): CommonModelConfig => ({
-    provider: `dyad-engine`,
+    provider: `bl1nk-engine`,
     url: ({ path }) => {
       const url = new URL(`${baseURL}${path}`);
       if (options.queryParams) {
@@ -125,29 +125,29 @@ export function createDyadEngine(
               options.settings,
             ),
           };
-          const dyadVersionedFiles = parsedBody.dyadVersionedFiles;
-          if ("dyadVersionedFiles" in parsedBody) {
-            delete parsedBody.dyadVersionedFiles;
+          const bl1nkVersionedFiles = parsedBody.bl1nkVersionedFiles;
+          if ("bl1nkVersionedFiles" in parsedBody) {
+            delete parsedBody.bl1nkVersionedFiles;
           }
-          const dyadFiles = parsedBody.dyadFiles;
-          if ("dyadFiles" in parsedBody) {
-            delete parsedBody.dyadFiles;
+          const bl1nkFiles = parsedBody.bl1nkFiles;
+          if ("bl1nkFiles" in parsedBody) {
+            delete parsedBody.bl1nkFiles;
           }
-          const requestId = parsedBody.dyadRequestId;
-          if ("dyadRequestId" in parsedBody) {
-            delete parsedBody.dyadRequestId;
+          const requestId = parsedBody.bl1nkRequestId;
+          if ("bl1nkRequestId" in parsedBody) {
+            delete parsedBody.bl1nkRequestId;
           }
-          const dyadAppId = parsedBody.dyadAppId;
-          if ("dyadAppId" in parsedBody) {
-            delete parsedBody.dyadAppId;
+          const bl1nkAppId = parsedBody.bl1nkAppId;
+          if ("bl1nkAppId" in parsedBody) {
+            delete parsedBody.bl1nkAppId;
           }
-          const dyadDisableFiles = parsedBody.dyadDisableFiles;
-          if ("dyadDisableFiles" in parsedBody) {
-            delete parsedBody.dyadDisableFiles;
+          const bl1nkDisableFiles = parsedBody.bl1nkDisableFiles;
+          if ("bl1nkDisableFiles" in parsedBody) {
+            delete parsedBody.bl1nkDisableFiles;
           }
-          const dyadMentionedApps = parsedBody.dyadMentionedApps;
-          if ("dyadMentionedApps" in parsedBody) {
-            delete parsedBody.dyadMentionedApps;
+          const bl1nkMentionedApps = parsedBody.bl1nkMentionedApps;
+          if ("bl1nkMentionedApps" in parsedBody) {
+            delete parsedBody.bl1nkMentionedApps;
           }
 
           // Track and modify requestId with attempt number
@@ -159,19 +159,19 @@ export function createDyadEngine(
           }
 
           // Add files to the request if they exist
-          if (!dyadDisableFiles) {
-            parsedBody.dyad_options = {
-              files: dyadFiles,
-              versioned_files: dyadVersionedFiles,
-              enable_lazy_edits: options.dyadOptions.enableLazyEdits,
+          if (!bl1nkDisableFiles) {
+            parsedBody.bl1nk_options = {
+              files: bl1nkFiles,
+              versioned_files: bl1nkVersionedFiles,
+              enable_lazy_edits: options.bl1nkOptions.enableLazyEdits,
               enable_smart_files_context:
-                options.dyadOptions.enableSmartFilesContext,
-              smart_context_mode: options.dyadOptions.smartContextMode,
-              enable_web_search: options.dyadOptions.enableWebSearch,
-              app_id: dyadAppId,
+                options.bl1nkOptions.enableSmartFilesContext,
+              smart_context_mode: options.bl1nkOptions.smartContextMode,
+              enable_web_search: options.bl1nkOptions.enableWebSearch,
+              app_id: bl1nkAppId,
             };
-            if (dyadMentionedApps?.length) {
-              parsedBody.dyad_options.mentioned_apps = dyadMentionedApps;
+            if (bl1nkMentionedApps?.length) {
+              parsedBody.bl1nk_options.mentioned_apps = bl1nkMentionedApps;
             }
           }
 
@@ -181,7 +181,7 @@ export function createDyadEngine(
             headers: {
               ...init.headers,
               ...(modifiedRequestId && {
-                "X-Dyad-Request-Id": modifiedRequestId,
+                "X-bl1nk-Request-Id": modifiedRequestId,
               }),
             },
             body: JSON.stringify(parsedBody),

@@ -5,9 +5,9 @@ const AGENTS_DIR = path.join(__dirname, '../../agents');
 const REQUIRED_FIELDS = ['author', 'identifier', 'meta', 'systemRole'];
 const META_FIELDS = ['title', 'description'];
 
-function validateAgent(agentPath) {
+function validateAgent(agentPath, relativePath) {
   const errors = [];
-  const agentName = path.basename(agentPath, '.json');
+  const agentName = relativePath || path.basename(agentPath, '.json');
 
   try {
     const content = fs.readFileSync(agentPath, 'utf-8');
@@ -25,8 +25,8 @@ function validateAgent(agentPath) {
       });
     }
 
-    // Validate systemRole length
-    if (data.systemRole && data.systemRole.length < 10) {
+    // Validate systemRole length with type check
+    if (data.systemRole && typeof data.systemRole === 'string' && data.systemRole.length < 10) {
       errors.push('systemRole must be at least 10 characters');
     }
 
@@ -41,16 +41,56 @@ function validateAgent(agentPath) {
   return { agentName, errors };
 }
 
-function main() {
-  const agents = fs.readdirSync(AGENTS_DIR)
-    .filter(f => f.endsWith('.json'))
-    .map(f => path.join(AGENTS_DIR, f));
+function findAgents(dir, basePath = '', visited = new Set()) {
+  const agents = [];
+  
+  try {
+    const realPath = fs.realpathSync(dir);
+    if (visited.has(realPath)) return agents;
+    visited.add(realPath);
+    
+    const items = fs.readdirSync(dir, { withFileTypes: true });
+    
+    for (const item of items) {
+      if (item.isSymbolicLink()) continue;
+      
+      const fullPath = path.join(dir, item.name);
+      const relativePath = path.join(basePath, item.name);
+      
+      if (item.isDirectory()) {
+        agents.push(...findAgents(fullPath, relativePath, visited));
+      } else if (item.name.endsWith('.json')) {
+        agents.push({ path: fullPath, name: relativePath });
+      }
+    }
+  } catch (error) {
+    console.error(`⚠️  Error reading directory ${dir}: ${error.message}`);
+  }
+  
+  return agents;
+}
 
-  const results = agents.map(validateAgent);
+function main() {
+  const agents = findAgents(AGENTS_DIR);
+  
+  if (agents.length === 0) {
+    console.error('❌ No agents found in agents directory');
+    process.exit(1);
+  }
+  
+  let processed = 0;
+  const results = agents.map(a => {
+    processed++;
+    if (processed % 100 === 0) {
+      console.log(`🔍 Validated ${processed}/${agents.length} agents...`);
+    }
+    return validateAgent(a.path, a.name);
+  });
+  
   const failed = results.filter(r => r.errors.length > 0);
 
   if (failed.length > 0) {
-    console.error(`❌ Found ${failed.length} invalid agents:\n`);
+    console.error(`\n❌ Found ${failed.length} invalid agents:\n`);
     failed.forEach(({ agentName, errors }) => {
       console.error(`  ${agentName}:`);
       errors.forEach(e => console.error(`    - ${e}`));
@@ -58,7 +98,7 @@ function main() {
     process.exit(1);
   }
 
-  console.log(`✅ All ${results.length} agents validated successfully`);
+  console.log(`\n✅ All ${results.length} agents validated successfully`);
 }
 
 main();

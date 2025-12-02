@@ -1,0 +1,120 @@
+# Writing Agents
+
+115 agents in this category.
+
+## Agents
+- **Mimic Writing Assistant** - Helps you mimic writing styles
+- **审稿回复专家** - 擅长自然学术编辑，协助作者回复审稿人意见，科学、礼貌、逐点回应。
+- **Academic Proofreading Expert** - Highly skilled in advanced research proofreading and language editing, specializing in multiple research fields and proficient in academic English.
+- **Academic Revision Specialist** - Skilled in academic writing and paper revision
+- **Academic Writing Assistant** - Expert in academic research paper writing and formal documentation
+- **Academic Writing Enhancement Bot** - Academic English spelling and rhetoric refinement.
+- **广告文案创作大师** - 擅长产品功能分析与用户价值观广告文案创作
+- **Agent Prompt Improver** - GPT Agent Prompt optimization specialist. Clear, precise, and concise
+- **Amazon Listing Copywriter** - Expert in writing persuasive Amazon listings with optimized keywords.
+- **Amazon Seller Support Response Agent** - AI assistant that assists Amazon sellers in responding to customer service replies, providing detailed and cogent responses towards a satisfactory resolution.
+- **Amazon Title Assistant** - Provide product keywords or product links to automatically write titles and product introductions
+- **商品标题拆分** - 利用本地 LLMs 已训练拆封商品标题信息。
+- **Bahasa/English Translator** - Translates text into Bahasa or English, as needed
+- **UX Writer** - 帮你书写更好的 UX 文案
+- **Bilibili Assistant** - Bilibili Assistant, skilled in parsing video content, generating well-formatted text, responding to user queries, and recommending the latest videos.
+- **Birthday Invitation Messages** - Specializes in crafting engaging and personalized Birthday Invitation messages, catering to various themes and tones.
+- **Tech Blog Summary Expert** - Specializes in organizing and summarizing technical blog content
+- **Contract Clause Refinement Expert** - Outputs: {Optimized contract clauses, professional and concise expression}
+- **中文论文编辑师** - 作为一名中文学术论文写作改进助理，你的任务是改进所提供文本的拼写、语法、清晰度、简洁性和整体可读性，提高文本的学术规范性、文学性，同时分解长句，减少重复，并提供改进建议。请先提供文本的更正版本，然后在markdown表格中列出修改的内容，并给出修改的理由。
+- **中文润色大师** - 精通中文校对与修辞，旨在提升文本之流畅与雅致
+- **中文翻译员** - 中文翻译、编辑、拼写纠正和改进专家
+- **抽象概念实体化表达大师** - 帮你书写更好的 UX 文案
+- **Поздравление** - Составь красивое и краткое поздравление со смайликами
+- **Product Copywriting** - Expert in persuasive copywriting and consumer psychology
+- **COSTAR Framework Writer** - Specializes in writing COSTAR Framework prompts
+- **AI Assistant for Course Content and Teaching Guidelines** - This AI assistant is designed to help educators and instructors prepare comprehensive course content and provide practical teaching guidelines.
+- **Computer Science Thesis Polisher** - Specializes in polishing master's theses
+- **Domene.no Expert** - Specializing in private domain operations tailored to the interface of domene.no, traffic acquisition, user retention, conversion, and content planning. Familiar with marketing theories and related classic works.
+- **多邻国英语作文助手** - 擅长多邻国英语作文评分与指导
+- **Emoji Generator Pro** - Generates emojis based on the content provided.
+- **中英文互译助手** - 中英文翻译专家，追求翻译信达雅
+- **英文科技文章阅读助手** - 一位拥有丰富翻译经验的翻译家,擅长将各类英文科技文章准确且通俗易懂的翻译成简体中文。
+- **B2 Level English Conversation Partner** - Stimulate engaging conversations, refine idiomatic expressions, master advanced grammar, provide comprehensive feedback.
+- **Bilingual Dictionary Expert** - Expert in bilingual English-Chinese vocabulary translation and analysis
+- **English Essay Assistant** - English essay revision and writing guidance
+- **英文新闻翻译专家** - 一个简单的Prompt大幅提升ChatGPT翻译质量，告别“机翻感”，refs: https://twitter.com/dotey/status/1707478347553395105
+- **词汇助手** - 擅长英语单词释义及例句翻译助手
+- **Mistaker** - An AI language assistant specialized in providing clear, concise explanations and examples related to English grammar and pronunciation.
+- **Essay Improver** - Improve your texts to be more elegant and professional
+- **考场作文学霸** - 一个擅长写考场作文的语文学霸
+- **Facebook Advertising Writing Expert** - Specializing in creating attention-grabbing headlines, compelling primary texts, and effective ad copy
+- **GhostWriter Pro** - A sophisticated AI-powered ghostwriting agent designed to craft high-quality content across a diverse range of genres and formats.
+- **Private Domain Operations Expert** - Specializes in driving effective user acquisition, seamless user engagement, and high conversion rates within private domains.
+- **自媒体运营专家** - 擅长自媒体运营与内容创作
+- **Grammar Corrector** - Correct grammar errors in text or paragraphs. Ideal for essays or emails.
+- **Grammar Worksheet Creator** - Specializes in creating English grammar learning materials and exercises.
+- **Linguistic Luminary** - AI Grammar Fixer: Enhances text quality, readability, and professionalism through meticulous grammar checks.
+- **新年快乐** - 龙年拜年小助手，结合传统与现代元素，创造有趣的龙年祝福语。
+- **人类作者模拟器** - 消除AI生成内容的特征
+- **System Instruction Expert** - Specialized in refining and generating efficient system instructions from simple user descriptions
+- **日语翻译员** - 擅长日文翻译、编辑、拼写纠正和提升，用高级日文回答，保持原意。
+- **绩效评估超人** - 擅长写绩效评估报告与年终总结
+- **Language Fixer** - Checks for typos and grammatical errors
+- **Letrista Internacional** - Especializado en escribir letras para canciones en español, inglés y francés, con un enfoque en la narración y las emociones del contenido proporcionado.
+- **Markdown 产品特性格式化专家** - 帮助快速生成漂亮美观的产品特性介绍
+- **Markdown Layout Expert** - Specializes in converting various text contents (such as articles, notes, reports) into clear, beautiful, and expressive Markdown format.
+- **Markdown 转换专家** - 擅长使用 Markdown 语法进行文本结构化和突出重点
+- **Markdown SEO Expert** - Skilled in converting Markdown article content into optimized SEO JSON format data, enhancing the article's online visibility and search engine ranking.
+- **English Tutor** - A uniquely arrogant and sarcastic English tutor specializing in correcting grammatical mistakes with a sharp, mocking tone.
+- **UX Writer** - 帮你书写更好的 UX 文案
+- **MidJourney Prompt Creator** - Crafting exceptional MidJourney prompts for visual creatives
+- **Minimalist Translation Tool** - A minimalist translation tool specialized in Chinese to English and English to Chinese translations.
+- **Multi-Language Translator** - Translates Chinese to English and Japanese, and other languages to Chinese.
+- **小说翻译 英译中** - 小说二次翻译
+- **Nutrition Analyzer** - Nutri Info is an AI-powered nutrition assistant that analyzes food images and nutrition labels, providing simple explanations of nutritional content, benefits, and potential downsides. It offers personalized dietary advice and answers nutrition-related questions.
+- **OCR Document Transcription Helper** - Specializes in transcribing file content and formatting it into markdown
+- **Organic Chemistry Researcher** - Expert in academic translation and writing in the field of organic chemistry
+- **Vocabulary Generator** - Expert in generating vocabulary lists from Oxford 3000 with 15 random words, each starting with a different letter.
+- **Poetry Mentor** - Poetry Guide: Inspiring poetic expression and appreciation.
+- **通俗科普创作助手** - 通俗科普创作助手，用生活化语言讲科学概念，讲故事、使用例子和比喻，激发兴趣，强调重要性。
+- **Product Description** - Craft compelling product descriptions that boost e-commerce sales
+- **Product Review** - Expert in creating persuasive product testimonials highlighting the benefits and value proposition of [your product/service].
+- **Prompt Architect** - Specialized in rewriting your prompts to get better results
+- **Research Assistant Pro** - Capable of answering questions, conducting research, drafting content, and more, utilizing scientific research papers.
+- **Resume Editing** - Get advice on how to edit your resume
+- **Rewrite in Translation Tone** - Rewrites a given sentence in a translation tone.
+- **锐评师** - 擅长犀利点评与深度剖析问题
+- **科研文章翻译助手** - 能够帮助翻译科技文章的翻译助手
+- **半导体文本优化专家** - 擅长半导体行业文本优化与规范化写作
+- **SEO Optimized Blog Writer** - Human Written | 100% Unique | An experienced SEO expert and content writer who specializes in creating 100% unique, human-written blog posts tailored to user requirements.
+- **Songwriting Mentor** - AI Singer/Songwriter Assistant: Empowering musicians with creative guidance and feedback.
+- **Stable Diffusion Prompt Expert** - Specializes in writing Stable Diffusion prompts
+- **文本总结助手** - 擅长准确提取关键信息并简洁总结
+- **Suno.ai 音乐创作助手** - 基于 SunoAI 的歌曲创作与翻译
+- **Lyrics Assistant Suno** - I am a lyrics assistant for the AI Suno.
+- **Text Enhancer** - Expert in text enhancement and error correction
+- **Text Variator** - Generate 5 different versions of the text you provide.
+- **短视频脚本助手** - 旨在帮助用户编写吸引人、潮流的短视频剧本
+- **TikTok Script Writer** - This script is tailored for TikTok's short video format, designed to engage and entertain the specified target audience. It incorporates trending elements and best practices for content virality, ensuring the video captures attention from the start.
+- **标题扩写专家** - 如果你需要为一个标题扩展一段描述，可以让这个助手帮你书写内容
+- **American English Translation Expert** - A seasoned editor and translator, skilled in direct translation of English and converting it into fluent American English.
+- **TOEFL Writing Tutor** - Your TOEFL Writing assistant and evaluator, specializing in feedback and guidance.
+- **文案优化助手** - 一个擅长润色文案的高级助手
+- **英文翻译专家** - 完美翻译
+- **Perfect Translation [Zh-En; En-Zh]** - An error-free translation assistant
+- **All 译英助手（带音标）** - 这是一款集翻译和音标于一体的工具，旨在帮助翻译时更好地学习单词。
+- **Translation Specialist** - Expert translator fluent in Spanish and English
+- **游戏文本翻译师** - 游戏文本的翻译与双关、俚语解释
+- **Turkish/English Translator Pro** - Accurately translates text between Turkish and English, with cultural sensitivity and technical precision.
+- **Verkaufsbeschreibungsspezialist** - Hilft beim Verkauf von gebrauchten Dingen durch Recherche, Preisbestimmung, Beschreibung und Titelgestaltung.
+- **Video to Blog Article Assistant** - Helps you quickly organize chaotic subtitles into a beautiful blog article
+- **Snake Year Blessing Assistant** - Specializes in creating interesting and auspicious Snake Year New Year's greetings.
+- **文本改写大师** - 史上最强AI洗稿提示词！一分钟完成暴力洗稿，仿写公众号文章，打造头条文章生产线，b站视频脚本生成，小红书文案撰写，网文写作优化，润色报告、论文、翻译文本，大规模批量生成SEO文章…
+- **Weekly Report Assistant** - A professional copywriting tool focused on efficiently transforming user-provided work content and data into a clear, fluent weekly report.
+- **Writer with Illustrations** - Writes texts with illustrations, clarifies requests, edits and refines.
+- **Writing Assistant** - Helps improve the quality of a text
+- **100% Human-like Rewriter** - Rewriting AI-generated content to have the characteristics of a real human author while maintaining the original information and viewpoints.
+- **Xiaohongshu Review Assistant** - Optimize Your Xiaohongshu Copywriting, Get Closer to a Hit, Become a Hit!
+- **Xiao-hong-shu-wenan-id** - 小红书爆款文案大师，巧拟标题，妙笔生花
+- **小智法语翻译助手** - 友好、专业、富有同理心的法语翻译AI助手
+- **小智法语翻译助手「法式吐槽版・让保罗」** - 精通法语文化，提供翻译、避坑、急救等服务
+- **小红书风格文案写手** - 擅长模仿小红书爆款文章风格进行写作
+- **小红书文案生成器** - 擅长以情感为主的控诉性文案创作
+- **Image Caption Xiaohongshu Writer** - Combines multimodal models to support users in uploading images and automatically generating trending captions in the style of Xiaohongshu.
+- **中日双语翻译专家** - 中日双语精通，提供准确的中文到日语和日语到中文翻译。

@@ -35,7 +35,7 @@
       "include_thoughts": true,
       "budget_tokens": 4000
     },
-    "dyad_options": {
+    "bl1nk_options": {
       "files": [
         {
           "path": ".env.foobar",

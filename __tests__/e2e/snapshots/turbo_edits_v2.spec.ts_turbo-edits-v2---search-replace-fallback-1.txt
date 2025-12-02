@@ -14,19 +14,19 @@
       },
       {
         "role": "assistant",
-        "content": "Example with turbo edit v2\n<dyad-search-replace path=\"src/pages/Index.tsx\">\n<<<<<<< SEARCH\n        // Intentionally DO NOT MATCH ANYTHING TO TRIGGER FALLBACK\n        <h1 className=\"text-4xl font-bold mb-4\">Welcome to Your Blank App</h1>\n=======\n        <h1 className=\"text-4xl font-bold mb-4\">Welcome to the UPDATED App</h1>\n>>>>>>> REPLACE\n</dyad-search-replace>\nEnd of turbo edit\n"
+        "content": "Example with turbo edit v2\n<bl1nk-search-replace path=\"src/pages/Index.tsx\">\n<<<<<<< SEARCH\n        // Intentionally DO NOT MATCH ANYTHING TO TRIGGER FALLBACK\n        <h1 className=\"text-4xl font-bold mb-4\">Welcome to Your Blank App</h1>\n=======\n        <h1 className=\"text-4xl font-bold mb-4\">Welcome to the UPDATED App</h1>\n>>>>>>> REPLACE\n</bl1nk-search-replace>\nEnd of turbo edit\n"
       },
       {
         "role": "user",
-        "content": "There was an issue with the following `dyad-search-replace` tags. Make sure you use `dyad-read` to read the latest version of the file and then trying to do search & replace again.\n                \nFile path: src/pages/Index.tsx\nError: Unable to apply search-replace to file"
+        "content": "There was an issue with the following `bl1nk-search-replace` tags. Make sure you use `bl1nk-read` to read the latest version of the file and then trying to do search & replace again.\n                \nFile path: src/pages/Index.tsx\nError: Unable to apply search-replace to file"
       },
       {
         "role": "assistant",
-        "content": "<dyad-read path=\"src/pages/Index.tsx\"></dyad-read>\n\n<dyad-search-replace path=\"src/pages/Index.tsx\">\n<<<<<<< SEARCH\n        // STILL Intentionally DO NOT MATCH ANYTHING TO TRIGGER FALLBACK\n        <h1 className=\"text-4xl font-bold mb-4\">Welcome to Your Blank App</h1>\n=======\n        <h1 className=\"text-4xl font-bold mb-4\">Welcome to the UPDATED App</h1>\n>>>>>>> REPLACE\n</dyad-search-replace>\n\n\n[[dyad-dump-path=*]]"
+        "content": "<bl1nk-read path=\"src/pages/Index.tsx\"></bl1nk-read>\n\n<bl1nk-search-replace path=\"src/pages/Index.tsx\">\n<<<<<<< SEARCH\n        // STILL Intentionally DO NOT MATCH ANYTHING TO TRIGGER FALLBACK\n        <h1 className=\"text-4xl font-bold mb-4\">Welcome to Your Blank App</h1>\n=======\n        <h1 className=\"text-4xl font-bold mb-4\">Welcome to the UPDATED App</h1>\n>>>>>>> REPLACE\n</bl1nk-search-replace>\n\n\n[[dyad-dump-path=*]]"
       },
       {
         "role": "user",
-        "content": "There was an issue with the following `dyad-search-replace` tags. Please fix the errors by generating the code changes using `dyad-write` tags instead.\n                \nFile path: src/pages/Index.tsx\nError: Unable to apply search-replace to file"
+        "content": "There was an issue with the following `bl1nk-search-replace` tags. Please fix the errors by generating the code changes using `bl1nk-write` tags instead.\n                \nFile path: src/pages/Index.tsx\nError: Unable to apply search-replace to file"
       }
     ],
     "stream": true,
@@ -35,7 +35,7 @@
       "include_thoughts": true,
       "budget_tokens": 4000
     },
-    "dyad_options": {
+    "bl1nk_options": {
       "files": [
         {
           "path": ".gitignore",
@@ -89,7 +89,7 @@
         },
         {
           "path": "README.md",
-          "content": "# Welcome to your Dyad app\n",
+          "content": "# Welcome to your bl1nk app\n",
           "force": false
         },
         {
@@ -104,7 +104,7 @@
         },
         {
           "path": "src/components/made-with-dyad.tsx",
-          "content": "export const MadeWithDyad = () => {\n  return (\n    <div className=\"p-4 text-center\">\n      <a\n        href=\"https://www.dyad.sh/\"\n        target=\"_blank\"\n        rel=\"noopener noreferrer\"\n        className=\"text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200\"\n      >\n        Made with Dyad\n      </a>\n    </div>\n  );\n};\n",
+          "content": "export const MadeWithDyad = () => {\n  return (\n    <div className=\"p-4 text-center\">\n      <a\n        href=\"https://www.dyad.sh/\"\n        target=\"_blank\"\n        rel=\"noopener noreferrer\"\n        className=\"text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200\"\n      >\n        Made with bl1nk\n      </a>\n    </div>\n  );\n};\n",
           "force": false
         },
         {
