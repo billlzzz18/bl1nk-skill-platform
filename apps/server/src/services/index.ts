@@ -6,3 +6,4 @@
 
 export * from './encryption.service'
 export * from './settings.service'
+export * from './bl1nkCloud.client'

@@ -30,6 +30,18 @@ pnpm prisma migrate dev
 pnpm dev
 ```
 
+## Mock Cloud API
+
+Some features rely on the OpenAPI contract defined under `specs/main/openapi.yaml`.  
+When you need a local mock of the cloud API, run:
+
+```bash
+cd specs/main/generated/mock-server
+cmd /c "set PORT=8081 && npm start"
+```
+
+This binds the Express stub to port `8081`, which matches the default `BL1NK_API_BASE_URL` used by the app.
+
 ## Structure
 
 - \pps/client\ - Next.js frontend

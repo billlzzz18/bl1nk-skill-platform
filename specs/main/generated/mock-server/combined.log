@@ -1,0 +1,15 @@
+{"level":"info","message":"Express server running","service":"user-service","timestamp":"2025-12-01T21:01:38.835Z"}
+{"level":"info","message":"Express server running","service":"user-service","timestamp":"2025-12-01T21:03:26.062Z"}
+{"level":"info","message":"Express server running","service":"user-service","timestamp":"2025-12-01T21:04:18.972Z"}
+{"level":"info","message":"Express server running","service":"user-service","timestamp":"2025-12-01T21:44:39.850Z"}
+{"level":"info","message":"Express server running","service":"user-service","timestamp":"2025-12-01T21:45:02.740Z"}
+{"level":"info","message":"Express server running","service":"user-service","timestamp":"2025-12-01T21:45:27.120Z"}
+{"level":"info","message":"Express server running","service":"user-service","timestamp":"2025-12-01T21:50:06.201Z"}
+{"level":"info","message":"Express server running","service":"user-service","timestamp":"2025-12-01T21:50:44.086Z"}
+{"level":"info","message":"Express server running","service":"user-service","timestamp":"2025-12-01T21:51:07.254Z"}
+{"level":"info","message":"Express server running","service":"user-service","timestamp":"2025-12-01T21:55:19.267Z"}
+{"level":"info","message":"Express server running","service":"user-service","timestamp":"2025-12-01T21:59:11.826Z"}
+{"level":"info","message":"Express server running","service":"user-service","timestamp":"2025-12-01T22:04:57.678Z"}
+{"level":"error","message":{"code":500,"error":"controllers[controllerName] is not a constructor"},"service":"user-service","timestamp":"2025-12-01T22:05:19.909Z"}
+{"level":"info","message":"Express server running","service":"user-service","timestamp":"2025-12-01T22:06:14.809Z"}
+{"level":"error","message":"operation 'registerUser' not found on controller 'AuthController'","service":"user-service","timestamp":"2025-12-01T22:06:38.454Z"}

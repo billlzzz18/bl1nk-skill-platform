@@ -2,189 +2,374 @@
 
 ## Programming Languages
 
-### TypeScript 5.6.0
-Primary language for all application code
-- Strict type checking enabled
-- Modern ES2022+ features
-- Path aliases for clean imports
-- Shared type definitions across packages
+### TypeScript 5.8.3
+- **Primary Language**: All application code
+- **Configuration**: Strict mode enabled
+- **Target**: ES2022
+- **Module System**: ESNext with Node resolution
 
 ### JavaScript
-- Worker scripts and utilities
-- Build automation scripts
-- Legacy component support
-
-### Python
-- Document skill validation scripts
-- OOXML processing utilities
-- Located in `skill/document-skills/docx/ooxml/scripts/`
+- **Usage**: Build scripts, validators, health checks
+- **Node Version**: >= 20.0.0
 
 ## Frontend Stack
 
 ### Core Framework
-- **Next.js 15.0.3** - React framework with App Router
-- **React 19.0.0** - UI library with latest features
-- **React DOM 19.0.0** - DOM rendering
+- **Next.js 15**: React framework with App Router
+- **React 19**: UI library with latest features
+- **Electron 38.2.2**: Desktop application framework
 
 ### State Management
-- **Zustand 5.0.0** - Lightweight state management
-- **Jotai 2.10.0** - Atomic state management
-- **@tanstack/react-query 5.59.0** - Server state management
+- **Jotai 2.12.2**: Atomic state management
+- **Zustand 5.0.0**: Additional state management
+- **TanStack Query 5.75.5**: Server state and caching
 
-### API Communication
-- **tRPC 11.0.0** - Type-safe API layer
-  - `@trpc/client` - Client-side utilities
-  - `@trpc/server` - Server-side router
-  - `@trpc/react-query` - React Query integration
+### UI Components
+- **Radix UI**: Accessible component primitives
+  - Accordion, Alert Dialog, Checkbox, Dialog
+  - Dropdown Menu, Label, Popover, Scroll Area
+  - Select, Separator, Slot, Switch, Tabs
+  - Toggle, Toggle Group, Tooltip
+- **Lucide React 0.487.0**: Icon library
+- **Framer Motion 12.6.3**: Animation library
+- **cmdk 1.1.1**: Command palette
 
-### UI Components & Styling
-- **Tailwind CSS 3.4.0** - Utility-first CSS framework
-- **PostCSS 8.4.0** - CSS processing
-- **Autoprefixer 10.4.0** - CSS vendor prefixing
-- **Lucide React 0.451.0** - Icon library
+### Styling
+- **Tailwind CSS 4.1.3**: Utility-first CSS framework
+- **@tailwindcss/typography 0.5.16**: Typography plugin
+- **@tailwindcss/vite 4.1.3**: Vite integration
+- **class-variance-authority 0.7.1**: Component variants
+- **tailwind-merge 3.1.0**: Class merging utility
+- **clsx 2.1.1**: Conditional classes
 
 ### Code Editor
-- **@monaco-editor/react 4.6.0** - Monaco editor integration
-- Syntax highlighting for multiple languages
-- IntelliSense and autocomplete support
+- **Monaco Editor 0.52.2**: VS Code editor core
+- **@monaco-editor/react 4.7.0-rc.0**: React wrapper
 
-### Content Processing
-- **React Markdown 9.0.0** - Markdown rendering
-- **YAML 2.5.0** - YAML parsing and serialization
-- **Zod 3.23.0** - Schema validation
+### Markdown & Syntax Highlighting
+- **react-markdown 10.1.0**: Markdown rendering
+- **remark-gfm 4.0.1**: GitHub Flavored Markdown
+- **shiki 3.2.1**: Syntax highlighter
+- **react-shiki 0.5.2**: React integration
+
+### Routing
+- **TanStack Router 1.114.34**: Type-safe routing
 
 ## Backend Stack
 
-### Runtime & Framework
-- **Node.js** - JavaScript runtime
-- **Express 4.21.0** - Web server framework
-- **CORS 2.8.5** - Cross-origin resource sharing
-- **tsx 4.19.0** - TypeScript execution for development
+### API Layer
+- **tRPC 11.0.0**: Type-safe API framework
+- **Express 4.21.0**: HTTP server
+- **cors 2.8.5**: CORS middleware
 
-### Database & ORM
-- **PostgreSQL** - Primary database (via Docker)
-- **Prisma 5.22.0** - Database ORM and migrations
-- **@prisma/client 5.22.0** - Type-safe database client
-- **Drizzle ORM** - Alternative ORM for migrations
+### Database
+- **SQLite**: Primary database (Phase 1)
+- **Drizzle ORM 0.41.0**: Type-safe ORM for client
+- **Prisma 5.22.0**: ORM for server
+- **better-sqlite3 12.4.1**: SQLite driver
 
-### Caching & Sessions
-- **Redis** - In-memory data store (via Docker)
+### Validation
+- **Zod 3.25.76**: Schema validation
 
-### External Services
-- **AWS SDK 3.679.0** - AWS Bedrock Runtime client
-- **Axios 1.7.0** - HTTP client for external APIs
+## AI & LLM Integration
 
-### Environment Management
-- **dotenv 16.4.0** - Environment variable loading
+### AI SDK
+- **ai 5.0.15**: Vercel AI SDK core
+- **@ai-sdk/provider-utils 3.0.3**: Provider utilities
+
+### LLM Providers
+- **@ai-sdk/amazon-bedrock 3.0.15**: AWS Bedrock (Claude, Titan)
+- **@ai-sdk/anthropic 2.0.4**: Anthropic Claude API
+- **@ai-sdk/google 2.0.6**: Google Gemini
+- **@ai-sdk/openai 2.0.15**: OpenAI GPT models
+- **@ai-sdk/openai-compatible 1.0.8**: Compatible providers
+- **@openrouter/ai-sdk-provider 1.1.2**: OpenRouter integration
+
+### Model Context Protocol
+- **@modelcontextprotocol/sdk 1.17.5**: MCP SDK for tool integration
+
+## Build Tools
+
+### Package Manager
+- **pnpm**: Fast, disk-efficient package manager
+- **Workspace**: Monorepo with 3 workspaces
+
+### Build System
+- **Vite 5.4.17**: Fast build tool
+- **@vitejs/plugin-react 4.3.4**: React plugin
+- **Electron Forge 7.8.0**: Electron packaging
+  - @electron-forge/cli
+  - @electron-forge/plugin-vite
+  - @electron-forge/plugin-auto-unpack-natives
+  - @electron-forge/plugin-fuses
+  - @electron-forge/maker-squirrel (Windows)
+  - @electron-forge/maker-zip (macOS)
+  - @electron-forge/maker-deb (Linux)
+  - @electron-forge/maker-rpm (Linux)
+  - @electron-forge/publisher-github
+
+### TypeScript
+- **typescript 5.8.3**: Type checker and compiler
+- **tsx 4.19.0**: TypeScript execution
+
+### Code Quality
+- **oxlint 1.8.0**: Fast linter
+- **prettier 3.5.3**: Code formatter
+- **eslint 9.0.0**: Linting (root level)
+
+## Testing
+
+### E2E Testing
+- **Playwright**: Browser automation (80+ test specs)
+- **Test Coverage**: 
+  - Skill management
+  - Agent configuration
+  - Provider integration
+  - Context management
+  - UI interactions
+
+### Unit Testing
+- **Vitest 3.1.1**: Fast unit test framework
+- **@vitest/ui 3.1.1**: Test UI
 
 ## Development Tools
 
-### Package Management
-- **PNPM** - Fast, disk space efficient package manager
-- Workspace support for monorepo
-- Parallel script execution
+### Database Tools
+- **drizzle-kit 0.30.6**: Database migrations and studio
+- **prisma**: Schema management and migrations
 
-### Build Tools
-- **TypeScript Compiler (tsc)** - Type checking and compilation
-- **Next.js Build System** - Optimized production builds
-- **ESLint 9.0.0** - Code linting
-- **Prettier 3.3.0** - Code formatting
+### Utilities
+- **dotenv 16.4.7**: Environment variables
+- **cross-env 7.0.3**: Cross-platform env vars
+- **rimraf 6.0.1**: Cross-platform rm -rf
+- **fix-path 5.0.0**: PATH fixing for Electron
 
-### Testing Framework
-- **Playwright** - End-to-end testing
-- Test fixtures and helpers in `__tests__/e2e/`
-- Snapshot testing support
-- 80+ test specifications
+### Electron Utilities
+- **electron-log 5.3.3**: Logging
+- **electron-squirrel-startup 1.0.1**: Squirrel startup
+- **update-electron-app 3.1.1**: Auto-updates
+- **@electron/fuses 1.8.0**: Security fuses
 
-### Development Environment
-- **Docker & Docker Compose** - Containerized services
-- **VS Code Dev Containers** - Consistent development environment
-- **Hot Module Replacement** - Fast development iteration
+### File Operations
+- **glob 11.0.2**: File pattern matching
+- **isomorphic-git 1.30.1**: Git operations
+- **yaml 2.5.0**: YAML parsing
+
+### Process Management
+- **kill-port 2.0.1**: Kill processes on ports
+- **tree-kill 1.2.2**: Kill process trees
+
+### UI Utilities
+- **react-resizable-panels 2.1.7**: Resizable layouts
+- **sonner 2.0.3**: Toast notifications
+- **date-fns 4.1.0**: Date utilities
+- **uuid 11.1.0**: UUID generation
+
+### Fonts
+- **geist 1.3.1**: Geist font family
+
+## AWS Integration
+
+### AWS SDK
+- **@aws-sdk/client-bedrock-runtime 3.679.0**: Bedrock API
+- **@aws-crypto/util 5.2.0**: Cryptography utilities
+
+## External APIs
+
+### Cloud Platforms
+- **@vercel/sdk 1.17.7**: Vercel API
+- **@neondatabase/api-client 2.3.0**: Neon database API
+- **axios 1.7.0**: HTTP client
 
 ## Development Commands
 
-### Root Level Commands
+### Root Level (Monorepo)
 ```bash
-pnpm dev              # Start all services in parallel
-pnpm build            # Build all packages
-pnpm test             # Run all tests
-pnpm lint             # Lint all packages
-pnpm clean            # Clean all build artifacts
+# Development
+pnpm dev                    # Start all workspaces in parallel
+pnpm build                  # Build all workspaces
+pnpm test                   # Run tests in all workspaces
+pnpm lint                   # Lint all workspaces
+pnpm clean                  # Clean all workspaces
+
+# Docker
+docker-compose up -d        # Start PostgreSQL & Redis (planned)
+docker-compose down         # Stop services
 ```
 
-### Client Commands (apps/client)
+### Client (apps/client)
 ```bash
-pnpm dev              # Start Next.js dev server
-pnpm build            # Build production bundle
-pnpm start            # Start production server
-pnpm lint             # Run ESLint
-pnpm clean            # Remove .next and node_modules
+# Development
+pnpm dev                    # Start Electron app
+pnpm start                  # Alternative start command
+
+# Building
+pnpm package                # Package app (no installer)
+pnpm make                   # Create installers
+pnpm publish                # Publish to GitHub
+
+# Database
+pnpm db:generate            # Generate Drizzle schema
+pnpm db:push                # Push schema to database
+pnpm db:studio              # Open Drizzle Studio
+
+# Code Quality
+pnpm ts                     # TypeScript type check
+pnpm lint                   # Run oxlint
+pnpm prettier               # Format code
+
+# Testing
+pnpm test                   # Run unit tests
+pnpm test:watch             # Watch mode
+
+# Cleanup
+pnpm clean                  # Remove build artifacts
 ```
 
-### Server Commands (apps/server)
+### Server (apps/server)
 ```bash
-pnpm dev              # Start server with tsx watch
-pnpm build            # Compile TypeScript
-pnpm start            # Run compiled server
-pnpm prisma:generate  # Generate Prisma client
-pnpm prisma:migrate   # Run database migrations
-pnpm prisma:studio    # Open Prisma Studio GUI
-pnpm clean            # Remove dist and node_modules
+# Development
+pnpm dev                    # Start with hot reload (tsx watch)
+pnpm build                  # Compile TypeScript
+pnpm start                  # Run compiled code
+
+# Database (Prisma)
+pnpm prisma:generate        # Generate Prisma client
+pnpm prisma:migrate         # Run migrations
+pnpm prisma:studio          # Open Prisma Studio
+
+# Cleanup
+pnpm clean                  # Remove dist and node_modules
 ```
 
-### Docker Commands
+### Validation Scripts
 ```bash
-docker-compose up -d  # Start PostgreSQL and Redis
-docker-compose down   # Stop all services
-docker-compose logs   # View service logs
+# Skill & Agent Validation
+node scripts/validators/validate-skills.js    # Validate skill structure
+node scripts/validators/validate-agents.js    # Validate 500+ agents
+
+# Health Check
+node scripts/health-check.js                  # Project health status
 ```
 
-### Setup Workflow
+## Environment Variables
+
+### Client (.env)
 ```bash
-# 1. Copy environment variables
-copy .env.example .env
+# Database
+DATABASE_URL=file:./local.db
 
-# 2. Install dependencies
-pnpm install
+# AI Providers
+AWS_REGION=us-east-1
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+ANTHROPIC_API_KEY=
+OPENAI_API_KEY=
+OPENROUTER_API_KEY=
 
-# 3. Start Docker services
-docker-compose up -d
-
-# 4. Run database migrations
-cd apps/server
-pnpm prisma migrate dev
-
-# 5. Start development servers
-cd ../..
-pnpm dev
+# Application
+NODE_ENV=development
+LOG_LEVEL=info
 ```
 
-## Configuration Files
+### Server (.env)
+```bash
+# Database
+DATABASE_URL=postgresql://user:pass@localhost:5432/db
 
-### TypeScript Configuration
-- Root `tsconfig.json` - Base configuration
-- `apps/client/tsconfig.json` - Next.js specific settings
-- `apps/server/tsconfig.json` - Node.js specific settings
-- `packages/shared/tsconfig.json` - Shared library settings
+# API
+PORT=3001
+CORS_ORIGIN=http://localhost:3000
 
-### Next.js Configuration
-- `next.config.js` - Next.js framework settings
-- `postcss.config.js` - PostCSS plugins
-- `tailwind.config.js` - Tailwind CSS customization
+# AWS
+AWS_REGION=us-east-1
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+```
 
-### Workspace Configuration
-- `pnpm-workspace.yaml` - PNPM workspace definition
-- `package.json` - Root package scripts and dependencies
+## Build Configurations
 
-### Environment Variables
-- `.env.example` - Template for environment configuration
-- `.env` - Local environment variables (gitignored)
-- Required variables: Database URL, Redis URL, AWS credentials
+### TypeScript Configurations
+- `tsconfig.json` - Root configuration
+- `apps/client/tsconfig.json` - Client config
+- `apps/client/tsconfig.app.json` - App-specific
+- `apps/client/tsconfig.node.json` - Node-specific
+- `apps/server/tsconfig.json` - Server config
+- `packages/shared/tsconfig.json` - Shared config
 
-## Version Requirements
-- Node.js: 18.x or higher recommended
-- PNPM: Latest version
-- Docker: For PostgreSQL and Redis services
-- TypeScript: 5.6.0
-- Next.js: 15.0.3
-- React: 19.0.0
+### Vite Configurations
+- `vite.main.config.mts` - Electron main process
+- `vite.preload.config.mts` - Electron preload
+- `vite.renderer.config.mts` - Electron renderer
+- `vite.worker.config.mts` - Web workers
+
+### Electron Forge
+- `forge.config.ts` - Packaging and publishing configuration
+- Makers: Squirrel (Win), ZIP (Mac), DEB/RPM (Linux)
+- Publisher: GitHub releases
+
+## Platform Support
+
+### Desktop Platforms
+- **Windows**: x64, arm64 (.exe, .msi via Squirrel)
+- **macOS**: x64, arm64 (.dmg, .zip with code signing)
+- **Linux**: x64 (.deb, .rpm, AppImage)
+
+### Node.js Requirements
+- **Minimum Version**: 20.0.0
+- **Recommended**: Latest LTS
+
+## Performance Optimizations
+
+### Build Optimizations
+- Vite for fast HMR
+- Code splitting in Next.js
+- Tree shaking
+- Minification in production
+
+### Runtime Optimizations
+- React 19 concurrent features
+- Jotai atomic updates
+- TanStack Query caching
+- SQLite for fast local storage
+- Web workers for heavy computations
+
+## Security Features
+
+### Credential Security
+- Encrypted storage for API keys
+- Secure IPC communication
+- Electron security best practices
+- Fuses for additional security
+
+### Code Signing
+- macOS: Apple Developer ID + notarization
+- Windows: DigiCert certificate (planned)
+
+## Monitoring & Logging
+
+### Logging
+- **electron-log**: Structured logging
+- **Log Levels**: info, warn, error
+- **Log Location**: `logs/` directory
+
+### Error Tracking
+- Electron crash reporting
+- Console error capture
+- IPC error handling
+
+## Dependencies Summary
+
+### Total Dependencies
+- **Client**: 80+ dependencies
+- **Server**: 15+ dependencies
+- **Shared**: 30+ dependencies
+
+### Key Dependency Categories
+1. **UI/UX**: React, Radix UI, Tailwind, Monaco
+2. **State**: Jotai, Zustand, TanStack Query
+3. **AI**: Multiple provider SDKs, MCP
+4. **Database**: Drizzle, Prisma, SQLite
+5. **Build**: Vite, Electron Forge, TypeScript
+6. **Testing**: Playwright, Vitest
+7. **Utilities**: Date-fns, UUID, YAML, Glob

@@ -12,7 +12,13 @@
       "Bash(npx tsc:*)",
       "Bash(echo \"Exit code: $?\")",
       "Bash(cat:*)",
-      "Bash(pnpm exec:*)"
+      "Bash(pnpm exec:*)",
+      "Bash(pnpm install:*)",
+      "Bash(find:*)",
+      "Bash(pnpm add:*)",
+      "Bash(node install.js)",
+      "Bash(pnpm dev)",
+      "Bash(mkdir:*)"
     ],
     "deny": [],
     "ask": []

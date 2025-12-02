@@ -4,6 +4,10 @@ description: Guide for creating effective skills. This skill should be used when
 license: Complete terms in LICENSE.txt
 ---
 
+## Description
+
+Skill description.
+
 # Skill Creator
 
 This skill provides guidance for creating effective skills.

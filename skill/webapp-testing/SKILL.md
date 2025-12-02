@@ -4,6 +4,10 @@ description: Toolkit for interacting with and testing local web applications usi
 license: Complete terms in LICENSE.txt
 ---
 
+## Description
+
+Skill description.
+
 # Web Application Testing
 
 To test local web applications, write native Python Playwright scripts.

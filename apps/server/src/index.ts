@@ -5,6 +5,7 @@ import { appRouter } from './routers/_app'
 import { createContext } from './context'
 import { logger } from './utils/logger'
 import { validateEncryptionConfig } from './services/encryption.service'
+import restRouter from './routers/rest.router'
 import dotenv from 'dotenv'
 
 // Load environment variables
@@ -40,9 +41,17 @@ app.use(
   })
 )
 
+// REST API v1 endpoints
+app.use('/v1', restRouter)
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() })
+})
+
+// API documentation redirect
+app.get('/docs', (req, res) => {
+  res.redirect('https://api.bl1nk.site/docs')
 })
 
 // Start server

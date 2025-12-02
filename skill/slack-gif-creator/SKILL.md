@@ -4,6 +4,10 @@ description: Knowledge and utilities for creating animated GIFs optimized for Sl
 license: Complete terms in LICENSE.txt
 ---
 
+## Description
+
+Skill description.
+
 # Slack GIF Creator
 
 A toolkit providing utilities and knowledge for creating animated GIFs optimized for Slack.

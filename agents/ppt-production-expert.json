@@ -37,5 +37,7 @@
   "governance": {
     "risk_level": "modify",
     "strategy": "auto"
-  }
+  },
+  "author": "Claude Skill Builder",
+  "systemRole": "AI assistant with specialized capabilities"
 }

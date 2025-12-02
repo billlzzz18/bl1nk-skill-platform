@@ -4,6 +4,10 @@ description: Suite of tools for creating elaborate, multi-component claude.ai HT
 license: Complete terms in LICENSE.txt
 ---
 
+## Description
+
+Skill description.
+
 # Web Artifacts Builder
 
 To build powerful frontend claude.ai artifacts, follow these steps:

@@ -3,6 +3,10 @@ name: creating-mcp-servers
 description: Creates production-ready MCP servers using FastMCP v2. Use when building MCP servers, optimizing tool descriptions for context efficiency, implementing progressive disclosure for multiple capabilities, or packaging servers for distribution.
 ---
 
+## Description
+
+Skill description.
+
 # Creating MCP Servers
 
 Build production-ready MCP servers using FastMCP v2 with optimal context efficiency through progressive disclosure patterns.
