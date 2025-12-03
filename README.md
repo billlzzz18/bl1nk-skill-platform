@@ -1,6 +1,6 @@
 # bl1nk Skill Builder
 
-> AI-powered IDE for creating, managing, and testing Claude AI skills, agents, and MCP tools
+> AI-powered IDE for creating, managing, and testing bl1nk AI skills, agents, and MCP tools
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue)](https://www.typescriptlang.org/)
@@ -9,7 +9,7 @@
 
 ## 🎯 Overview
 
-Claude Skill Builder is a comprehensive desktop IDE specifically designed for AI development. Build custom Claude skills, manage 500+ pre-built agent templates, and integrate with multiple LLM providers—all in one unified environment.
+bl1nk Skill Builder is a comprehensive desktop IDE specifically designed for AI development. Build custom bl1nk skills, manage 500+ pre-built agent templates, and integrate with multiple LLM providers—all in one unified environment.
 
 **Think "VS Code but for AI development"**
 
@@ -275,8 +275,8 @@ MIT License - see [LICENSE](./LICENSE) file for details.
 ## 📞 Support
 
 - 📖 [Documentation](./docs/)
-- 🐛 [Issue Tracker](https://github.com/bl1nk-org/claude-skill-builder/issues)
-- 💬 [Discussions](https://github.com/bl1nk-org/claude-skill-builder/discussions)
+- 🐛 [Issue Tracker](https://github.com/bl1nk-org/bl1nk-skill-platform/issues)
+- 💬 [Discussions](https://github.com/bl1nk-org/bl1nk-skill-platform/discussions)
 - 🔒 [Security Policy](./.github/SECURITY.md)
 
 ---
