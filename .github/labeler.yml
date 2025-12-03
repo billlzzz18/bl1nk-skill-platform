@@ -1,0 +1,13 @@
+# .github/labeler.yml
+
+# Add 'documentation' label for changes in the 'docs' directory or markdown files
+documentation:
+  - changed-files:
+    - any-glob-to-any-file:
+      - 'docs/**/*'
+      - '*.md'
+
+# Add 'CI/CD' label for changes in the workflow files
+'CI/CD':
+  - changed-files:
+    - any-glob-to-any-file: '.github/workflows/*'

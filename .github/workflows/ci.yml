@@ -4,17 +4,26 @@ on:
   push:
     branches: [main, develop]
     paths-ignore:
-      - '**/*.md'
       - 'docs/**'
+      - '*.md'
   pull_request:
     branches: [main, develop]
-    paths-ignore:
-      - '**/*.md'
-      - 'docs/**'
 
 jobs:
+  add-labels:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/labeler@v5
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          sync-labels: true
+
   setup:
     runs-on: ubuntu-latest
+    needs: add-labels
     outputs:
       cache-key: ${{ steps.cache-key.outputs.key }}
     steps:
@@ -77,7 +86,7 @@ jobs:
       - run: pnpm run validate:agents
 
   build:
-    needs: [lint, type-check]
+    needs: [lint, type-check, add-labels]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
