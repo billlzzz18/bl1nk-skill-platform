@@ -44,10 +44,18 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=sha
       
+      - name: Check Dockerfile
+        run: |
+          if [ ! -f ./Dockerfile ]; then
+            echo "⚠️ No Dockerfile found, skipping build."
+            exit 0
+          fi
+      
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: .
+          file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
