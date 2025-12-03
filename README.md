@@ -1,4 +1,4 @@
-# Claude Skill Builder
+# bl1nk Skill Builder
 
 > AI-powered IDE for creating, managing, and testing Claude AI skills, agents, and MCP tools
 
