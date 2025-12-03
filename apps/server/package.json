@@ -20,7 +20,8 @@
     "dotenv": "^16.4.0",
     "zod": "^3.23.0",
     "@aws-sdk/client-bedrock-runtime": "^3.679.0",
-    "axios": "^1.7.0"
+    "axios": "^1.7.0",
+    "ioredis": "^5.4.1"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

@@ -1,4 +1,4 @@
-import express, { type Request, type Response, type NextFunction } from 'express'
+import express from 'express'
 import cors, { type CorsOptions } from 'cors'
 import helmet from 'helmet'
 import { createExpressMiddleware } from '@trpc/server/adapters/express'
@@ -7,6 +7,7 @@ import { createContext } from './context'
 import { logger } from './utils/logger'
 import { validateEncryptionConfig } from './services/encryption.service'
 import restRouter from './routers/rest.router'
+import { rateLimitMiddleware } from './utils/rateLimiter'
 import dotenv from 'dotenv'
 
 // Load environment variables
@@ -66,54 +67,6 @@ const corsOptions: CorsOptions = {
   },
   credentials: true,
   optionsSuccessStatus: 200,
-}
-
-// Simple in-memory rate limiter (per IP)
-const RATE_LIMIT_WINDOW_MS =
-  Number(process.env.API_RATE_LIMIT_WINDOW_MS) || 60_000
-const RATE_LIMIT_MAX = Number(process.env.API_RATE_LIMIT_MAX) || 60
-type RateLimitEntry = { count: number; resetTime: number }
-const requestCounts = new Map<string, RateLimitEntry>()
-
-const setRateLimitHeaders = (
-  res: Response,
-  count: number,
-  resetTime: number
-) => {
-  res.setHeader('X-RateLimit-Limit', RATE_LIMIT_MAX)
-  res.setHeader('X-RateLimit-Remaining', Math.max(RATE_LIMIT_MAX - count, 0))
-  res.setHeader('X-RateLimit-Reset', Math.ceil(resetTime / 1000))
-}
-
-const rateLimitMiddleware = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  const key = req.ip || req.socket.remoteAddress || 'unknown'
-  const now = Date.now()
-  const existing = requestCounts.get(key)
-
-  if (!existing || now > existing.resetTime) {
-    const resetTime = now + RATE_LIMIT_WINDOW_MS
-    requestCounts.set(key, { count: 1, resetTime })
-    setRateLimitHeaders(res, 1, resetTime)
-    return next()
-  }
-
-  if (existing.count >= RATE_LIMIT_MAX) {
-    const retryAfter = Math.ceil((existing.resetTime - now) / 1000)
-    res.setHeader('Retry-After', retryAfter)
-    setRateLimitHeaders(res, existing.count, existing.resetTime)
-    return res.status(429).json({
-      message: 'Too many requests. Please slow down.',
-    })
-  }
-
-  existing.count += 1
-  requestCounts.set(key, existing)
-  setRateLimitHeaders(res, existing.count, existing.resetTime)
-  return next()
 }
 
 // Security headers middleware
