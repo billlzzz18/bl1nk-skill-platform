@@ -2,11 +2,12 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "commonjs",
-    "lib": ["ES2020"],
+    "lib": ["ES2020", "DOM"],
     "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
@@ -16,8 +17,8 @@
       "@claude-builder/shared": ["../../packages/shared/src"],
       "@claude-builder/shared/*": ["../../packages/shared/src/*"]
     },
-    "noEmit": true
+    "noEmit": false
   },
   "include": ["src/**/*", "../../packages/shared/src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "dist", "../../node_modules/sdk/apis/index.ts"]
 }

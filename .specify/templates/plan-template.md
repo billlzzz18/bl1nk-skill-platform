@@ -33,11 +33,19 @@
 
 Verify compliance with `.specify/memory/constitution.md`:
 
+**Core Principles (I-X)**:
 - [ ] **End-to-End Type Safety**: Feature design includes Prisma schemas, Zod validation, and typed tRPC procedures
 - [ ] **Monorepo Modularity**: Changes respect workspace boundaries (client/server/shared separation)
 - [ ] **API-First Design**: tRPC routers defined before frontend implementation
 - [ ] **Stateless Backend**: No session state in backend beyond database/Redis
 - [ ] **Incremental Translation**: If AI tooling involved, validation strategy defined
+- [ ] **Security-First Development**: Security considerations included (input validation, encryption, path protection)
+- [ ] **Observable Systems**: Logging, progress feedback, and validation scripts defined
+- [ ] **Provider Agnostic Integration**: If AI providers involved, abstraction layer designed
+- [ ] **Progressive Delivery**: Feature broken into MVP phases with clear checkpoints
+- [ ] **Data Integrity & Validation**: Schemas and validation rules defined for user/AI-generated content
+
+**Technical Standards**:
 - [ ] **Testing Requirements**: Test strategy defined for shared utilities and critical paths
 - [ ] **Code Quality**: TypeScript, linting, and error handling standards acknowledged
 - [ ] **Breaking Changes**: Migration path defined for any breaking API or schema changes

@@ -16,6 +16,8 @@
     "validate": "pnpm run format:check && pnpm run lint && pnpm run type-check",
     "validate:skills": "node scripts/validators/validate-skills.js",
     "validate:agents": "node scripts/validators/validate-agents.js",
+    "validate:docs": "node scripts/validate-docs.js",
+    "generate:docs": "node scripts/generate-docs.js",
     "health": "node scripts/health-check.js",
     "clean": "pnpm -r clean && rm -rf node_modules",
     "docker:up": "docker-compose up -d",
@@ -26,10 +28,18 @@
     "eslint": "^9.0.0",
     "prettier": "^3.3.0",
     "typescript": "^5.6.0",
-    "@modelcontextprotocol/sdk": ">=1.24.0"
+    "@modelcontextprotocol/sdk": ">=1.24.0",
+    "hono": ">=4.10.3",
+    "valibot": ">=1.2.0",
+    "vite": ">=6.4.1",
+    "esbuild": ">=0.25.0"
   },
   "dependencies": {
     "sdk": "file:specs\\main\\generated\\sdk",
-    "@modelcontextprotocol/sdk": ">=1.24.0"
+    "@modelcontextprotocol/sdk": ">=1.24.0",
+    "hono": ">=4.10.3",
+    "valibot": ">=1.2.0",
+    "vite": ">=6.4.1",
+    "esbuild": ">=0.25.0"
   }
 }

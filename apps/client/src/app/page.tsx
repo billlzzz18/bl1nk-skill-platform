@@ -14,6 +14,7 @@ import dynamic from "next/dynamic"
 import Link from "next/link"
 import { trpc } from "@/trpc/client"
 import { cn } from "@/lib/utils"
+import { VersionHistory } from "@/components/skill/VersionHistory"
 
 // Dynamic import Monaco to avoid SSR issues
 const MonacoEditor = dynamic(
@@ -66,6 +67,9 @@ export default function SkillBuilderPage() {
   const [showChat, setShowChat] = useState(false)
   const chatEndRef = useRef<HTMLDivElement>(null)
 
+  // Version History State
+  const [showVersionHistory, setShowVersionHistory] = useState(false)
+
   // tRPC queries
   const skillsQuery = trpc.skill.list.useQuery({
     search: searchQuery || undefined,
@@ -80,6 +84,11 @@ export default function SkillBuilderPage() {
   )
 
   const chatStatusQuery = trpc.chat.status.useQuery()
+
+  const versionsQuery = trpc.skill.getVersions.useQuery(
+    { skillId: selectedSkillId!, limit: 10 },
+    { enabled: !!selectedSkillId && showVersionHistory }
+  )
 
   // tRPC mutations
   const createMutation = trpc.skill.create.useMutation({
@@ -114,6 +123,14 @@ export default function SkillBuilderPage() {
         ...prev,
         { role: "assistant", content: `Error: ${error.message}` },
       ])
+    },
+  })
+
+  const restoreVersionMutation = trpc.skill.restoreVersion.useMutation({
+    onSuccess: () => {
+      selectedSkillQuery.refetch()
+      skillsQuery.refetch()
+      setShowVersionHistory(false)
     },
   })
 
@@ -230,6 +247,11 @@ export default function SkillBuilderPage() {
     setChatMessages([])
   }, [])
 
+  const handleRestoreVersion = useCallback(async (version: number) => {
+    if (!selectedSkillId) return
+    await restoreVersionMutation.mutateAsync({ skillId: selectedSkillId, version })
+  }, [selectedSkillId, restoreVersionMutation])
+
   const isSaving = createMutation.isPending || updateMutation.isPending
   const isDeleting = deleteMutation.isPending
   const isChatting = chatMutation.isPending
@@ -315,6 +337,16 @@ export default function SkillBuilderPage() {
           </div>
 
           <div className="flex items-center gap-2">
+            {selectedSkillId && (
+              <button
+                onClick={() => setShowVersionHistory(true)}
+                className="bg-gray-700 hover:bg-gray-600 text-gray-200 py-1.5 px-3 rounded-lg text-sm font-medium transition-colors"
+                title="View version history"
+              >
+                History
+              </button>
+            )}
+
             <button
               onClick={() => setShowChat(!showChat)}
               className={cn(
@@ -453,6 +485,17 @@ export default function SkillBuilderPage() {
             </div>
           </div>
         </aside>
+      )}
+
+      {/* Version History Modal */}
+      {showVersionHistory && selectedSkillId && selectedSkillQuery.data && (
+        <VersionHistory
+          skillId={selectedSkillId}
+          currentVersion={selectedSkillQuery.data.version}
+          versions={versionsQuery.data || []}
+          onRestore={handleRestoreVersion}
+          onClose={() => setShowVersionHistory(false)}
+        />
       )}
     </div>
   )

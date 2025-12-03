@@ -18,12 +18,22 @@ const ALGORITHM = 'aes-256-gcm'
 const IV_LENGTH = 16 // 128 bits for GCM
 const AUTH_TAG_LENGTH = 16 // 128 bits for GCM authentication
 
+// Constants for PBKDF2
+const PBKDF2_ITERATIONS = 100000 // 100k iterations for strong security
+const PBKDF2_DIGEST = 'sha256'
+
 /**
  * Derives a 32-byte key from the environment variable.
- * Uses SHA-256 hash to normalize any input to exactly 32 bytes.
+ * Uses PBKDF2 with salt to properly derive keys from passwords.
+ *
+ * Security improvements over simple hashing:
+ * - PBKDF2 is specifically designed for key derivation
+ * - 100k iterations make brute force attacks expensive
+ * - Salt prevents rainbow table attacks
  */
 function getEncryptionKey(): Buffer {
   const key = process.env.ENCRYPTION_KEY
+  const salt = process.env.ENCRYPTION_SALT || 'bl1nk-skill-builder-default-salt'
 
   if (!key) {
     throw new Error(
@@ -37,8 +47,14 @@ function getEncryptionKey(): Buffer {
     return Buffer.from(key, 'hex')
   }
 
-  // Otherwise, hash the key to get consistent 32 bytes
-  return crypto.createHash('sha256').update(key).digest()
+  // Use PBKDF2 for secure key derivation
+  return crypto.pbkdf2Sync(
+    key,
+    salt,
+    PBKDF2_ITERATIONS,
+    32, // Output 32 bytes for AES-256
+    PBKDF2_DIGEST
+  )
 }
 
 /**

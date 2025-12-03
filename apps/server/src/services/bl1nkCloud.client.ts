@@ -32,8 +32,9 @@ const buildHeaders = (context: Bl1nkClientContext) => {
   if (context.workspaceId ?? DEFAULT_WORKSPACE_ID) {
     headers['x-workspace-id'] = context.workspaceId ?? DEFAULT_WORKSPACE_ID
   }
-  if (context.providerId ?? DEFAULT_PROVIDER_ID) {
-    headers['x-provider-id'] = context.providerId ?? DEFAULT_PROVIDER_ID
+  const providerId = context.providerId ?? DEFAULT_PROVIDER_ID
+  if (providerId) {
+    headers['x-provider-id'] = providerId
   }
   return headers
 }

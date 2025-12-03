@@ -1,0 +1,130 @@
+{
+  "defaultLanguage": "en",
+  "languages": [
+    {
+      "code": "en",
+      "name": "English",
+      "path": "en/"
+    },
+    {
+      "code": "th",
+      "name": "ไทย",
+      "path": "th/"
+    }
+  ],
+  "structure": [
+    {
+      "id": "00_overview",
+      "name": {
+        "en": "Overview",
+        "th": "ภาพรวม"
+      },
+      "files": [
+        "README.md",
+        "project-goals.md",
+        "tech-stack.md",
+        "system-overview.md"
+      ]
+    },
+    {
+      "id": "01_architecture",
+      "name": {
+        "en": "Architecture",
+        "th": "สถาปัตยกรรม"
+      },
+      "files": [
+        "architecture-overview.md"
+      ],
+      "subdirs": [
+        "c4-models",
+        "data-flow",
+        "sequence-diagrams"
+      ]
+    },
+    {
+      "id": "02_api",
+      "name": {
+        "en": "API",
+        "th": "API"
+      },
+      "files": [
+        "trpc-overview.md",
+        "schemas.md",
+        "error-handling.md"
+      ],
+      "subdirs": [
+        "endpoints"
+      ]
+    },
+    {
+      "id": "03_database",
+      "name": {
+        "en": "Database",
+        "th": "ฐานข้อมูล"
+      },
+      "files": [
+        "schema-overview.md",
+        "erd.md",
+        "migrations.md"
+      ],
+      "subdirs": [
+        "models"
+      ]
+    },
+    {
+      "id": "04_deployment",
+      "name": {
+        "en": "Deployment",
+        "th": "การ Deploy"
+      },
+      "subdirs": [
+        "electron",
+        "docker",
+        "aws"
+      ]
+    },
+    {
+      "id": "05_adrs",
+      "name": {
+        "en": "ADRs",
+        "th": "ADRs"
+      },
+      "files": [
+        "0001-electron-nextjs-choice.md",
+        "0002-trpc-over-rest.md",
+        "0003-sqlite-phase1.md",
+        "0004-monorepo-structure.md",
+        "0005-encryption-strategy.md"
+      ]
+    },
+    {
+      "id": "06_guides",
+      "name": {
+        "en": "Guides",
+        "th": "คู่มือ"
+      },
+      "files": [
+        "development-setup.md",
+        "contributing.md",
+        "testing.md",
+        "troubleshooting.md"
+      ]
+    },
+    {
+      "id": "07_references",
+      "name": {
+        "en": "References",
+        "th": "อ้างอิง"
+      },
+      "files": [
+        "glossary.md",
+        "resources.md"
+      ]
+    }
+  ],
+  "validation": {
+    "checkBilingualParity": true,
+    "checkLinks": true,
+    "checkDiagrams": true
+  }
+}
