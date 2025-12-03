@@ -1,4 +1,4 @@
-# Claude Skill Builder
+# bl1nk Skill Builder
 
 > AI-powered IDE for creating, managing, and testing Claude AI skills, agents, and MCP tools
 
@@ -72,8 +72,8 @@ Claude Skill Builder is a comprehensive desktop IDE specifically designed for AI
 
 ```bash
 # Clone repository
-git clone https://github.com/bl1nk-org/claude-skill-builder.git
-cd claude-skill-builder
+git clone https://github.com/bl1nk-org/bl1nk-skill-platform.git
+cd bl1nk-skill-platform
 
 # Install dependencies
 pnpm install
@@ -103,7 +103,7 @@ pnpm dev
 ## 🏗️ Project Structure
 
 ```
-claude-skill-builder/
+bl1nk-skill-platfrom/
 ├── apps/
 │   ├── client/          # Electron + Next.js frontend
 │   └── server/          # Express + tRPC backend
