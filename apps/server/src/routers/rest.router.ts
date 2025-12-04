@@ -136,9 +136,12 @@ router.get('/skills', async (req: Request, res: Response) => {
       try {
         const response = await client.skills.workspacesWorkspaceIdSkillsGet({
           workspaceId,
-          page,
-          perPage,
-          search,
+          const perPageMeta =
+            meta.perPage != null && !Number.isNaN(Number(meta.perPage)) ? Number(meta.perPage) : perPage
+          const pageMeta =
+            meta.page != null && !Number.isNaN(Number(meta.page)) ? Number(meta.page) : page
+          const totalItems =
+            meta.totalItems != null && !Number.isNaN(Number(meta.totalItems)) ? Number(meta.totalItems) : items.length
           sortBy,
           sortOrder,
         })
