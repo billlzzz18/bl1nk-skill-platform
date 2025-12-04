@@ -136,25 +136,32 @@ router.get('/skills', async (req: Request, res: Response) => {
       try {
         const response = await client.skills.workspacesWorkspaceIdSkillsGet({
           workspaceId,
-          page,
-          perPage,
-          search,
+          const perPageMeta =
+            meta.perPage != null && !Number.isNaN(Number(meta.perPage)) ? Number(meta.perPage) : perPage
+          const pageMeta =
+            meta.page != null && !Number.isNaN(Number(meta.page)) ? Number(meta.page) : page
+          const totalItems =
+            meta.totalItems != null && !Number.isNaN(Number(meta.totalItems)) ? Number(meta.totalItems) : items.length
+          sortBy,
+          sortOrder,
         })
 
         const items = response.data ?? []
         const meta = response.meta ?? {}
         const perPageMeta = meta.perPage ?? perPage
         const pageMeta = meta.page ?? page
+            pageMeta != null && meta.totalPages != null
+              ? pageMeta < meta.totalPages
 
         return res.json({
           items,
-          total: meta.totalItems ?? items.length,
+          total: totalItems,
           limit: perPageMeta,
-          offset: (pageMeta - 1) * perPageMeta,
+          offset: calculatedOffset,
           hasMore:
             meta.page != null && meta.totalPages != null
               ? meta.page < meta.totalPages
-              : offset + items.length < (meta.totalItems ?? items.length),
+              : calculatedOffset + items.length < totalItems,
         })
       } catch (error) {
         return handleCloudError(res, error)
