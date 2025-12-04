@@ -1,4 +1,5 @@
 import { Router, Request, Response } from 'express'
+import rateLimit from 'express-rate-limit'
 import { z } from 'zod'
 import { PrismaClient } from '@prisma/client'
 import { logger } from '../utils/logger'
@@ -11,6 +12,14 @@ const prisma = new PrismaClient()
 const cloudApiEnabled = (process.env.USE_BL1NK_CLOUD ?? 'true').toLowerCase() !== 'false'
 const DEFAULT_PROVIDER_ID = process.env.BL1NK_PROVIDER_ID
 const DEFAULT_WORKSPACE_ID = CLOUD_WORKSPACE_ID
+
+// Rate limiter for authentication routes
+const authRateLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 10, // Limit each IP to 10 requests per windowMs
+  standardHeaders: true, // Return rate limit info in the RateLimit-* headers
+  legacyHeaders: false, // Disable the X-RateLimit-* headers
+})
 
 const getAuthToken = (req: Request) => req.headers.authorization
 
@@ -54,7 +63,7 @@ const UpdateSkillSchema = z.object({
 })
 
 // Cloud-auth endpoints
-router.post('/auth/register', async (req: Request, res: Response) => {
+router.post('/auth/register', authRateLimiter, async (req: Request, res: Response) => {
   if (!cloudApiEnabled) {
     return res.status(503).json({ error: 'Cloud API disabled' })
   }
@@ -70,7 +79,7 @@ router.post('/auth/register', async (req: Request, res: Response) => {
   }
 })
 
-router.post('/auth/login', async (req: Request, res: Response) => {
+router.post('/auth/login', authRateLimiter, async (req: Request, res: Response) => {
   if (!cloudApiEnabled) {
     return res.status(503).json({ error: 'Cloud API disabled' })
   }
@@ -86,7 +95,7 @@ router.post('/auth/login', async (req: Request, res: Response) => {
   }
 })
 
-router.get('/auth/me', async (req: Request, res: Response) => {
+router.get('/auth/me', authRateLimiter, async (req: Request, res: Response) => {
   if (!cloudApiEnabled) {
     return res.status(503).json({ error: 'Cloud API disabled' })
   }
