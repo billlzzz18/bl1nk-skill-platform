@@ -130,22 +130,26 @@ router.get('/skills', async (req: Request, res: Response) => {
           page,
           perPage,
           search,
+          sortBy,
+          sortOrder,
         })
 
         const items = response.data ?? []
         const meta = response.meta ?? {}
         const perPageMeta = meta.perPage ?? perPage
         const pageMeta = meta.page ?? page
+        const totalItems = meta.totalItems ?? items.length
+        const calculatedOffset = (pageMeta - 1) * perPageMeta
 
         return res.json({
           items,
-          total: meta.totalItems ?? items.length,
+          total: totalItems,
           limit: perPageMeta,
-          offset: (pageMeta - 1) * perPageMeta,
+          offset: calculatedOffset,
           hasMore:
             meta.page != null && meta.totalPages != null
               ? meta.page < meta.totalPages
-              : offset + items.length < (meta.totalItems ?? items.length),
+              : calculatedOffset + items.length < totalItems,
         })
       } catch (error) {
         return handleCloudError(res, error)
