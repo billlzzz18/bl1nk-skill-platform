@@ -150,8 +150,8 @@ router.get('/skills', async (req: Request, res: Response) => {
         const meta = response.meta ?? {}
         const perPageMeta = meta.perPage ?? perPage
         const pageMeta = meta.page ?? page
-        const totalItems = meta.totalItems ?? items.length
-        const calculatedOffset = (pageMeta - 1) * perPageMeta
+            pageMeta != null && meta.totalPages != null
+              ? pageMeta < meta.totalPages
 
         return res.json({
           items,
