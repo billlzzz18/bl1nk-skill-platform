@@ -40,5 +40,5 @@ We reserve the right, at our sole discretion, to modify or replace these Terms a
 
 ## 9. Contact Information
 
-If you have any questions about these Terms, please contact us at [Contact Email Address].
+If you have any questions about these Terms, please contact us at [team@bl1nk.site].
 
