@@ -78,7 +78,7 @@ export async function gitCheckout({
 }): Promise<void> {
   const settings = readSettings();
   if (settings.enableNativeGit) {
-    await execAsync(`git -C "${path}" checkout "${ref.replace(/"/g, '\\"')}"`);
+    await execAsync(`git -C "${path}" checkout "${ref.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`);
     return;
   } else {
     return git.checkout({ fs, dir: path, ref });
