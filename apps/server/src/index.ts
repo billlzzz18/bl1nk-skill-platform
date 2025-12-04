@@ -79,6 +79,18 @@ app.use((req, res, next) => {
 })
 
 // Security headers middleware
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: [
+          "'self'",
+          ...(isProduction ? [] : ["'unsafe-inline'"]), // Allow inline scripts in non-production for convenience
+          (req, res) => `'nonce-${res.locals.cspNonce}'`,
+        ],
+        styleSrc: [
+          "'self'",
           ...(isProduction ? [] : ["'unsafe-inline'"]), // Allow inline styles in non-production for convenience
           (req, res) => `'nonce-${res.locals.cspNonce}'`,
         ],
@@ -90,6 +102,14 @@ app.use((req, res, next) => {
         frameSrc: ["'none'"], // Disallow framing
       },
     },
+    crossOriginEmbedderPolicy: isProduction ? undefined : false, // Disable for development; enable in production
+    hsts: {
+      maxAge: 31536000, // 1 year
+      includeSubDomains: true,
+      preload: true,
+    },
+  })
+)
 
 // Middleware
 app.use(cors(corsOptions))
