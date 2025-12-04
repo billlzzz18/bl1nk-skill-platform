@@ -50,7 +50,7 @@ export async function gitCommit({
 }): Promise<string> {
   const settings = readSettings();
   if (settings.enableNativeGit) {
-    let command = `git -C "${path}" commit -m "${message.replace(/"/g, '\\"')}"`;
+    let command = `git -C "${path}" commit -m "${message.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`;
     if (amend) {
       command += " --amend";
     }
