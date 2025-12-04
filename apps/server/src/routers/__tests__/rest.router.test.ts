@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, jest } from '@jest/globals'
 import request from 'supertest'
 import express, { Express } from 'express'
-import router from '../rest.router'
+process.env.USE_BL1NK_CLOUD = 'true'
 
 // Mock dependencies
 jest.mock('../../services/bl1nkCloud.client', () => ({
