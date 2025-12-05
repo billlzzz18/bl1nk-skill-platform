@@ -1,0 +1,12 @@
+# ไฟล์ที่ใช้สำหรับ Docker build เท่านั้น (ไม่คัดลอกเข้าไปใน Container)
+
+# ละเว้นโฟลเดอร์ dependencies ที่ติดตั้งในเครื่อง Local
+node_modules
+# ละเว้นไฟล์ build และ temporary
+dist
+out
+.vite
+# ละเว้นไฟล์/โฟลเดอร์ระบบและ Git
+.git
+.gitignore
+.DS_Store
