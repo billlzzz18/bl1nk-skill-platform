@@ -1,63 +1,42 @@
-# Stage 1: Builder
-FROM node:20-alpine AS builder
+# Build stage
+FROM node:20-alpine AS base
 
-# ติดตั้ง pnpm
-RUN npm install -g pnpm
-
-# Dockerfile (Stage 1: Builder)
-
-# ... (บรรทัดก่อนหน้า)
+RUN corepack enable
 WORKDIR /app
 
-# 1. คัดลอกไฟล์ dependencies และไฟล์/โฟลเดอร์ที่จำเป็นต่อการติดตั้ง
-COPY package.json pnpm-lock.yaml ./
+FROM base AS deps
+
+# Copy manifest files needed for an accurate install step
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/server/package.json apps/server/
 COPY packages/shared/package.json packages/shared/
+COPY specs/main/generated/sdk/package.json specs/main/generated/sdk/
 
-# 🚨 เพิ่มบรรทัดนี้: COPY โฟลเดอร์ SDK ที่ขาดหายไป
-COPY specs/main/generated/sdk specs/main/generated/sdk/ 
-
-# 2. ติดตั้ง Dependencies ครั้งแรก (จาก lockfile)
+# Install all workspace dependencies based on the lockfile
 RUN pnpm install --frozen-lockfile
 
-# ... (บรรทัดต่อไป)
-# 2. ติดตั้ง Dependencies ครั้งแรก (จาก lockfile)
-RUN pnpm install --frozen-lockfile
+FROM base AS builder
 
-# 3. คัดลอกไฟล์ที่จำเป็นทั้งหมด
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# 🚨 เพิ่มบรรทัดนี้: บังคับ pnpm install/link อีกครั้ง (สำคัญมากสำหรับ Monorepo/pnpm ใน Docker)
-RUN pnpm install --frozen-lockfile 
+# Generate Prisma client and build only the server workspace
+RUN pnpm --filter @claude-builder/server prisma:generate
+RUN pnpm --filter @claude-builder/server build
 
-# 4. Generate Prisma Client
-RUN pnpm --filter apps/server prisma generate
+# Prune dev dependencies to keep the runtime image small
+RUN pnpm prune --prod
 
-# 5. Build โค้ด
-RUN pnpm run build
+# Runtime stage
+FROM node:20-alpine AS runtime
 
-# Stage 2: Runtime Environment
-FROM node:20-alpine
-
-# ติดตั้ง pnpm อีกครั้งใน Runtime (หากต้องการใช้ pnpm ในการรัน)
-# ถ้าไม่ต้องการใช้ pnpm เพื่อรัน (แค่ node) ก็ลบบรรทัดนี้ได้ แต่ต้องมั่นใจว่าทุกอย่างถูก build เป็น dist/
-RUN npm install -g pnpm
-
+RUN corepack enable
 WORKDIR /app
+ENV NODE_ENV=production
 
-# 1. คัดลอกเฉพาะไฟล์ที่จำเป็นในการรัน
-# คัดลอกไฟล์ package.json เพื่อให้ pnpm สามารถจัดการ dependencies ได้
-COPY package.json ./ 
-# คัดลอก node_modules (ซึ่งรวม dependencies ทั้งหมด)
 COPY --from=builder /app/node_modules ./node_modules
-# คัดลอกโค้ดที่ถูก Build แล้ว (dist)
-COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/apps/server/dist ./dist
+COPY --from=builder /app/apps/server/package.json ./package.json
+COPY --from=builder /app/apps/server/prisma ./prisma
 
-# 2. ตั้งค่า Environment Variables ที่จำเป็น (ถ้ามี)
-
-# 3. คำสั่งสำหรับรันแอปพลิเคชัน
-# เราจะใช้ pnpm run start หากมี script 'start' ใน root package.json
-CMD ["pnpm", "start"] 
-
-# ถ้าใช้ node ตรงๆ ให้เปลี่ยนเป็น:
-# CMD ["node", "dist/apps/server/index.js"]
+CMD ["node", "dist/index.js"]
