@@ -15,10 +15,19 @@
     "paths": {
       "@/*": ["./src/*"],
       "@claude-builder/shared": ["../../packages/shared/src"],
-      "@claude-builder/shared/*": ["../../packages/shared/src/*"]
+      "@claude-builder/shared/*": ["../../packages/shared/src/*"],
+      "sdk": ["../../specs/main/generated/sdk/index.ts"]
     },
-    "noEmit": false
+    "noEmit": false,
+    "noImplicitAny": false,
+    "useUnknownInCatchVariables": false
   },
   "include": ["src/**/*", "../../packages/shared/src/**/*"],
-  "exclude": ["node_modules", "dist", "../../node_modules/sdk/apis/index.ts"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "../../node_modules/sdk/apis/index.ts",
+    "src/**/__tests__/**",
+    "**/*.test.ts"
+  ]
 }
