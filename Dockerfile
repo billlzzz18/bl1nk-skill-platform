@@ -16,7 +16,7 @@ COPY apps/server/package.json apps/server/
 COPY packages/shared/package.json packages/shared/
 
 # Install all workspace dependencies based on the lockfile and verify Prisma CLI is available
-RUN pnpm install --frozen-lockfile && pnpm exec prisma --version
+RUN pnpm install --frozen-lockfile --config.ignore-scripts=false && pnpm exec prisma --version
 
 FROM base AS builder
 
