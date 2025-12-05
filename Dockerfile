@@ -24,17 +24,17 @@ COPY . .
 RUN pnpm --filter @claude-builder/server prisma:generate
 RUN pnpm --filter @claude-builder/server build
 
-# Prune dev dependencies to keep the runtime image small
-RUN pnpm prune --prod
+# Prune dev dependencies to keep the runtime image small for the server workspace
+RUN pnpm --filter @claude-builder/server prune --prod
 
 # Runtime stage
 FROM node:20-alpine AS runtime
 
 RUN corepack enable
-WORKDIR /app
+WORKDIR /app/apps/server
 ENV NODE_ENV=production
 
-COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/apps/server/node_modules ./node_modules
 COPY --from=builder /app/apps/server/dist ./dist
 COPY --from=builder /app/apps/server/package.json ./package.json
 COPY --from=builder /app/apps/server/prisma ./prisma
