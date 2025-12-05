@@ -18,7 +18,7 @@ importers:
         specifier: '>=4.10.3'
         version: 4.10.7
       sdk:
-        specifier: file:specs\main\generated\sdk
+        specifier: file:specs/main/generated/sdk
         version: file:specs/main/generated/sdk
       valibot:
         specifier: '>=1.2.0'

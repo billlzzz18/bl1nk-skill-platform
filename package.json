@@ -35,7 +35,7 @@
     "esbuild": ">=0.25.0"
   },
   "dependencies": {
-    "sdk": "file:specs\\main\\generated\\sdk",
+    "sdk": "file:specs/main/generated/sdk",
     "@modelcontextprotocol/sdk": ">=1.24.0",
     "hono": ">=4.10.3",
     "valibot": ">=1.2.0",
