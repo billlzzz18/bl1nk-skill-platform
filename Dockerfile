@@ -17,6 +17,9 @@ RUN pnpm install --frozen-lockfile
 
 FROM base AS builder
 
+# Ensure production context for pruning behavior
+ENV NODE_ENV=production
+
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
