@@ -17,6 +17,14 @@ COPY packages/shared/package.json packages/shared/
 
 # Install all workspace dependencies based on the lockfile and verify Prisma CLI is available
 RUN pnpm install --frozen-lockfile --config.ignore-scripts=false && pnpm exec prisma --version
+# >>> แก้ไข: เพิ่ม COPY . . เพื่อคัดลอกไฟล์โค้ดทั้งหมด (รวมถึง prisma/schema.prisma) <<<
+COPY . .
+
+# [แก้ไข OpenSSL]
+RUN apk add --no-cache openssl 
+
+# [แก้ไข Prisma Filter]
+RUN pnpm install --frozen-lockfile --config.ignore-scripts=false && pnpm --filter @claude-builder/server exec prisma --version
 
 FROM base AS builder
 
@@ -25,6 +33,8 @@ ENV NODE_ENV=production
 
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+# [แก้ไข Symlinks] คัดลอกไฟล์ทั้งหมดจาก Stage deps (ตอนนี้มีโค้ดแล้ว)
+COPY --from=deps /app .
 
 # Generate Prisma client, build, and prune dev dependencies for the server workspace
 RUN pnpm --filter @claude-builder/server prisma:generate \
@@ -43,4 +53,5 @@ COPY --from=builder /app/apps/server/dist ./dist
 COPY --from=builder /app/apps/server/package.json ./package.json
 COPY --from=builder /app/apps/server/prisma ./prisma
 
+CMD ["node", "dist/index.js"]
 CMD ["node", "dist/index.js"]
