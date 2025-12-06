@@ -15,8 +15,6 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/server/package.json apps/server/
 COPY packages/shared/package.json packages/shared/
 
-# Install all workspace dependencies based on the lockfile and verify Prisma CLI is available
-RUN pnpm install --frozen-lockfile --config.ignore-scripts=false && pnpm exec prisma --version
 # >>> แก้ไข: เพิ่ม COPY . . เพื่อคัดลอกไฟล์โค้ดทั้งหมด (รวมถึง prisma/schema.prisma) <<<
 COPY . .
 
@@ -31,8 +29,6 @@ FROM base AS builder
 # Ensure production context for pruning behavior
 ENV NODE_ENV=production
 
-COPY --from=deps /app/node_modules ./node_modules
-COPY . .
 # [แก้ไข Symlinks] คัดลอกไฟล์ทั้งหมดจาก Stage deps (ตอนนี้มีโค้ดแล้ว)
 COPY --from=deps /app .
 
@@ -53,5 +49,4 @@ COPY --from=builder /app/apps/server/dist ./dist
 COPY --from=builder /app/apps/server/package.json ./package.json
 COPY --from=builder /app/apps/server/prisma ./prisma
 
-CMD ["node", "dist/index.js"]
 CMD ["node", "dist/index.js"]
