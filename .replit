@@ -4,3 +4,13 @@ expertMode = true
 
 [nix]
 channel = "stable-25_05"
+
+[userenv]
+
+[userenv.shared]
+NODE_ENV = "development"
+API_PORT = "3001"
+ALLOWED_ORIGINS = "http://localhost:3000"
+ENCRYPTION_KEY = "ff767e0a7517f8bcd99c6aa87e23577df507f00bea2dfc1b4ff584a8be0ccb46"
+API_RATE_LIMIT_WINDOW_MS = "60000"
+API_RATE_LIMIT_MAX = "60"
