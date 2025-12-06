@@ -4,5 +4,5 @@
  * Re-exports all utility modules for convenient imports.
  */
 
-export * from './errors'
-export * from './logger'
+export * from './errors.js'
+export * from './logger.js'

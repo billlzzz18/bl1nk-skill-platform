@@ -1,17 +1,17 @@
-import { db } from "@/db";
-import { apps } from "@/db/schema";
+import { db } from "../../db";
+import { apps } from "../../db/schema";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 import {
   AppChatContext,
   AppChatContextSchema,
   ContextPathResults,
-} from "@/lib/schemas";
+} from "../../lib/schemas";
 import { estimateTokens } from "../utils/token_utils";
 import { createLoggedHandler } from "./safe_handle";
 import log from "electron-log";
-import { getBl1nkAppPath } from "@/paths/paths";
-import { extractCodebase } from "@/utils/codebase";
+import { getBl1nkAppPath } from "../../paths/paths";
+import { extractCodebase } from "../../utils/codebase";
 import { validateChatContext } from "../utils/context_paths_utils";
 
 const logger = log.scope("context_paths_handlers");

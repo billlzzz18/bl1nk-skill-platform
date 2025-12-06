@@ -13,7 +13,7 @@
  */
 
 
-import * as runtime from '../runtime';
+import * as runtime from '../runtime.js';
 import type {
   ApiError,
   CreateSkillRequest,
@@ -23,7 +23,7 @@ import type {
   TestResponse,
   UpdateSkillRequest,
   WorkspacesWorkspaceIdSkillsGet200Response,
-} from '../models/index';
+} from '../models/index.js';
 import {
     ApiErrorFromJSON,
     ApiErrorToJSON,
@@ -41,7 +41,7 @@ import {
     UpdateSkillRequestToJSON,
     WorkspacesWorkspaceIdSkillsGet200ResponseFromJSON,
     WorkspacesWorkspaceIdSkillsGet200ResponseToJSON,
-} from '../models/index';
+} from '../models/index.js';
 
 export interface WorkspacesWorkspaceIdSkillsGetRequest {
     workspaceId: string;

@@ -13,14 +13,14 @@
  */
 
 
-import * as runtime from '../runtime';
+import * as runtime from '../runtime.js';
 import type {
   AgentTestRequest,
   ApiError,
   ProviderStatus,
   SkillTestRequest,
   TestResponse,
-} from '../models/index';
+} from '../models/index.js';
 import {
     AgentTestRequestFromJSON,
     AgentTestRequestToJSON,
@@ -32,7 +32,7 @@ import {
     SkillTestRequestToJSON,
     TestResponseFromJSON,
     TestResponseToJSON,
-} from '../models/index';
+} from '../models/index.js';
 
 export interface WorkspacesWorkspaceIdAgentsAgentIdTestPostRequest {
     workspaceId: string;

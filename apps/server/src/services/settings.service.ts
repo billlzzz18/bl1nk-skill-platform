@@ -1,6 +1,6 @@
-import { prisma } from '../db/client'
+import { prisma } from '../db/client.js'
 import type { AppSettingsMap, AppSettingKey } from '@claude-builder/shared'
-import { logger } from '../utils/logger'
+import { logger } from '../utils/logger.js'
 
 /**
  * Settings Service

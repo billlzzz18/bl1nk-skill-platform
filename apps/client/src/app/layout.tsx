@@ -1,6 +1,6 @@
 import type { ReactNode } from "react"
 import { TRPCProvider } from "@/trpc/provider"
-import "./globals.css"
+import "../styles/globals.css"
 
 export const metadata = {
   title: "Claude Skill Builder",

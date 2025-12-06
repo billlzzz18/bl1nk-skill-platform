@@ -52,10 +52,12 @@ export function registerSecurityHandlers() {
 function parseSecurityFindings(content: string): SecurityFinding[] {
   const findings: SecurityFinding[] = [];
 
-  // Regex to match dyad-security-finding tags
+  // Regex to match bl1nk-security-finding tags
   // Using lazy quantifier with proper boundaries to prevent catastrophic backtracking
-  const regex =
-    /<bl1nk-security-finding\s+title="([^"]+)"\s+level="(critical|high|medium|low)">([\s\S]*?)</bl1nk-security-finding>/g;
+  const regex = new RegExp(
+    '<bl1nk-security-finding\\s+title="([^"]+)"\\s+level="(critical|high|medium|low)">([\\s\\S]*?)</bl1nk-security-finding>',
+    'g'
+  );
 
   let match;
   while ((match = regex.exec(content)) !== null) {

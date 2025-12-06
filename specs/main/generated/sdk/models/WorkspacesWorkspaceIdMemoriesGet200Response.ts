@@ -12,21 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
-import type { PaginationMeta } from './PaginationMeta';
+import { mapValues } from '../runtime.js';
+import type { PaginationMeta } from './PaginationMeta.js';
 import {
     PaginationMetaFromJSON,
     PaginationMetaFromJSONTyped,
     PaginationMetaToJSON,
     PaginationMetaToJSONTyped,
-} from './PaginationMeta';
-import type { Memory } from './Memory';
+} from './PaginationMeta.js';
+import type { Memory } from './Memory.js';
 import {
     MemoryFromJSON,
     MemoryFromJSONTyped,
     MemoryToJSON,
     MemoryToJSONTyped,
-} from './Memory';
+} from './Memory.js';
 
 /**
  * 

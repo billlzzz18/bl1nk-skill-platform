@@ -6,9 +6,19 @@ Claude Skill Builder เป็น **Desktop IDE** ที่ออกแบบม
 
 **คิดง่ายๆ ว่า "VS Code แต่สำหรับการพัฒนา AI"**
 
+## 🎯 หลักการหลัก
+
+### Human-First AI Governance
+
+- **Human-First**: สิทธิ์ทุกอย่างอยู่ที่ผู้ใช้ - AI ไม่มีสิทธิ์ทำงานเองโดยพลการ
+- **AI-Mediated**: LLM ตีความ/สรุป ไม่ใช่ดำเนินการอัตโนมัติ
+- **Tool-Bound**: แยก Agent, Tool, Skill ออกจากกันชัดเจน
+- **Permission Delegation**: ทุก action ต้องถามยืนยันจากผู้ใช้ก่อนเสมอ
+
 ## ✨ คุณสมบัติหลัก
 
 ### 🤖 ระบบ Agent (501 Templates)
+
 - **138 Development agents** - Python, TypeScript, React, Rust, etc.
 - **115 Writing agents** - เขียนเนื้อหา, แปลภาษา, copywriting
 - **62 Education agents** - สอนพิเศษ, เรียนภาษา
@@ -17,6 +27,7 @@ Claude Skill Builder เป็น **Desktop IDE** ที่ออกแบบม
 - **36 Business agents** - การตลาด, ขาย, ที่ปรึกษา
 
 ### 🛠️ การพัฒนา Skill
+
 - Monaco Editor พร้อม syntax highlighting
 - 15+ หมวดหมู่ skill พร้อม templates
 - Version control พร้อมประวัติและการคืนค่า
@@ -24,14 +35,24 @@ Claude Skill Builder เป็น **Desktop IDE** ที่ออกแบบม
 - สร้างจาก template ด้วยรูปแบบ SKILL.md
 
 ### 🔌 รองรับหลาย AI Provider
-- **AWS Bedrock** - Claude, Titan models
-- **OpenRouter** - หลาย LLM providers
-- **Anthropic** - Claude API โดยตรง
-- **Google** - Gemini models
+
 - **OpenAI** - GPT models
-- **Local** - LM Studio, Ollama
+- **Anthropic** - Claude models (Direct API + AWS Bedrock)
+- **Google** - Gemini models + Vertex AI
+- **AWS Bedrock** - Claude, Titan, Nova, Mistral, Meta models
+- **Azure OpenAI** - Azure-hosted OpenAI models
+- **OpenRouter** - หลาย LLM providers
+- **xAI** - xAI models
+- **Local Models** - LM Studio, Ollama
+
+**กลยุทธ์การเลือกโมเดล:**
+
+- ใช้ Haiku/Titan/Nova สำหรับเตรียมข้อมูล, การค้นหา, และงานเบา
+- ใช้ Sonnet/AI21 สำหรับการสร้างที่ซับซ้อน, การเขียนโค้ด, และการตัดสินใจที่มีความเสี่ยงสูง
+- การยกระดับแบบค่อยเป็นค่อยไปตามคะแนนความมั่นใจและความซับซ้อนของงาน
 
 ### 🔐 ความปลอดภัย
+
 - เข้ารหัส credentials ด้วย AES-256-GCM
 - ป้องกัน path traversal
 - ตรวจจับ symlink loops
@@ -39,6 +60,7 @@ Claude Skill Builder เป็น **Desktop IDE** ที่ออกแบบม
 - Security fuses สำหรับ production builds
 
 ### 🧪 Testing & Validation
+
 - 74+ E2E tests แบ่งตาม feature
 - ตรวจสอบ skill และ agent อัตโนมัติ
 - Health check monitoring
@@ -70,12 +92,14 @@ claude-skill-builder/
 ## 🎯 กลุ่มเป้าหมาย
 
 ### ผู้ใช้หลัก
+
 1. **AI Developers** - สร้าง custom Claude skills และ agents
 2. **Prompt Engineers** - สร้างและปรับแต่ง AI prompts
 3. **Integration Developers** - สร้าง MCP tools และ AI integrations
 4. **Content Creators** - ใช้ pre-built agents สำหรับเขียน แปล และสร้างสรรค์
 
 ### ผู้ใช้รอง
+
 1. **Educators** - สอนการพัฒนา AI และ prompt engineering
 2. **Researchers** - ทดลองความสามารถของ AI
 3. **Business Users** - ใช้ pre-built agents เพื่อเพิ่มประสิทธิภาพ
@@ -83,6 +107,7 @@ claude-skill-builder/
 ## 🚀 เริ่มต้นใช้งาน
 
 ### ความต้องการระบบ
+
 - Node.js >= 20.0.0
 - pnpm (เวอร์ชันล่าสุด)
 - Git
@@ -91,8 +116,8 @@ claude-skill-builder/
 
 ```bash
 # Clone repository
-git clone https://github.com/bl1nk-org/claude-skill-builder.git
-cd claude-skill-builder
+git clone https://github.com/bl1nk-org/bl1nk-skill-builder.git
+cd bl1nk-skill-builder
 
 # ติดตั้ง dependencies
 pnpm install
@@ -114,9 +139,10 @@ pnpm dev
 ## 📈 Roadmap
 
 ### ✅ Phase 0-1: Core Features (เสร็จสมบูรณ์)
+
 - Skill management + versioning
 - 501 agent templates
-- Multi-provider AI (7 providers)
+- Multi-provider AI (11 providers)
 - Credential management (encrypted)
 - SQLite + Drizzle ORM
 - Electron packaging
@@ -125,6 +151,7 @@ pnpm dev
 - Security hardening
 
 ### 🚀 Phase 2: API & Infrastructure (กำลังดำเนินการ)
+
 - REST API v1 + OpenAPI spec
 - Automation scripts
 - Security documentation
@@ -133,12 +160,14 @@ pnpm dev
 - Cloud synchronization
 
 ### 📅 Phase 3: UX & Security Polish
+
 - Multi-user authentication
 - Advanced skill organization
 - Observability dashboard
 - Automated backups
 
 ### 📅 Phase 4: Collaboration & Distribution
+
 - Cloud sync สำหรับ skills
 - Skill marketplace
 - Team collaboration
@@ -147,6 +176,7 @@ pnpm dev
 ## 🤝 การมีส่วนร่วม
 
 เรายินดีรับการมีส่วนร่วม! ดู [Contributing Guide](../06_guides/contributing.md) สำหรับ:
+
 - Development setup
 - Code standards
 - Testing guidelines

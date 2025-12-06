@@ -13,13 +13,13 @@
  */
 
 
-import * as runtime from '../runtime';
+import * as runtime from '../runtime.js';
 import type {
   ApiError,
   UpdateUserRequest,
   User,
   UsersUserIdWorkspacesGet200Response,
-} from '../models/index';
+} from '../models/index.js';
 import {
     ApiErrorFromJSON,
     ApiErrorToJSON,
@@ -29,7 +29,7 @@ import {
     UserToJSON,
     UsersUserIdWorkspacesGet200ResponseFromJSON,
     UsersUserIdWorkspacesGet200ResponseToJSON,
-} from '../models/index';
+} from '../models/index.js';
 
 export interface UsersUserIdGetRequest {
     userId: string;

@@ -13,14 +13,14 @@
  */
 
 
-import * as runtime from '../runtime';
+import * as runtime from '../runtime.js';
 import type {
   ApiError,
   CreateMemoryRequest,
   Memory,
   UpdateMemoryRequest,
   WorkspacesWorkspaceIdMemoriesGet200Response,
-} from '../models/index';
+} from '../models/index.js';
 import {
     ApiErrorFromJSON,
     ApiErrorToJSON,
@@ -32,7 +32,7 @@ import {
     UpdateMemoryRequestToJSON,
     WorkspacesWorkspaceIdMemoriesGet200ResponseFromJSON,
     WorkspacesWorkspaceIdMemoriesGet200ResponseToJSON,
-} from '../models/index';
+} from '../models/index.js';
 
 export interface WorkspacesWorkspaceIdMemoriesGetRequest {
     workspaceId: string;

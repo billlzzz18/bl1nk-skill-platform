@@ -2,15 +2,27 @@ name: Docker Build
 
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
     tags:
       - 'v*.*.*'
+    paths:
+      - 'apps/server/**'
+      - 'packages/shared/**'
+      - 'Dockerfile'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
   pull_request:
-    branches: [main]
+    branches: [main, develop]
+    paths:
+      - 'apps/server/**'
+      - 'packages/shared/**'
+      - 'Dockerfile'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ${{ github.repository }}/server
 
 jobs:
   build-and-push:

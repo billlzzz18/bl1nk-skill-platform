@@ -12,21 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
-import type { TestResponseToolEventsInner } from './TestResponseToolEventsInner';
+import { mapValues } from '../runtime.js';
+import type { TestResponseToolEventsInner } from './TestResponseToolEventsInner.js';
 import {
     TestResponseToolEventsInnerFromJSON,
     TestResponseToolEventsInnerFromJSONTyped,
     TestResponseToolEventsInnerToJSON,
     TestResponseToolEventsInnerToJSONTyped,
-} from './TestResponseToolEventsInner';
-import type { ChatMessage } from './ChatMessage';
+} from './TestResponseToolEventsInner.js';
+import type { ChatMessage } from './ChatMessage.js';
 import {
     ChatMessageFromJSON,
     ChatMessageFromJSONTyped,
     ChatMessageToJSON,
     ChatMessageToJSONTyped,
-} from './ChatMessage';
+} from './ChatMessage.js';
 
 /**
  * 

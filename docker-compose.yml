@@ -1,16 +1,15 @@
-﻿version: '3.8' # สามารถลบบรรทัดนี้ได้ตามคำเตือน แต่จะเก็บไว้ก็ได้
+version: '3.8'
 
 services:
   # --- ฐานข้อมูล ---
   postgres:
-    # 🚨 สำคัญ: ต้องระบุ Image สำหรับ service ที่ไม่ Build เอง
     image: postgres:16-alpine
-    container_name: claude-skills-db
+    container_name: bl1nk-skills-db
     restart: unless-stopped
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: claude_skills
+      POSTGRES_DB: bl1nk_skills
     ports:
       - '5432:5432'
     volumes:
@@ -18,19 +17,20 @@ services:
   
   # --- Caching ---
   redis:
-    # 🚨 สำคัญ: ต้องระบุ Image สำหรับ service ที่ไม่ Build เอง
     image: redis:7-alpine 
-    container_name: claude-skills-redis
+    container_name: bl1nk-skills-redis
     restart: unless-stopped
     ports:
       - '6379:6379'
     volumes:
       - redis_data:/data
 
-  # --- แอปพลิเคชันของคุณ (สมมติว่าคุณเพิ่มส่วนนี้แล้ว) ---
-  app:
-    build: . 
-    container_name: claude-skills-app
+  # --- แอปพลิเคชัน Server ---
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bl1nk-skills-server
     restart: unless-stopped
     ports:
       - '3000:3000' 
@@ -38,9 +38,12 @@ services:
       - postgres 
       - redis
     environment:
-      DATABASE_URL: postgresql://postgres:password@postgres:5432/claude_skills
+      DATABASE_URL: postgresql://postgres:password@postgres:5432/bl1nk_skills
       REDIS_URL: redis://redis:6379
       NODE_ENV: production
+      # 🚨 เพิ่มตัวแปรสภาพแวดล้อมอื่นๆ ที่จำเป็นสำหรับ Server (เช่น API Keys) ที่นี่
+      # ตัวอย่าง:
+      # ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
 
 volumes:
   postgres_data:

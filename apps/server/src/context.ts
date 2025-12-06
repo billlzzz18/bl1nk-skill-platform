@@ -1,5 +1,5 @@
 import { CreateExpressContextOptions } from '@trpc/server/adapters/express'
-import { prisma } from './db/client'
+import { prisma } from './db/client.js'
 
 /**
  * Creates the tRPC context for each request.

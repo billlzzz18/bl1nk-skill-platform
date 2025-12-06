@@ -1,63 +1,60 @@
-# Stage 1: Builder
-FROM node:20-alpine AS builder
+# Build stage
+FROM node:20-alpine AS base
 
-# ติดตั้ง pnpm
-RUN npm install -g pnpm
-
-# Dockerfile (Stage 1: Builder)
-
-# ... (บรรทัดก่อนหน้า)
+RUN corepack enable
 WORKDIR /app
 
-# 1. คัดลอกไฟล์ dependencies และไฟล์/โฟลเดอร์ที่จำเป็นต่อการติดตั้ง
-COPY package.json pnpm-lock.yaml ./
+FROM base AS deps
+
+# Ensure the generated SDK manifest exists even if omitted from the build context
+RUN mkdir -p specs/main/generated/sdk \
+    && printf '{\n  "name": "sdk",\n  "version": "0.1.0",\n  "description": "Auto-generated client SDK for the bl1nk Skill IDE API.",\n  "type": "module",\n  "main": "index.ts",\n  "types": "index.ts",\n  "private": true\n}\n' > specs/main/generated/sdk/package.json
+
+# Copy manifest files needed for an accurate install step
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/server/package.json apps/server/
 COPY packages/shared/package.json packages/shared/
 
-# 🚨 เพิ่มบรรทัดนี้: COPY โฟลเดอร์ SDK ที่ขาดหายไป
-COPY specs/main/generated/sdk specs/main/generated/sdk/ 
-
-# 2. ติดตั้ง Dependencies ครั้งแรก (จาก lockfile)
-RUN pnpm install --frozen-lockfile
-
-# ... (บรรทัดต่อไป)
-# 2. ติดตั้ง Dependencies ครั้งแรก (จาก lockfile)
-RUN pnpm install --frozen-lockfile
-
-# 3. คัดลอกไฟล์ที่จำเป็นทั้งหมด
+# >>> แก้ไข: เพิ่ม COPY . . เพื่อคัดลอกไฟล์โค้ดทั้งหมด (รวมถึง prisma/schema.prisma) <<<
 COPY . .
 
-# 🚨 เพิ่มบรรทัดนี้: บังคับ pnpm install/link อีกครั้ง (สำคัญมากสำหรับ Monorepo/pnpm ใน Docker)
-RUN pnpm install --frozen-lockfile 
+# [แก้ไข OpenSSL]
+RUN apk add --no-cache openssl 
 
-# 4. Generate Prisma Client
-RUN pnpm --filter apps/server prisma generate
+# [แก้ไข Prisma Filter]
+RUN pnpm install --frozen-lockfile --config.ignore-scripts=false && pnpm --filter @claude-builder/server exec prisma --version
 
-# 5. Build โค้ด
-RUN pnpm run build
+FROM base AS builder
 
-# Stage 2: Runtime Environment
-FROM node:20-alpine
+# Ensure production context for pruning behavior
+ENV NODE_ENV=production
 
-# ติดตั้ง pnpm อีกครั้งใน Runtime (หากต้องการใช้ pnpm ในการรัน)
-# ถ้าไม่ต้องการใช้ pnpm เพื่อรัน (แค่ node) ก็ลบบรรทัดนี้ได้ แต่ต้องมั่นใจว่าทุกอย่างถูก build เป็น dist/
-RUN npm install -g pnpm
+# [แก้ไข Symlinks] คัดลอกไฟล์ทั้งหมดจาก Stage deps (ตอนนี้มีโค้ดแล้ว)
+COPY --from=deps /app .
 
+# Generate Prisma client, build, and prune dev dependencies for the server workspace
+RUN pnpm --filter @claude-builder/server prisma:generate \
+    && pnpm --filter @claude-builder/server build \
+    && pnpm --filter @claude-builder/server prune --prod
+
+# Runtime stage
+FROM node:20-alpine AS runtime
+
+RUN corepack enable
 WORKDIR /app
 
-# 1. คัดลอกเฉพาะไฟล์ที่จำเป็นในการรัน
-# คัดลอกไฟล์ package.json เพื่อให้ pnpm สามารถจัดการ dependencies ได้
-COPY package.json ./ 
-# คัดลอก node_modules (ซึ่งรวม dependencies ทั้งหมด)
-COPY --from=builder /app/node_modules ./node_modules
-# คัดลอกโค้ดที่ถูก Build แล้ว (dist)
-COPY --from=builder /app/dist ./dist
+# Copy package files for production install
+COPY --from=builder /app/pnpm-lock.yaml ./
+COPY --from=builder /app/apps/server/package.json ./apps/server/
 
-# 2. ตั้งค่า Environment Variables ที่จำเป็น (ถ้ามี)
+# Install only production dependencies
+RUN cd apps/server && pnpm install --prod --frozen-lockfile
 
-# 3. คำสั่งสำหรับรันแอปพลิเคชัน
-# เราจะใช้ pnpm run start หากมี script 'start' ใน root package.json
-CMD ["pnpm", "start"] 
+# Copy built application and Prisma schema
+COPY --from=builder /app/apps/server/dist ./apps/server/dist
+COPY --from=builder /app/apps/server/prisma ./apps/server/prisma
 
-# ถ้าใช้ node ตรงๆ ให้เปลี่ยนเป็น:
-# CMD ["node", "dist/apps/server/index.js"]
+WORKDIR /app/apps/server
+ENV NODE_ENV=production
+
+CMD ["node", "dist/index.js"]

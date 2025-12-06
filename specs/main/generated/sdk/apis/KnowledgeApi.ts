@@ -13,13 +13,13 @@
  */
 
 
-import * as runtime from '../runtime';
+import * as runtime from '../runtime.js';
 import type {
   ApiError,
   CreateKnowledgebaseRequest,
   Knowledgebase,
   UpdateKnowledgebaseRequest,
-} from '../models/index';
+} from '../models/index.js';
 import {
     ApiErrorFromJSON,
     ApiErrorToJSON,
@@ -29,7 +29,7 @@ import {
     KnowledgebaseToJSON,
     UpdateKnowledgebaseRequestFromJSON,
     UpdateKnowledgebaseRequestToJSON,
-} from '../models/index';
+} from '../models/index.js';
 
 export interface WorkspacesWorkspaceIdKnowledgebasesGetRequest {
     workspaceId: string;

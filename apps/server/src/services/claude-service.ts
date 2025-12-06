@@ -3,7 +3,7 @@ import {
   InvokeModelWithResponseStreamCommand,
 } from '@aws-sdk/client-bedrock-runtime'
 import axios from 'axios'
-import { logger } from '../utils/logger'
+import { logger } from '../utils/logger.js'
 import type { BedrockCredentials, OpenRouterCredentials } from '@claude-builder/shared'
 
 /**

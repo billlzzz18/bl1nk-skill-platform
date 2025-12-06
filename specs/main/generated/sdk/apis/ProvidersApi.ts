@@ -13,13 +13,13 @@
  */
 
 
-import * as runtime from '../runtime';
+import * as runtime from '../runtime.js';
 import type {
   ApiError,
   ProviderCredential,
   ProviderCredentialRequest,
   ProviderStatus,
-} from '../models/index';
+} from '../models/index.js';
 import {
     ApiErrorFromJSON,
     ApiErrorToJSON,
@@ -29,7 +29,7 @@ import {
     ProviderCredentialRequestToJSON,
     ProviderStatusFromJSON,
     ProviderStatusToJSON,
-} from '../models/index';
+} from '../models/index.js';
 
 export interface WorkspacesWorkspaceIdProvidersGetRequest {
     workspaceId: string;

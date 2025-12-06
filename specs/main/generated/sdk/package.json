@@ -1,0 +1,9 @@
+{
+  "name": "sdk",
+  "version": "0.1.0",
+  "description": "Auto-generated client SDK for the bl1nk Skill IDE API.",
+  "type": "module",
+  "main": "index.ts",
+  "types": "index.ts",
+  "private": true
+}

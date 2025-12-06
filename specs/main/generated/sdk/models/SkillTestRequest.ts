@@ -12,14 +12,14 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
-import type { ChatMessage } from './ChatMessage';
+import { mapValues } from '../runtime.js';
+import type { ChatMessage } from './ChatMessage.js';
 import {
     ChatMessageFromJSON,
     ChatMessageFromJSONTyped,
     ChatMessageToJSON,
     ChatMessageToJSONTyped,
-} from './ChatMessage';
+} from './ChatMessage.js';
 
 /**
  * 
