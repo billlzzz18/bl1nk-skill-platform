@@ -1,0 +1,85 @@
+diff a/Dockerfile b/Dockerfile	(rejected hunks)
+@@ -4,60 +4,49 @@ FROM node:20-alpine AS builder
+ # ติดตั้ง pnpm
+ RUN npm install -g pnpm
+ 
+-# Dockerfile (Stage 1: Builder)
+-
+-# ... (บรรทัดก่อนหน้า)
+ WORKDIR /app
+ 
+-# 1. คัดลอกไฟล์ dependencies และไฟล์/โฟลเดอร์ที่จำเป็นต่อการติดตั้ง
++# 1. คัดลอกไฟล์ที่จำเป็นสำหรับการติดตั้ง dependencies
+ COPY package.json pnpm-lock.yaml ./
++COPY pnpm-workspace.yaml ./
+ COPY apps/server/package.json apps/server/
+ COPY packages/shared/package.json packages/shared/
+-
+-# 🚨 เพิ่มบรรทัดนี้: COPY โฟลเดอร์ SDK ที่ขาดหายไป
++# คัดลอกโฟลเดอร์ SDK ที่ขาดหายไป (ตามที่พบใน Dockerfile เดิม)
+ COPY specs/main/generated/sdk specs/main/generated/sdk/ 
+ 
+ # 2. ติดตั้ง Dependencies ครั้งแรก (จาก lockfile)
+ RUN pnpm install --frozen-lockfile
+ 
+-# ... (บรรทัดต่อไป)
+-# 2. ติดตั้ง Dependencies ครั้งแรก (จาก lockfile)
+-RUN pnpm install --frozen-lockfile
+-
+ # 3. คัดลอกไฟล์ที่จำเป็นทั้งหมด
+ COPY . .
+ 
+-# 🚨 เพิ่มบรรทัดนี้: บังคับ pnpm install/link อีกครั้ง (สำคัญมากสำหรับ Monorepo/pnpm ใน Docker)
+-RUN pnpm install --frozen-lockfile 
+-
+-# 4. Generate Prisma Client
+-RUN pnpm --filter apps/server prisma generate
+-
+-# 5. Build โค้ด
+-RUN pnpm run build
++# 4. Build เฉพาะแอปพลิเคชัน Server
++# ใช้ --filter เพื่อ build เฉพาะ apps/server
++RUN pnpm --filter apps/server build
+ 
+ # Stage 2: Runtime Environment
+ FROM node:20-alpine
+ 
+-# ติดตั้ง pnpm อีกครั้งใน Runtime (หากต้องการใช้ pnpm ในการรัน)
+-# ถ้าไม่ต้องการใช้ pnpm เพื่อรัน (แค่ node) ก็ลบบรรทัดนี้ได้ แต่ต้องมั่นใจว่าทุกอย่างถูก build เป็น dist/
++# ติดตั้ง pnpm เพื่อใช้ในการรัน (ถ้าจำเป็น)
+ RUN npm install -g pnpm
+ 
+ WORKDIR /app
+ 
+-# 1. คัดลอกเฉพาะไฟล์ที่จำเป็นในการรัน
+-# คัดลอกไฟล์ package.json เพื่อให้ pnpm สามารถจัดการ dependencies ได้
+-COPY package.json ./ 
+-# คัดลอก node_modules (ซึ่งรวม dependencies ทั้งหมด)
++# 1. คัดลอกไฟล์ที่จำเป็นในการรัน
++# คัดลอกไฟล์ package.json, pnpm-lock.yaml, pnpm-workspace.yaml
++COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
++# คัดลอก node_modules จาก builder
+ COPY --from=builder /app/node_modules ./node_modules
+-# คัดลอกโค้ดที่ถูก Build แล้ว (dist)
+-COPY --from=builder /app/dist ./dist
+-
+-# 2. ตั้งค่า Environment Variables ที่จำเป็น (ถ้ามี)
++# คัดลอกโค้ดที่ถูก Build แล้วของ apps/server
++COPY --from=builder /app/apps/server/dist ./apps/server/dist
++# คัดลอกไฟล์อื่นๆ ที่จำเป็นในการรัน (เช่น package.json ของ sub-packages)
++COPY apps/server/package.json apps/server/
++COPY packages/shared/package.json packages/shared/
+ 
+-# 3. คำสั่งสำหรับรันแอปพลิเคชัน
+-# เราจะใช้ pnpm run start หากมี script 'start' ใน root package.json
+-CMD ["pnpm", "start"] 
++# 2. ตั้งค่า Environment Variables ที่จำเป็น
++ENV NODE_ENV production
+ 
+-# ถ้าใช้ node ตรงๆ ให้เปลี่ยนเป็น:
+-# CMD ["node", "dist/apps/server/index.js"]
+\ No newline at end of file
++# 3. คำสั่งสำหรับรันแอปพลิเคชัน Server
++# สมมติว่า script 'start' ใน apps/server/package.json ถูกตั้งค่าให้รัน dist/index.js
++# และเราต้องใช้ pnpm run start ใน apps/server
++CMD ["pnpm", "--filter", "apps/server", "start"]
