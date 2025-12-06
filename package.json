@@ -32,7 +32,8 @@
     "hono": ">=4.10.3",
     "valibot": ">=1.2.0",
     "vite": ">=6.4.1",
-    "esbuild": ">=0.25.0"
+    "esbuild": ">=0.25.0",
+    "@playwright/test": "^1.40.0"
   },
   "dependencies": {
     "sdk": "file:specs/main/generated/sdk",

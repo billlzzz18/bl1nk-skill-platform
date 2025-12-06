@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from 'express'
-import { getRedisClient } from './redisClient'
-import { logger } from './logger'
+import { getRedisClient } from './redisClient.js'
+import { logger } from './logger.js'
 
 const RATE_LIMIT_WINDOW_MS =
   Number(process.env.API_RATE_LIMIT_WINDOW_MS) || 60_000

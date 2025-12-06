@@ -1,15 +1,15 @@
 import { initTRPC } from '@trpc/server'
 import { z } from 'zod'
-import { Context } from '../context'
+import { Context } from '../context.js'
 import {
   SaveCredentialInput,
   ProviderType,
   type BedrockCredentials,
   type OpenRouterCredentials,
 } from '@claude-builder/shared'
-import { encryptJson, decryptJson } from '../services/encryption.service'
-import { NotFoundError, CredentialsError, handleError } from '../utils/errors'
-import { logger } from '../utils/logger'
+import { encryptJson, decryptJson } from '../services/encryption.service.js'
+import { NotFoundError, CredentialsError, handleError } from '../utils/errors.js'
+import { logger } from '../utils/logger.js'
 
 const t = initTRPC.context<Context>().create()
 

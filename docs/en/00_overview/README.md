@@ -6,6 +6,14 @@ Claude Skill Builder is a **Desktop IDE** specifically designed for AI developme
 
 **Think "VS Code but for AI development"**
 
+## 🎯 Core Principles
+
+### Human-First AI Governance
+- **Human-First**: All rights belong to users - AI cannot act autonomously
+- **AI-Mediated**: LLM interprets/summarizes, not executes automatically
+- **Tool-Bound**: Clear separation between Agent, Tool, and Skill
+- **Permission Delegation**: Every action requires user confirmation
+
 ## ✨ Key Features
 
 ### 🤖 Agent System (501 Templates)
@@ -24,12 +32,19 @@ Claude Skill Builder is a **Desktop IDE** specifically designed for AI developme
 - Template-based creation with SKILL.md format
 
 ### 🔌 Multi-Provider AI Support
-- **AWS Bedrock** - Claude, Titan models
-- **OpenRouter** - Multiple LLM providers
-- **Anthropic** - Direct Claude API
-- **Google** - Gemini models
 - **OpenAI** - GPT models
-- **Local** - LM Studio, Ollama
+- **Anthropic** - Claude models (Direct API + AWS Bedrock)
+- **Google** - Gemini models + Vertex AI
+- **AWS Bedrock** - Claude, Titan, Nova, Mistral, Meta models
+- **Azure OpenAI** - Azure-hosted OpenAI models
+- **OpenRouter** - Multiple LLM providers
+- **xAI** - xAI models
+- **Local Models** - LM Studio, Ollama
+
+**Model Selection Strategy:**
+- Use Haiku/Titan/Nova for prep, retrieval, and lightweight tasks
+- Use Sonnet/AI21 for complex generation, coding, and high-stakes reasoning
+- Progressive escalation based on confidence scores and task complexity
 
 ### 🔐 Security
 - AES-256-GCM credential encryption
@@ -116,7 +131,7 @@ pnpm dev
 ### ✅ Phase 0-1: Core Features (Complete)
 - Skill management + versioning
 - 501 agent templates
-- Multi-provider AI (7 providers)
+- Multi-provider AI (11 providers)
 - Credential management (encrypted)
 - SQLite + Drizzle ORM
 - Electron packaging

@@ -1,9 +1,9 @@
 import { initTRPC } from '@trpc/server'
 import { z } from 'zod'
-import { Context } from '../context'
-import { settingsService } from '../services/settings.service'
-import { handleError } from '../utils/errors'
-import { logger } from '../utils/logger'
+import { Context } from '../context.js'
+import { settingsService } from '../services/settings.service.js'
+import { handleError } from '../utils/errors.js'
+import { logger } from '../utils/logger.js'
 import type { AppSettingsMap, AppSettingKey } from '@claude-builder/shared'
 
 const t = initTRPC.context<Context>().create()

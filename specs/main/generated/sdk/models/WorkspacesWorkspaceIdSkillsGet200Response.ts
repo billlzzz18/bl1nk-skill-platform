@@ -12,21 +12,21 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
-import type { Skill } from './Skill';
+import { mapValues } from '../runtime.js';
+import type { Skill } from './Skill.js';
 import {
     SkillFromJSON,
     SkillFromJSONTyped,
     SkillToJSON,
     SkillToJSONTyped,
-} from './Skill';
-import type { PaginationMeta } from './PaginationMeta';
+} from './Skill.js';
+import type { PaginationMeta } from './PaginationMeta.js';
 import {
     PaginationMetaFromJSON,
     PaginationMetaFromJSONTyped,
     PaginationMetaToJSON,
     PaginationMetaToJSONTyped,
-} from './PaginationMeta';
+} from './PaginationMeta.js';
 
 /**
  * 

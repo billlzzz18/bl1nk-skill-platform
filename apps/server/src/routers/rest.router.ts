@@ -2,10 +2,10 @@ import { Router, Request, Response } from 'express'
 import rateLimit from 'express-rate-limit'
 import { z } from 'zod'
 import { PrismaClient } from '@prisma/client'
-import { logger } from '../utils/logger'
-import { NotFoundError } from '../utils/errors'
+import { logger } from '../utils/logger.js'
+import { NotFoundError } from '../utils/errors.js'
 import { ResponseError } from 'sdk'
-import { getBl1nkClient, CLOUD_WORKSPACE_ID } from '../services/bl1nkCloud.client'
+import { getBl1nkClient, CLOUD_WORKSPACE_ID } from '../services/bl1nkCloud.client.js'
 
 const router = Router()
 const prisma = new PrismaClient()
