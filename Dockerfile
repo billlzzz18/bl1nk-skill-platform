@@ -41,12 +41,20 @@ RUN pnpm --filter @claude-builder/server prisma:generate \
 FROM node:20-alpine AS runtime
 
 RUN corepack enable
+WORKDIR /app
+
+# Copy package files for production install
+COPY --from=builder /app/pnpm-lock.yaml ./
+COPY --from=builder /app/apps/server/package.json ./apps/server/
+
+# Install only production dependencies
+RUN cd apps/server && pnpm install --prod --frozen-lockfile
+
+# Copy built application and Prisma schema
+COPY --from=builder /app/apps/server/dist ./apps/server/dist
+COPY --from=builder /app/apps/server/prisma ./apps/server/prisma
+
 WORKDIR /app/apps/server
 ENV NODE_ENV=production
-
-COPY --from=builder /app/apps/server/node_modules ./node_modules
-COPY --from=builder /app/apps/server/dist ./dist
-COPY --from=builder /app/apps/server/package.json ./package.json
-COPY --from=builder /app/apps/server/prisma ./prisma
 
 CMD ["node", "dist/index.js"]
