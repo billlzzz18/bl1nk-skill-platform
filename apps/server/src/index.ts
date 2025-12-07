@@ -123,7 +123,16 @@ app.use(
 
 // Middleware
 app.use(cors(corsOptions))
-app.use(rateLimitMiddleware)
+
+// Conditionally enable rate limiting (requires Redis)
+const rateLimitEnabled = process.env.API_RATE_LIMIT_ENABLED !== 'false'
+if (rateLimitEnabled) {
+  app.use(rateLimitMiddleware)
+  logger.info('Rate limiting enabled (requires Redis)')
+} else {
+  logger.warn('Rate limiting disabled - not recommended for production')
+}
+
 app.use(express.json({ limit: '1mb' })) // Limit request body size to prevent DoS
 
 // tRPC endpoint

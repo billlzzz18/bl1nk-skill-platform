@@ -1,0 +1,118 @@
+ FAIL  src/__tests__/mention_apps.test.ts [ src/__tests__/mention_apps.test.ts ]
+Error: Cannot find package '@/shared/parse_mention_apps' imported from '/home/runner/workspace/apps/client/src/__tests__/mention_apps.test.ts'
+ ❯ src/__tests__/mention_apps.test.ts:1:1
+      1| import { parseAppMentions } from "@/shared/parse_mention_apps";
+       | ^
+      2| import { describe, it, expect } from "vitest";
+      3| 
+
+Caused by: Error: Failed to load url @/shared/parse_mention_apps (resolved id: @/shared/parse_mention_apps) in /home/runner/workspace/apps/client/src/__tests__/mention_apps.test.ts. Does the file exist?
+ ❯ loadAndTransform ../../node_modules/.pnpm/vite@5.4.21_@types+node@22.19.1_lightningcss@1.30.2_terser@5.44.1/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/12]⎯
+
+ FAIL  src/__tests__/parseOllamaHost.test.ts [ src/__tests__/parseOllamaHost.test.ts ]
+Error: Cannot find package '@/ipc/handlers/local_model_ollama_handler' imported from '/home/runner/workspace/apps/client/src/__tests__/parseOllamaHost.test.ts'
+ ❯ src/__tests__/parseOllamaHost.test.ts:1:1
+      1| import { parseOllamaHost } from "@/ipc/handlers/local_model_ollama_handler";
+       | ^
+      2| import { describe, it, expect } from "vitest";
+      3| 
+
+Caused by: Error: Failed to load url @/ipc/handlers/local_model_ollama_handler (resolved id: @/ipc/handlers/local_model_ollama_handler) in /home/runner/workspace/apps/client/src/__tests__/parseOllamaHost.test.ts. Does the file exist?
+ ❯ loadAndTransform ../../node_modules/.pnpm/vite@5.4.21_@types+node@22.19.1_lightningcss@1.30.2_terser@5.44.1/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/12]⎯
+
+ FAIL  src/__tests__/path_utils.test.ts [ src/__tests__/path_utils.test.ts ]
+Error: Cannot find package '@/ipc/utils/path_utils' imported from '/home/runner/workspace/apps/client/src/__tests__/path_utils.test.ts'
+ ❯ src/__tests__/path_utils.test.ts:1:1
+      1| import { safeJoin } from "@/ipc/utils/path_utils";
+       | ^
+      2| import { describe, it, expect } from "vitest";
+      3| import path from "node:path";
+
+Caused by: Error: Failed to load url @/ipc/utils/path_utils (resolved id: @/ipc/utils/path_utils) in /home/runner/workspace/apps/client/src/__tests__/path_utils.test.ts. Does the file exist?
+ ❯ loadAndTransform ../../node_modules/.pnpm/vite@5.4.21_@types+node@22.19.1_lightningcss@1.30.2_terser@5.44.1/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/12]⎯
+
+ FAIL  src/__tests__/readSettings.test.ts [ src/__tests__/readSettings.test.ts ]
+Error: Cannot find package '@/main/settings' imported from '/home/runner/workspace/apps/client/src/__tests__/readSettings.test.ts'
+ ❯ src/__tests__/readSettings.test.ts:5:1
+      3| import path from "node:path";
+      4| import { safeStorage } from "electron";
+      5| import { readSettings, getSettingsFilePath } from "@/main/settings";
+       | ^
+      6| import { getUserDataPath } from "@/paths/paths";
+      7| import { UserSettings } from "@/lib/schemas";
+
+Caused by: Error: Failed to load url @/main/settings (resolved id: @/main/settings) in /home/runner/workspace/apps/client/src/__tests__/readSettings.test.ts. Does the file exist?
+ ❯ loadAndTransform ../../node_modules/.pnpm/vite@5.4.21_@types+node@22.19.1_lightningcss@1.30.2_terser@5.44.1/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/12]⎯
+
+ FAIL  src/__tests__/replacePromptReference.test.ts [ src/__tests__/replacePromptReference.test.ts ]
+Error: Cannot find package '@/ipc/utils/replacePromptReference' imported from '/home/runner/workspace/apps/client/src/__tests__/replacePromptReference.test.ts'
+ ❯ src/__tests__/replacePromptReference.test.ts:2:31
+      1| import { describe, expect, it } from "vitest";
+      2| import { replacePromptReference } from "@/ipc/utils/replacePromptReference";
+       |                               ^
+      3| 
+      4| describe("replacePromptReference", () => {
+
+Caused by: Error: Failed to load url @/ipc/utils/replacePromptReference (resolved id: @/ipc/utils/replacePromptReference) in /home/runner/workspace/apps/client/src/__tests__/replacePromptReference.test.ts. Does the file exist?
+ ❯ loadAndTransform ../../node_modules/.pnpm/vite@5.4.21_@types+node@22.19.1_lightningcss@1.30.2_terser@5.44.1/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/12]⎯
+
+ FAIL  src/__tests__/versioned_codebase_context.test.ts [ src/__tests__/versioned_codebase_context.test.ts ]
+Error: Cannot find package '@/ipc/utils/versioned_codebase_context' imported from '/home/runner/workspace/apps/client/src/__tests__/versioned_codebase_context.test.ts'
+ ❯ src/__tests__/versioned_codebase_context.test.ts:1:1
+      1| import {
+       | ^
+      2|   parseFilesFromMessage,
+      3|   processChatMessagesWithVersionedFiles,
+
+Caused by: Error: Failed to load url @/ipc/utils/versioned_codebase_context (resolved id: @/ipc/utils/versioned_codebase_context) in /home/runner/workspace/apps/client/src/__tests__/versioned_codebase_context.test.ts. Does the file exist?
+ ❯ loadAndTransform ../../node_modules/.pnpm/vite@5.4.21_@types+node@22.19.1_lightningcss@1.30.2_terser@5.44.1/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/12]⎯
+
+ FAIL  src/pro/main/ipc/processors/search_replace_processor.spec.ts [ src/pro/main/ipc/processors/search_replace_processor.spec.ts ]
+Error: Cannot find package '@/pro/main/ipc/processors/search_replace_processor' imported from '/home/runner/workspace/apps/client/src/pro/main/ipc/processors/search_replace_processor.spec.ts'
+ ❯ src/pro/main/ipc/processors/search_replace_processor.spec.ts:2:31
+      1| import { describe, it, expect } from "vitest";
+      2| import { applySearchReplace } from "@/pro/main/ipc/processors/search_replace_pr…
+       |                               ^
+      3| import { parseSearchReplaceBlocks } from "@/pro/shared/search_replace_parser";
+      4| 
+
+Caused by: Error: Failed to load url @/pro/main/ipc/processors/search_replace_processor (resolved id: @/pro/main/ipc/processors/search_replace_processor) in /home/runner/workspace/apps/client/src/pro/main/ipc/processors/search_replace_processor.spec.ts. Does the file exist?
+ ❯ loadAndTransform ../../node_modules/.pnpm/vite@5.4.21_@types+node@22.19.1_lightningcss@1.30.2_terser@5.44.1/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/12]⎯
+
+ FAIL  src/pro/main/ipc/processors/search_replace_processor.test.ts [ src/pro/main/ipc/processors/search_replace_processor.test.ts ]
+Error: Cannot find package '@/pro/shared/search_replace_parser' imported from '/home/runner/workspace/apps/client/src/pro/main/ipc/processors/search_replace_processor.ts'
+ ❯ src/pro/main/ipc/processors/search_replace_processor.ts:1:1
+      1| /* eslint-disable no-irregular-whitespace */
+       | ^
+      2| 
+      3| import { parseSearchReplaceBlocks } from "@/pro/shared/search_replace_parser";
+
+Caused by: Error: Failed to load url @/pro/shared/search_replace_parser (resolved id: @/pro/shared/search_replace_parser) in /home/runner/workspace/apps/client/src/pro/main/ipc/processors/search_replace_processor.spec.ts. Does the file exist?
+ ❯ loadAndTransform ../../node_modules/.pnpm/vite@5.4.21_@types+node@22.19.1_lightningcss@1.30.2_terser@5.44.1/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51969:17
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/12]⎯
+
+
+ Test Files  12 failed | 1 passed (13)
+      Tests  8 passed (8)
+   Start at  21:51:39
+   Duration  4.03s (transform 637ms, setup 0ms, collect 21ms, tests 5ms, environment 3ms, prepare 1.16s)
+
+/home/runner/workspace/apps/client:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  bl1nk-skill-ide@0.1.0 test: `vitest run`
+Exit status 1
+~/workspace$ 
