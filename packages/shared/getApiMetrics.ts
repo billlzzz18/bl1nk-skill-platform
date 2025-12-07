@@ -1,4 +1,4 @@
-import type { TokenUsage, ClineMessage } from "@roo-code/types"
+import type { TokenUsage, ClineMessage } from "./src"
 
 // kilocode_change start
 import { type ClineSayTool } from "./ExtensionMessage"

@@ -1,5 +1,17 @@
-import { parseOllamaHost } from "@/ipc/handlers/local_model_ollama_handler";
-import { describe, it, expect } from "vitest";
+import { parseOllamaHost } from "../ipc/handlers/local_model_ollama_handler";
+import { describe, it, expect, vi } from "vitest";
+
+// Mock electron-log
+vi.mock("electron-log", () => ({
+  default: {
+    scope: vi.fn(() => ({
+      log: vi.fn(),
+      error: vi.fn(),
+      warn: vi.fn(),
+      info: vi.fn(),
+    })),
+  },
+}));
 
 describe("parseOllamaHost", () => {
   it("should return default URL when no host is provided", () => {

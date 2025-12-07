@@ -356,3 +356,4 @@ __tests__/
 - **Server**: Docker containers → Cloud deployment (AWS/GCP/Azure)
 - **Database**: Managed PostgreSQL (Neon, Supabase, or self-hosted)
 - **CI/CD**: GitHub Actions for automated builds and tests
+

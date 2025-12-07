@@ -40,6 +40,10 @@ export interface PaginatedResponse<T> {
   hasMore: boolean
 }
 
+// ============================================
+// SORT PARAMETERS
+// ============================================
+
 /**
  * Sort parameters
  */
@@ -97,3 +101,45 @@ export const ApiErrorCodes = {
 } as const
 
 export type ApiErrorCode = (typeof ApiErrorCodes)[keyof typeof ApiErrorCodes]
+
+// ============================================
+// TOKEN USAGE AND CLINE MESSAGE TYPES
+// ============================================
+
+/**
+ * Token usage metrics
+ */
+export interface TokenUsage {
+  totalTokensIn: number
+  totalTokensOut: number
+  totalCacheWrites?: number
+  totalCacheReads?: number
+  totalCost: number
+  contextTokens: number
+}
+
+/**
+ * Context condense information
+ */
+export interface ContextCondense {
+  cost?: number
+  newContextTokens?: number
+}
+
+/**
+ * Cline message types
+ */
+export type ClineMessage =
+  | {
+      type: 'say'
+      say: 'api_req_started' | 'condense_context' | string
+      text?: string
+      ts: number
+      contextCondense?: ContextCondense
+    }
+  | {
+      type: 'ask'
+      ask: 'tool' | string
+      text?: string
+      ts: number
+    }

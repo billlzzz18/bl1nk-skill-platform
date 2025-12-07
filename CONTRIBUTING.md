@@ -248,7 +248,7 @@ npx kill-port 3001
 ```bash
 # Reset database
 rm apps/client/local.db
-pnpm --filter @claude-builder/client db:push
+pnpm --filter bl1nk-skill-ide db:push
 ```
 
 **Node modules issues**:

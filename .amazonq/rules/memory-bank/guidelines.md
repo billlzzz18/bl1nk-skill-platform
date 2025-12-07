@@ -2,523 +2,828 @@
 
 ## Code Quality Standards
 
-### TypeScript Configuration
-- **Strict Mode**: Always enabled across all packages
-- **Target**: ES2022 with ESNext modules
-- **Type Safety**: Explicit return types on all exported functions
-- **No Any**: Avoid `any` types; use `unknown` or proper typing
-- **Type Imports**: Use `import type` for type-only imports
+### TypeScript Conventions
+
+**Explicit Type Annotations**
+- Always provide explicit return types for functions
+- Use type imports with `import type` for type-only imports
+- Prefer interfaces for object shapes, types for unions/intersections
+- Use `unknown` instead of `any` when type is truly unknown
 
 ```typescript
-// ✅ Good - Explicit return type and type import
-import type { ReactNode } from "react"
-
-export function formatDate(date: Date | string): string {
-  const d = typeof date === 'string' ? new Date(date) : date
-  return d.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  })
+// Good
+async function getApp(appId: number): Promise<App> {
+  const app = await db.query.apps.findFirst({
+    where: eq(apps.id, appId),
+  });
+  return app;
 }
 
-// ❌ Bad - No return type, regular import for types
-import { ReactNode } from "react"
-
-export function formatDate(date: any) {
-  return date.toLocaleDateString()
+// Avoid
+async function getApp(appId) {
+  return await db.query.apps.findFirst({
+    where: eq(apps.id, appId),
+  });
 }
 ```
 
-### Code Formatting Standards
-- **Prettier Configuration** (enforced via `.prettierrc`):
-  - Semicolons: Always (`semi: true`)
-  - Quotes: Single quotes (`singleQuote: true`)
-  - Trailing commas: ES5 style (`trailingComma: "es5"`)
-  - Print width: 100 characters
-  - Tab width: 2 spaces
-  - No tabs (`useTabs: false`)
-  - Arrow parens: Always (`arrowParens: "always"`)
-  - Line endings: LF (`endOfLine: "lf"`)
+**Strict Null Checking**
+- Always handle null/undefined cases explicitly
+- Use optional chaining (`?.`) and nullish coalescing (`??`)
+- Check for existence before accessing properties
+
+```typescript
+// Good
+if (!app) {
+  throw new Error("App not found");
+}
+
+const projectName = app.supabaseProjectId && settings.supabase?.accessToken?.value
+  ? await getSupabaseProjectName(app.supabaseProjectId)
+  : null;
+
+// Avoid
+const projectName = await getSupabaseProjectName(app.supabaseProjectId);
+```
 
 ### Naming Conventions
-- **Files**: 
-  - Components: PascalCase (e.g., `ChatInput.tsx`, `ModelPicker.tsx`)
-  - Utilities: camelCase (e.g., `utils.ts`, `lm_studio_utils.ts`)
-  - Config: kebab-case (e.g., `forge.config.ts`, `vite.main.config.mts`)
-- **Variables/Functions**: camelCase (e.g., `formatDate`, `replacePromptReference`)
-- **Types/Interfaces**: PascalCase (e.g., `ForgeConfig`, `VariantProps`)
-- **Constants**: UPPER_SNAKE_CASE (e.g., `LM_STUDIO_BASE_URL`)
 
-### Documentation Standards
-- **JSDoc Comments**: Use for exported functions and complex logic
-- **Inline Comments**: Explain "why" not "what"
-- **File Headers**: Include purpose for utility files
+**Variables and Functions**
+- Use camelCase for variables and functions
+- Use descriptive names that indicate purpose
+- Boolean variables should start with `is`, `has`, `should`, `can`
+- Async functions should clearly indicate asynchronous nature
 
 ```typescript
-/**
- * Root Layout
- *
- * Wraps the entire application with necessary providers:
- * - TRPCProvider: React Query + tRPC for API calls
- */
-export default function RootLayout({ children }: { children: ReactNode }) {
-  // Implementation
+const isRunning = true;
+const hasChanges = false;
+const shouldReadFileContents = (filePath: string) => { /* ... */ };
+async function executeApp({ appPath, appId }: ExecuteAppParams): Promise<void> { /* ... */ }
+```
+
+**Constants**
+- Use UPPER_SNAKE_CASE for true constants
+- Group related constants together
+- Document purpose with comments
+
+```typescript
+const DEFAULT_COMMAND = "(pnpm install && pnpm run dev --port 32100)";
+const MAX_FILE_SIZE = 1000 * 1024; // 1MB
+const EXCLUDED_DIRS = ["node_modules", ".git", "dist"];
+```
+
+**Types and Interfaces**
+- Use PascalCase for type/interface names
+- Suffix with descriptive term when needed (e.g., `Params`, `Result`, `Config`)
+- Keep interfaces focused and single-purpose
+
+```typescript
+interface CreateAppParams {
+  name: string;
+}
+
+interface SecurityFinding {
+  title: string;
+  level: "critical" | "high" | "medium" | "low";
+  description: string;
 }
 ```
 
-## React & Next.js Patterns
-
-### Component Structure
-- **Functional Components**: Always use function declarations, not arrow functions for components
-- **Type Annotations**: Use React.ComponentProps for extending native elements
-- **Props Destructuring**: Destructure props in function signature
-
-```typescript
-// ✅ Good - Function declaration with proper typing
-function Button({
-  className,
-  variant,
-  size,
-  asChild = false,
-  ...props
-}: React.ComponentProps<"button"> & VariantProps<typeof buttonVariants> & {
-  asChild?: boolean;
-}) {
-  return <button {...props} />
-}
-
-// ❌ Bad - Arrow function, unclear typing
-const Button = (props: any) => {
-  return <button {...props} />
-}
-```
-
-### Component Composition
-- **Radix UI Primitives**: Use as base for custom components
-- **Slot Pattern**: Use `@radix-ui/react-slot` for polymorphic components
-- **Variant System**: Use `class-variance-authority` (CVA) for component variants
-
-```typescript
-import { Slot } from "@radix-ui/react-slot";
-import { cva, type VariantProps } from "class-variance-authority";
-
-const buttonVariants = cva(
-  "base-classes",
-  {
-    variants: {
-      variant: {
-        default: "default-classes",
-        destructive: "destructive-classes",
-      },
-      size: {
-        default: "h-9 px-4",
-        sm: "h-8 px-3",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-);
-```
-
-### Routing Pattern
-- **TanStack Router**: Use for type-safe routing
-- **Route Definition**: Create routes with `createRootRoute`
-- **Layout Pattern**: Wrap routes with layout components using `<Outlet />`
-
-```typescript
-import { createRootRoute, Outlet } from "@tanstack/react-router";
-import Layout from "../app/layout";
-
-export const rootRoute = createRootRoute({
-  component: () => (
-    <Layout>
-      <Outlet />
-    </Layout>
-  ),
-});
-```
-
-### State Management
-- **Jotai**: Primary state management (atomic state)
-- **Zustand**: Alternative for complex state
-- **TanStack Query**: Server state and caching via tRPC
-
-## Styling Patterns
-
-### Tailwind CSS Usage
-- **Utility Classes**: Prefer Tailwind utilities over custom CSS
-- **Dark Mode**: Use `dark:` prefix for dark mode variants
-- **Responsive**: Use responsive prefixes (`sm:`, `md:`, `lg:`)
-- **Class Merging**: Use `cn()` utility for conditional classes
-
-```typescript
-import { cn } from "@/lib/utils";
-
-// ✅ Good - Using cn() for class merging
-<div className={cn(
-  "base-classes",
-  variant === "primary" && "primary-classes",
-  className
-)} />
-
-// ❌ Bad - String concatenation
-<div className={"base-classes " + (variant === "primary" ? "primary-classes" : "") + " " + className} />
-```
-
-### Class Name Utility
-```typescript
-/**
- * Simple class name concatenator.
- * Filters out falsy values and joins class names with spaces.
- */
-export function cn(...classes: (string | undefined | null | false)[]): string {
-  return classes.filter(Boolean).join(' ')
-}
-```
-
-## Backend Patterns
-
-### tRPC Router Structure
-- **Router Organization**: Separate routers by domain (skill, credential, etc.)
-- **Context Pattern**: Use `createContext` for shared dependencies
-- **Middleware**: Validate encryption config at startup
-
-```typescript
-import express from 'express'
-import cors from 'cors'
-import { createExpressMiddleware } from '@trpc/server/adapters/express'
-import { appRouter } from './routers/_app'
-import { createContext } from './context'
-
-const app = express()
-
-// Middleware
-app.use(cors({ origin: true, credentials: true }))
-app.use(express.json())
-
-// tRPC endpoint
-app.use('/trpc', createExpressMiddleware({
-  router: appRouter,
-  createContext,
-}))
-```
+## Architectural Patterns
 
 ### Error Handling
-- **Validation**: Validate critical config at startup
-- **Logging**: Use structured logging with logger utility
-- **Exit on Critical Errors**: Exit process if encryption config invalid
+
+**Comprehensive Error Handling**
+- Always wrap risky operations in try-catch
+- Log errors with context using electron-log
+- Provide meaningful error messages to users
+- Clean up resources in finally blocks
 
 ```typescript
 try {
-  validateEncryptionConfig()
-  logger.info('Encryption configuration validated')
-} catch (error) {
-  logger.error('Encryption configuration invalid', {
-    error: error instanceof Error ? error.message : 'Unknown error',
-  })
-  process.exit(1)
+  await executeApp({ appPath, appId, event, isNeon });
+  return;
+} catch (error: any) {
+  logger.error(`Error running app ${appId}:`, error);
+  // Cleanup if needed
+  if (runningApps.has(appId)) {
+    runningApps.delete(appId);
+  }
+  throw new Error(`Failed to run app ${appId}: ${error.message}`);
 }
 ```
 
-### API Endpoints
-- **Health Check**: Always include `/health` endpoint
-- **Documentation**: Redirect `/docs` to API documentation
-- **Versioning**: Use `/v1` prefix for REST endpoints
-
-## Environment Configuration
-
-### Environment Variables
-- **Fallback Values**: Provide defaults using `||` operator
-- **Testing Overrides**: Support `*_FOR_TESTING` variants
+**Graceful Degradation**
+- Continue operation when non-critical errors occur
+- Log warnings for recoverable issues
+- Only throw for critical failures
 
 ```typescript
-export const LM_STUDIO_BASE_URL =
-  process.env.LM_STUDIO_BASE_URL_FOR_TESTING || "http://localhost:1234";
+try {
+  await git.remove({ fs, dir: appPath, filepath: filePath });
+} catch (error) {
+  logger.warn(`Failed to git remove deleted file ${filePath}:`, error);
+  // Continue even if remove fails as the file was still deleted
+}
 ```
 
-### Configuration Loading
-- **dotenv**: Load at server startup
-- **Validation**: Validate required variables early
+### Async/Await Patterns
+
+**Consistent Async Handling**
+- Use async/await over raw promises
+- Handle promise rejections explicitly
+- Use Promise.all for parallel operations
+- Avoid blocking operations in loops
 
 ```typescript
-import dotenv from 'dotenv'
+// Good - Parallel execution
+const promises = entries.map(async (entry) => {
+  const fullPath = path.join(dir, entry.name);
+  if (entry.isDirectory()) {
+    const subDirFiles = await collectFiles(fullPath, baseDir);
+    files.push(...subDirFiles);
+  }
+});
+await Promise.all(promises);
 
-// Load environment variables
-dotenv.config()
+// Avoid - Sequential execution
+for (const entry of entries) {
+  const fullPath = path.join(dir, entry.name);
+  if (entry.isDirectory()) {
+    const subDirFiles = await collectFiles(fullPath, baseDir);
+    files.push(...subDirFiles);
+  }
+}
 ```
 
-## Utility Functions
+### State Management
 
-### String Manipulation
-- **Regex Replacement**: Use named capture groups for clarity
-- **Type Guards**: Check types before processing
+**Centralized State with Atoms**
+- Use Jotai atoms for global state
+- Keep atoms focused and single-purpose
+- Use derived atoms for computed values
+- Avoid prop drilling
 
 ```typescript
-export function replacePromptReference(
-  userPrompt: string,
-  promptsById: Record<number | string, string>,
-): string {
-  if (typeof userPrompt !== "string" || userPrompt.length === 0)
-    return userPrompt;
+import { useAtomValue, useSetAtom } from "jotai";
+import { selectedAppIdAtom } from "@/atoms/appAtoms";
 
-  return userPrompt.replace(
-    /@prompt:(\d+)/g,
-    (_match: string, idStr: string) => {
-      const idNum = Number(idStr);
-      const replacement = promptsById[idNum] ?? promptsById[idStr];
-      return replacement !== undefined ? replacement : _match;
-    },
+const selectedAppId = useAtomValue(selectedAppIdAtom);
+const setSelectedChatId = useSetAtom(selectedChatIdAtom);
+```
+
+**Local State Management**
+- Use useState for component-local state
+- Use useEffect for side effects with proper dependencies
+- Clean up effects when component unmounts
+
+```typescript
+const [isRunning, setIsRunning] = useState(false);
+const [selectedFindings, setSelectedFindings] = useState<Set<string>>(new Set());
+
+useEffect(() => {
+  if (selectedCount > 0) {
+    setShouldRender(true);
+    const timer = setTimeout(() => setIsButtonVisible(true), 10);
+    return () => clearTimeout(timer);
+  }
+}, [selectedCount]);
+```
+
+### Database Operations
+
+**Drizzle ORM Patterns**
+- Use query builder for type-safe queries
+- Always handle not found cases
+- Use transactions for multi-step operations
+- Leverage relations for joins
+
+```typescript
+const app = await db.query.apps.findFirst({
+  where: eq(apps.id, appId),
+  with: {
+    chats: true,
+  },
+});
+
+if (!app) {
+  throw new Error("App not found");
+}
+```
+
+**Efficient Queries**
+- Select only needed columns
+- Use proper indexes (defined in schema)
+- Avoid N+1 queries with relations
+- Batch operations when possible
+
+```typescript
+// Good - Single query with relation
+const chatWithApp = await db.query.chats.findFirst({
+  where: eq(chats.id, chatId),
+  with: { app: true },
+});
+
+// Avoid - Multiple queries
+const chat = await db.query.chats.findFirst({ where: eq(chats.id, chatId) });
+const app = await db.query.apps.findFirst({ where: eq(apps.id, chat.appId) });
+```
+
+## React Component Patterns
+
+### Component Structure
+
+**Functional Components with Hooks**
+- Use functional components exclusively
+- Extract complex logic into custom hooks
+- Keep components focused and single-purpose
+- Use composition over inheritance
+
+```typescript
+export const SecurityPanel = () => {
+  const selectedAppId = useAtomValue(selectedAppIdAtom);
+  const { data, isLoading, error, refetch } = useSecurityReview(selectedAppId);
+  
+  if (isLoading) return <LoadingView />;
+  if (!selectedAppId) return <NoAppSelectedView />;
+  
+  return (
+    <div className="flex flex-col h-full overflow-y-auto">
+      {/* Component content */}
+    </div>
+  );
+};
+```
+
+**Component Decomposition**
+- Extract sub-components for clarity
+- Pass props explicitly, avoid spreading
+- Use children prop for composition
+- Keep render logic simple
+
+```typescript
+function SecurityHeader({
+  isRunning,
+  onRun,
+  data,
+  selectedCount,
+  onFixSelected,
+}: SecurityHeaderProps) {
+  return (
+    <div className="sticky top-0 z-10 bg-background pt-3 pb-3">
+      {/* Header content */}
+    </div>
   );
 }
 ```
 
-## Electron Configuration
+### Event Handling
 
-### Forge Configuration Patterns
-- **Conditional Config**: Use environment variables for test builds
-- **Security**: Enable security fuses in production
-- **Code Signing**: Configure platform-specific signing
-
-```typescript
-const isEndToEndTestBuild = process.env.E2E_TEST_BUILD === "true";
-
-const config: ForgeConfig = {
-  packagerConfig: {
-    osxSign: isEndToEndTestBuild ? undefined : {
-      identity: process.env.APPLE_TEAM_ID,
-    },
-    osxNotarize: isEndToEndTestBuild ? undefined : {
-      appleId: process.env.APPLE_ID!,
-      appleIdPassword: process.env.APPLE_PASSWORD!,
-      teamId: process.env.APPLE_TEAM_ID!,
-    },
-  },
-};
-```
-
-### File Ignore Patterns
-- **Custom Ignore Function**: Filter files during packaging
-- **Preserve Critical Modules**: Don't ignore native modules
+**Consistent Event Handlers**
+- Prefix handlers with `handle` or `on`
+- Use arrow functions for inline handlers
+- Prevent default when needed
+- Stop propagation when appropriate
 
 ```typescript
-const ignore = (file: string) => {
-  if (!file) return false;
-  if (file === "/node_modules") return false;
-  if (file.startsWith("/drizzle")) return false;
-  if (file.startsWith("/node_modules/better-sqlite3")) return false;
-  return true;
+const handleFixIssue = async (finding: SecurityFinding) => {
+  if (!selectedAppId) {
+    showError("No app selected");
+    return;
+  }
+  
+  try {
+    setFixingFindingKey(createFindingKey(finding));
+    // Fix logic
+  } catch (err) {
+    showError(`Failed to create fix chat: ${err}`);
+  } finally {
+    setFixingFindingKey(null);
+  }
 };
+
+<Button onClick={() => handleFixIssue(finding)}>Fix Issue</Button>
 ```
 
-## Testing Patterns
+### Conditional Rendering
 
-### E2E Testing
-- **Playwright**: Use for end-to-end tests
-- **Fixtures**: Organize test data in `__tests__/e2e/fixtures/`
-- **Helpers**: Create reusable test helpers
-- **Snapshots**: Use for visual regression testing
+**Clear Conditional Logic**
+- Use early returns for loading/error states
+- Prefer ternary for simple conditions
+- Extract complex conditions to variables
+- Use logical AND for conditional rendering
 
-### Test Organization
-- **Feature-Based**: Group tests by feature (80+ specs)
-- **Naming**: Use descriptive `.spec.ts` names
-- **Coverage**: Aim for critical path coverage
+```typescript
+if (isLoading) return <LoadingView />;
+if (!selectedAppId) return <NoAppSelectedView />;
 
-## Build & Deployment
+return (
+  <div>
+    {isRunning ? (
+      <RunningReviewCard />
+    ) : data && data.findings.length > 0 ? (
+      <FindingsTable findings={data.findings} />
+    ) : (
+      <NoIssuesCard data={data} />
+    )}
+  </div>
+);
+```
 
-### Monorepo Commands
-- **Parallel Execution**: Use `pnpm --parallel -r` for dev
-- **Sequential Builds**: Use `pnpm -r build` for production
-- **Workspace Scripts**: Define at root and package level
+## File System Operations
 
-### Package Scripts Pattern
-```json
-{
-  "scripts": {
-    "dev": "pnpm --parallel -r dev",
-    "build": "pnpm -r build",
-    "test": "pnpm -r test",
-    "lint": "pnpm -r lint",
-    "clean": "pnpm -r clean && rm -rf node_modules"
+### Path Handling
+
+**Safe Path Operations**
+- Always use path.join for cross-platform compatibility
+- Validate paths before operations
+- Check for path traversal attacks
+- Normalize paths consistently
+
+```typescript
+const fullPath = path.join(appPath, filePath);
+
+// Security check
+if (!fullPath.startsWith(appPath)) {
+  throw new Error("Invalid file path");
+}
+
+// Normalize for consistency
+const normalizedPath = path.relative(appPath, file)
+  .split(path.sep)
+  .join("/");
+```
+
+**File Existence Checks**
+- Check existence before operations
+- Handle missing files gracefully
+- Use async file operations
+- Clean up temporary files
+
+```typescript
+if (!fs.existsSync(fullPath)) {
+  throw new Error("File not found");
+}
+
+try {
+  const content = await fsPromises.readFile(fullPath, "utf-8");
+  return content;
+} catch (error) {
+  logger.error(`Error reading file ${filePath}:`, error);
+  throw new Error("Failed to read file");
+}
+```
+
+### Caching Strategies
+
+**File Content Caching**
+- Cache based on modification time
+- Implement cache size limits
+- Clear stale entries
+- Use Map for O(1) lookups
+
+```typescript
+const stats = await fsAsync.stat(filePath);
+const currentMtime = stats.mtimeMs;
+
+if (fileContentCache.has(filePath)) {
+  const cache = fileContentCache.get(filePath)!;
+  if (cache.mtime === currentMtime) {
+    return cache.content;
+  }
+}
+
+fileContentCache.set(filePath, {
+  content,
+  mtime: currentMtime,
+});
+
+// Manage cache size
+if (fileContentCache.size > MAX_FILE_CACHE_SIZE) {
+  const entriesToDelete = Math.ceil(MAX_FILE_CACHE_SIZE * 0.25);
+  const keys = Array.from(fileContentCache.keys());
+  for (let i = 0; i < entriesToDelete; i++) {
+    fileContentCache.delete(keys[i]);
   }
 }
 ```
 
-## Security Best Practices
+## Process Management
 
-### Credential Management
-- **Encryption**: Always encrypt API credentials
-- **Environment Variables**: Never commit credentials
-- **Validation**: Validate encryption config at startup
+### Child Process Handling
 
-### Electron Security
-- **Fuses**: Enable security fuses in production
-- **Context Isolation**: Use preload scripts
-- **Node Integration**: Disable in renderer when possible
+**Spawn Process Pattern**
+- Use spawn for long-running processes
+- Pipe stdio for output capture
+- Handle process lifecycle events
+- Clean up on exit
 
 ```typescript
-new FusesPlugin({
-  version: FuseVersion.V1,
-  [FuseV1Options.RunAsNode]: false,
-  [FuseV1Options.EnableCookieEncryption]: true,
-  [FuseV1Options.EnableNodeOptionsEnvironmentVariable]: false,
-  [FuseV1Options.EnableEmbeddedAsarIntegrityValidation]: true,
-  [FuseV1Options.OnlyLoadAppFromAsar]: true,
-})
+const spawnedProcess = spawn(command, [], {
+  cwd: appPath,
+  shell: true,
+  stdio: "pipe",
+  detached: false,
+});
+
+if (!spawnedProcess.pid) {
+  throw new Error("Failed to spawn process");
+}
+
+spawnedProcess.stdout?.on("data", (data) => {
+  const message = util.stripVTControlCharacters(data.toString());
+  logger.debug(`App ${appId} stdout: ${message}`);
+  safeSend(event.sender, "app:output", { type: "stdout", message, appId });
+});
+
+spawnedProcess.on("close", (code, signal) => {
+  logger.log(`Process closed with code ${code}, signal ${signal}`);
+  removeAppIfCurrentProcess(appId, spawnedProcess);
+});
 ```
 
-## Git Workflow
+**Process Cleanup**
+- Track running processes
+- Implement graceful shutdown
+- Handle zombie processes
+- Remove from tracking on exit
 
-### Pre-commit Hooks
-- **lint-staged**: Configured via `.lintstagedrc.json`
-- **Auto-fix**: ESLint and Prettier run automatically
-- **Prisma Format**: Format schema files
+```typescript
+const currentProcessId = processCounter.increment();
+runningApps.set(appId, {
+  process: spawnedProcess,
+  processId: currentProcessId,
+  isDocker: false,
+});
 
-```json
-{
-  "*.{ts,tsx}": ["eslint --fix", "prettier --write"],
-  "*.{js,jsx}": ["eslint --fix", "prettier --write"],
-  "*.{json,md,yml,yaml}": ["prettier --write"],
-  "apps/server/prisma/schema.prisma": ["prisma format"]
+// Cleanup function
+function removeAppIfCurrentProcess(appId: number, process: ChildProcess) {
+  const appInfo = runningApps.get(appId);
+  if (appInfo && appInfo.process === process) {
+    runningApps.delete(appId);
+  }
 }
+```
+
+## Testing Patterns
+
+### Unit Test Structure
+
+**Vitest Test Organization**
+- Group related tests with describe blocks
+- Use descriptive test names
+- Test edge cases explicitly
+- Mock external dependencies
+
+```typescript
+describe("parseFilesFromMessage", () => {
+  describe("bl1nk-read tags", () => {
+    it("should parse a single bl1nk-read tag", () => {
+      const input = '<bl1nk-read path="src/components/Button.tsx"></bl1nk-read>';
+      const result = parseFilesFromMessage(input);
+      expect(result).toEqual(["src/components/Button.tsx"]);
+    });
+    
+    it("should handle file paths with special characters", () => {
+      const input = '<bl1nk-read path="src/components/@special/Button-v2.tsx"></bl1nk-read>';
+      const result = parseFilesFromMessage(input);
+      expect(result).toEqual(["src/components/@special/Button-v2.tsx"]);
+    });
+  });
+});
+```
+
+**Mock Setup**
+- Mock at module level
+- Clear mocks between tests
+- Use typed mocks
+- Verify mock calls
+
+```typescript
+vi.mock("@/ipc/utils/git_utils", () => ({
+  getFileAtCommit: vi.fn(),
+}));
+
+beforeEach(() => {
+  vi.clearAllMocks();
+});
+
+it("should call getFileAtCommit with correct params", async () => {
+  const { getFileAtCommit } = await import("@/ipc/utils/git_utils");
+  const mockGetFileAtCommit = vi.mocked(getFileAtCommit);
+  
+  mockGetFileAtCommit.mockResolvedValue("file content");
+  
+  await processFiles();
+  
+  expect(mockGetFileAtCommit).toHaveBeenCalledWith({
+    path: appPath,
+    filePath: "src/file.ts",
+    commitHash: "abc123",
+  });
+});
+```
+
+## Logging and Debugging
+
+### Structured Logging
+
+**Electron-log Usage**
+- Create scoped loggers for modules
+- Use appropriate log levels
+- Include context in messages
+- Log errors with stack traces
+
+```typescript
+const logger = log.scope("app_handlers");
+
+logger.debug(`Starting app ${appId} in path ${app.path}`);
+logger.log(`Successfully committed changes: ${changes.join(", ")}`);
+logger.warn(`File to delete does not exist: ${fullFilePath}`);
+logger.error(`Error running app ${appId}:`, error);
+```
+
+**Log Levels**
+- `debug`: Detailed diagnostic information
+- `log`: General informational messages
+- `warn`: Warning messages for recoverable issues
+- `error`: Error messages for failures
+
+## Security Practices
+
+### Input Validation
+
+**Path Traversal Prevention**
+- Validate all file paths
+- Check paths stay within boundaries
+- Use safe path joining
+- Reject suspicious patterns
+
+```typescript
+const fullPath = path.join(appPath, filePath);
+
+if (!fullPath.startsWith(appPath)) {
+  throw new Error("Invalid file path");
+}
+```
+
+**User Input Sanitization**
+- Validate all user inputs
+- Use Zod schemas for validation
+- Escape special characters
+- Prevent SQL injection with parameterized queries
+
+```typescript
+const pattern = `%${searchQuery.replace(/[%_]/g, "\\\\$&")}%`;
+const results = await db
+  .select()
+  .from(apps)
+  .where(like(apps.name, pattern));
+```
+
+### Credential Management
+
+**Secure Storage**
+- Never log sensitive data
+- Use environment variables
+- Encrypt credentials at rest
+- Clear sensitive data after use
+
+```typescript
+// Do NOT log API keys or tokens
+logger.log("Fetching data from API"); // Good
+logger.log(`API key: ${apiKey}`); // NEVER do this
 ```
 
 ## Performance Optimization
 
-### Build Optimizations
-- **Vite**: Fast HMR and build times
-- **Code Splitting**: Automatic in Next.js
-- **Tree Shaking**: Enabled by default
-- **Native Modules**: Auto-unpack with Electron Forge plugin
+### Efficient Data Processing
 
-### Runtime Optimizations
-- **React 19**: Use concurrent features
-- **Jotai**: Atomic updates prevent unnecessary re-renders
-- **TanStack Query**: Automatic caching and deduplication
-- **SQLite**: Fast local storage with better-sqlite3
+**Batch Operations**
+- Process items in parallel when possible
+- Use Promise.all for concurrent operations
+- Avoid sequential processing in loops
+- Implement pagination for large datasets
 
-## Common Patterns
-
-### Metadata Export
 ```typescript
-export const metadata = {
-  title: "Claude Skill Builder",
-  description: "Create, manage, and test Claude AI skills",
+// Good - Parallel processing
+const promises = files.map(async (file) => {
+  return await processFile(file);
+});
+const results = await Promise.all(promises);
+
+// Avoid - Sequential processing
+const results = [];
+for (const file of files) {
+  results.push(await processFile(file));
 }
 ```
 
-### Provider Wrapping
+**Memory Management**
+- Implement cache size limits
+- Clean up unused resources
+- Use streams for large files
+- Avoid memory leaks with proper cleanup
+
 ```typescript
-export default function RootLayout({ children }: { children: ReactNode }) {
-  return (
-    <html lang="en" className="dark">
-      <body className="min-h-screen bg-gray-900 text-white antialiased">
-        <TRPCProvider>
-          {children}
-        </TRPCProvider>
-      </body>
-    </html>
-  )
+if (fileContentCache.size > MAX_FILE_CACHE_SIZE) {
+  const entriesToDelete = Math.ceil(MAX_FILE_CACHE_SIZE * 0.25);
+  const keys = Array.from(fileContentCache.keys());
+  for (let i = 0; i < entriesToDelete; i++) {
+    fileContentCache.delete(keys[i]);
+  }
 }
 ```
 
-### Conditional Rendering
+## Git Operations
+
+### Isomorphic-git Patterns
+
+**Commit Workflow**
+- Stage files before committing
+- Use descriptive commit messages
+- Handle commit failures gracefully
+- Store commit hashes for versioning
+
 ```typescript
-// Use ternary for simple conditions
-{isLoading ? <Spinner /> : <Content />}
+await git.add({
+  fs,
+  dir: appPath,
+  filepath: filePath,
+});
 
-// Use && for single condition
-{error && <ErrorMessage error={error} />}
+const commitHash = await gitCommit({
+  path: appPath,
+  message: `Updated ${filePath}`,
+});
 
-// Use early returns in functions
-if (!data) return null;
-return <Component data={data} />;
+await db
+  .update(messages)
+  .set({ commitHash })
+  .where(eq(messages.id, messageId));
 ```
 
-## Anti-Patterns to Avoid
+**Branch Operations**
+- Check branch existence before operations
+- Handle rename conflicts
+- Use proper error messages
+- Lock operations to prevent conflicts
 
-### Don't
-- ❌ Use `any` type without justification
-- ❌ Mutate props or state directly
-- ❌ Create components with arrow functions at top level
-- ❌ Concatenate class names manually
-- ❌ Commit environment variables or credentials
-- ❌ Skip type annotations on exported functions
-- ❌ Use `var` (use `const` or `let`)
-- ❌ Ignore linting errors
-- ❌ Skip pre-commit hooks
+```typescript
+const branches = await git.listBranches({ fs, dir: appPath });
+if (!branches.includes(oldBranchName)) {
+  throw new Error(`Branch '${oldBranchName}' not found.`);
+}
 
-### Do
-- ✅ Use explicit types and interfaces
-- ✅ Use immutable updates
-- ✅ Use function declarations for components
-- ✅ Use `cn()` utility for class merging
-- ✅ Use `.env.example` for documentation
-- ✅ Add return types to all exported functions
-- ✅ Use `const` by default, `let` when needed
-- ✅ Fix linting errors before committing
-- ✅ Run pre-commit hooks
+if (branches.includes(newBranchName)) {
+  throw new Error(`Branch '${newBranchName}' already exists.`);
+}
 
-## IDE Configuration
+await git.renameBranch({
+  fs,
+  dir: appPath,
+  oldref: oldBranchName,
+  ref: newBranchName,
+});
+```
 
-### VS Code Recommended Extensions
-- ESLint
-- Prettier
-- Tailwind CSS IntelliSense
-- Prisma
-- Playwright Test for VS Code
+## UI/UX Patterns
 
-### VS Code Settings
-```json
-{
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
-  "typescript.preferences.importModuleSpecifier": "relative"
+### Loading States
+
+**Progressive Loading**
+- Show loading indicators immediately
+- Provide feedback during operations
+- Handle loading errors gracefully
+- Disable actions during loading
+
+```typescript
+const [isRunning, setIsRunning] = useState(false);
+
+const handleRun = async () => {
+  setIsRunning(true);
+  try {
+    await runOperation();
+  } catch (err) {
+    showError(`Operation failed: ${err}`);
+  } finally {
+    setIsRunning(false);
+  }
+};
+
+<Button disabled={isRunning}>
+  {isRunning ? "Running..." : "Run"}
+</Button>
+```
+
+### User Feedback
+
+**Toast Notifications**
+- Use appropriate severity levels
+- Provide actionable messages
+- Keep messages concise
+- Show success confirmations
+
+```typescript
+import { showSuccess, showError, showWarning } from "@/lib/toast";
+
+try {
+  await saveChanges();
+  showSuccess("Changes saved successfully");
+} catch (err) {
+  showError(`Failed to save: ${err.message}`);
 }
 ```
 
-## Validation Scripts
+## Code Organization
 
-### Agent/Skill Validation
-- **validate-skills.js**: Validates skill structure (SKILL.md, LICENSE.txt)
-- **validate-agents.js**: Validates 500+ agent JSON files
-- **health-check.js**: Overall project health monitoring
+### Module Structure
 
-### Running Validators
-```bash
-node scripts/validators/validate-skills.js
-node scripts/validators/validate-agents.js
-node scripts/health-check.js
+**File Organization**
+- Group related functionality
+- Use index files for exports
+- Keep files focused and small
+- Follow consistent naming
+
+```
+src/
+├── components/
+│   ├── ui/              # Reusable UI components
+│   ├── preview_panel/   # Feature-specific components
+│   └── chat/            # Chat-related components
+├── hooks/               # Custom React hooks
+├── utils/               # Utility functions
+├── ipc/                 # IPC handlers and processors
+│   ├── handlers/        # IPC request handlers
+│   ├── processors/      # Response processors
+│   └── utils/           # IPC utilities
+└── atoms/               # Jotai state atoms
 ```
 
-## Logging Standards
+### Import Organization
 
-### Structured Logging
-- Use logger utility for consistent formatting
-- Include context in error logs
-- Log levels: info, warn, error
+**Import Order**
+1. External dependencies
+2. Internal modules (absolute imports)
+3. Relative imports
+4. Type imports (separate)
 
 ```typescript
-logger.info('Server running on http://localhost:${PORT}')
-logger.error('Encryption configuration invalid', {
-  error: error instanceof Error ? error.message : 'Unknown error',
-})
+// External
+import { ipcMain, app } from "electron";
+import fs from "node:fs";
+import path from "node:path";
+
+// Internal
+import { db } from "@/db";
+import { getBl1nkAppPath } from "@/paths/paths";
+import { withLock } from "@/ipc/utils/lock_utils";
+
+// Relative
+import { createLoggedHandler } from "./safe_handle";
+
+// Types
+import type { App, CreateAppParams } from "../ipc_types";
 ```
 
-## Summary
+## Documentation
 
-This codebase follows modern TypeScript and React best practices with:
-- Strict type safety across all packages
-- Consistent code formatting via Prettier
-- Component composition with Radix UI primitives
-- Type-safe APIs with tRPC
-- Monorepo architecture with pnpm workspaces
-- Comprehensive testing with Playwright
-- Security-first approach for Electron apps
-- Automated quality checks via pre-commit hooks
+### Code Comments
+
+**When to Comment**
+- Explain "why" not "what"
+- Document complex algorithms
+- Note security considerations
+- Explain workarounds
+
+```typescript
+// Why? For some reason, file ordering is not stable on Windows.
+// This is a workaround to ensure stable ordering, although
+// ideally we'd like to sort it by modification time which is
+// important for cache-ability.
+if (IS_TEST_BUILD) {
+  filesArray.sort((a, b) => a.path.localeCompare(b.path));
+}
+```
+
+**JSDoc for Public APIs**
+- Document function parameters
+- Describe return values
+- Note exceptions thrown
+- Provide usage examples
+
+```typescript
+/**
+ * Extract and format codebase files as a string to be included in prompts
+ * @param appPath - Path to the codebase to extract
+ * @param virtualFileSystem - Optional virtual filesystem to apply modifications
+ * @returns Object containing formatted output and individual files
+ */
+export async function extractCodebase({
+  appPath,
+  chatContext,
+  virtualFileSystem,
+}: ExtractCodebaseParams): Promise<ExtractCodebaseResult> {
+  // Implementation
+}
+```

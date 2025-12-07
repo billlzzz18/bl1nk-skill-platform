@@ -387,7 +387,7 @@ export function SetupBanner() {
 
 function NodeJsHelpCallout() {
   return (
-    <div className="mt-3 p-3 bg-(--background-lighter) border rounded-lg text-sm">
+    <div className="mt-3 p-3 bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg text-sm">
       <p>
         If you run into issues, read our{" "}
         <a

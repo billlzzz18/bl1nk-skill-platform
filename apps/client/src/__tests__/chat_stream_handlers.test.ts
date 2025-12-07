@@ -15,7 +15,20 @@ import {
 import fs from "node:fs";
 import git from "isomorphic-git";
 import { db } from "../db";
-import { cleanFullResponse } from "@/ipc/utils/cleanFullResponse";
+import { cleanFullResponse } from "../ipc/utils/cleanFullResponse";
+
+// Mock electron-log
+vi.mock("electron-log", () => ({
+  default: {
+    scope: vi.fn(() => ({
+      log: vi.fn(),
+      error: vi.fn(),
+      warn: vi.fn(),
+      info: vi.fn(),
+      debug: vi.fn(),
+    })),
+  },
+}));
 
 // Mock fs with default export
 vi.mock("node:fs", async () => {

@@ -22,7 +22,7 @@ COPY . .
 RUN apk add --no-cache openssl 
 
 # [แก้ไข Prisma Filter]
-RUN pnpm install --frozen-lockfile --config.ignore-scripts=false && pnpm --filter @claude-builder/server exec prisma --version
+RUN pnpm install --frozen-lockfile --config.ignore-scripts=false && pnpm --filter bl1nk-skill-builder-server exec prisma --version
 
 FROM base AS builder
 
@@ -33,9 +33,9 @@ ENV NODE_ENV=production
 COPY --from=deps /app .
 
 # Generate Prisma client, build, and prune dev dependencies for the server workspace
-RUN pnpm --filter @claude-builder/server prisma:generate \
-    && pnpm --filter @claude-builder/server build \
-    && pnpm --filter @claude-builder/server prune --prod
+RUN pnpm --filter bl1nk-skill-builder-server prisma:generate \
+    && pnpm --filter bl1nk-skill-builder-server build \
+    && pnpm --filter bl1nk-skill-builder-server prune --prod
 
 # Runtime stage
 FROM node:20-alpine AS runtime
