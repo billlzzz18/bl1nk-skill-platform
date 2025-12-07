@@ -15,13 +15,13 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY apps/server/package.json apps/server/
 COPY packages/shared/package.json packages/shared/
 
-# >>> แก้ไข: เพิ่ม COPY . . เพื่อคัดลอกไฟล์โค้ดทั้งหมด (รวมถึง prisma/schema.prisma) <<<
+# Copy all source files including Prisma schema
 COPY . .
 
-# [แก้ไข OpenSSL]
-RUN apk add --no-cache openssl 
+# Install OpenSSL for Prisma
+RUN apk add --no-cache openssl
 
-# [แก้ไข Prisma Filter]
+# Install dependencies and verify Prisma
 RUN pnpm install --frozen-lockfile --config.ignore-scripts=false && pnpm --filter bl1nk-skill-builder-server exec prisma --version
 
 FROM base AS builder
@@ -29,7 +29,7 @@ FROM base AS builder
 # Ensure production context for pruning behavior
 ENV NODE_ENV=production
 
-# [แก้ไข Symlinks] คัดลอกไฟล์ทั้งหมดจาก Stage deps (ตอนนี้มีโค้ดแล้ว)
+# Copy all files from deps stage
 COPY --from=deps /app .
 
 # Generate Prisma client, build, and prune dev dependencies for the server workspace
@@ -47,14 +47,16 @@ WORKDIR /app
 COPY --from=builder /app/pnpm-lock.yaml ./
 COPY --from=builder /app/apps/server/package.json ./apps/server/
 
+# Switch to server directory
+WORKDIR /app/apps/server
+
 # Install only production dependencies
-RUN cd apps/server && pnpm install --prod --frozen-lockfile
+RUN pnpm install --prod --frozen-lockfile
 
 # Copy built application and Prisma schema
-COPY --from=builder /app/apps/server/dist ./apps/server/dist
-COPY --from=builder /app/apps/server/prisma ./apps/server/prisma
+COPY --from=builder /app/apps/server/dist ./dist
+COPY --from=builder /app/apps/server/prisma ./prisma
 
-WORKDIR /app/apps/server
 ENV NODE_ENV=production
 
 CMD ["node", "dist/index.js"]

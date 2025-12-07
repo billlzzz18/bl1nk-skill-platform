@@ -4,6 +4,11 @@
 export const DEFAULT_TEMPLATE_ID = "default";
 
 /**
+ * Neon template IDs
+ */
+export const NEON_TEMPLATE_IDS = new Set<string>([]);
+
+/**
  * Template interface
  */
 export interface Template {
@@ -13,6 +18,8 @@ export interface Template {
   imageUrl?: string;
   githubUrl?: string;
   isOfficial: boolean;
+  isExperimental?: boolean;
+  requiresNeon?: boolean;
 }
 
 /**
@@ -24,6 +31,8 @@ export interface ApiTemplate {
   title: string;
   description: string;
   imageUrl?: string;
+  isExperimental?: boolean;
+  requiresNeon?: boolean;
 }
 
 /**
@@ -35,11 +44,15 @@ export const localTemplatesData: Template[] = [
     title: "Default App",
     description: "A basic React app with TypeScript",
     isOfficial: true,
+    isExperimental: false,
+    requiresNeon: false,
   },
   {
     id: "react",
     title: "React App",
     description: "A React application with modern tooling",
     isOfficial: true,
+    isExperimental: false,
+    requiresNeon: false,
   },
 ];

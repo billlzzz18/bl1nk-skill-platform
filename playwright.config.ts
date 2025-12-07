@@ -22,7 +22,7 @@ export default defineConfig({
   ],
   webServer: [
     {
-      command: 'cd apps/server && npm run start',
+      command: 'node apps/server/dist/apps/server/src/index.js',
       port: 3000,
       timeout: 120 * 1000,
       reuseExistingServer: !process.env.CI,
