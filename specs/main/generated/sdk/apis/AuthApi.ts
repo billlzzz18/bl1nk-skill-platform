@@ -13,14 +13,14 @@
  */
 
 
-import * as runtime from '../runtime';
+import * as runtime from '../runtime.js';
 import type {
   ApiError,
   AuthResponse,
   LoginRequest,
   RegisterRequest,
   User,
-} from '../models/index';
+} from '../models/index.js';
 import {
     ApiErrorFromJSON,
     ApiErrorToJSON,
@@ -32,7 +32,7 @@ import {
     RegisterRequestToJSON,
     UserFromJSON,
     UserToJSON,
-} from '../models/index';
+} from '../models/index.js';
 
 export interface AuthLoginPostRequest {
     loginRequest: LoginRequest;

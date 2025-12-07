@@ -1,6 +1,6 @@
-# bl1nk Skill Builder
+# bl1nk Skill Builder - AI Skill Development IDE
 
-> AI-powered IDE for creating, managing, and testing bl1nk AI skills, agents, and MCP tools
+> AI-powered IDE for creating, managing, and testing bl1nk AI skills, agents, and MCP tools. This repository contains the complete platform code and design specification.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue)](https://www.typescriptlang.org/)
@@ -9,59 +9,49 @@
 
 ## 🎯 Overview
 
-bl1nk Skill Builder is a comprehensive desktop IDE specifically designed for AI development. Build custom bl1nk skills, manage 500+ pre-built agent templates, and integrate with multiple LLM providers—all in one unified environment.
+bl1nk Skill Builder is a comprehensive desktop IDE specifically designed for AI development. It is built as a **Monorepo** using **pnpm** and consists of a **Desktop Client (`apps/client`)** and a **Backend Server (`apps/server`)**.
 
 **Think "VS Code but for AI development"**
 
-## ✨ Key Features
+### Key Statistics (Design Specification)
 
-### 🤖 Agent System
-- **501 Pre-built Agents** organized by category:
-  - 138 Development agents (Python, TypeScript, React, Rust, etc.)
-  - 115 Writing agents (content, translation, copywriting)
-  - 62 Education agents (tutoring, language learning)
-  - 51 Data agents (analysis, research, ML/AI)
-  - 48 Creative agents (art, design, music)
-  - 36 Business agents (marketing, sales, consulting)
-- JSON-based configuration with metadata
-- Custom agent creation and modification
+- ✅ **68 Total Endpoints** (Designed API)
+- ✅ **9 Major Modules** (Project, Skill, Agent, Provider, etc.)
+- ✅ **6 Agent Categories** (501 pre-built agents)
+- ✅ **15 Skill Categories**
+- ✅ **6 LLM Providers** integrated
 
-### 🛠️ Skill Development
-- Monaco Editor integration with syntax highlighting
-- 15+ skill categories with templates
-- Version control with full history and restore
-- Real-time skill preview and testing
-- Template-based creation with SKILL.md format
+---
 
-### 🔌 Multi-Provider AI Integration
-- **AWS Bedrock**: Claude, Titan models
-- **OpenRouter**: Multiple LLM providers
-- **Anthropic**: Direct Claude API
-- **Google**: Gemini models
-- **OpenAI**: GPT models
-- **Local**: LM Studio, Ollama support
+## 📚 Design Documentation & Specification
 
-### 🔐 Security Features
-- AES-256-GCM encrypted credential storage
-- Path traversal protection
-- Symlink loop detection
-- Context isolation enabled
-- Security fuses for production builds
-- Comprehensive security documentation
+This project is fully documented with detailed design specifications.
 
-### 🧪 Testing & Validation
-- 74+ E2E tests organized by feature
-- Automated skill and agent validation
-- Health check monitoring
-- Progress feedback for long operations
+| Document | Description | Target Audience |
+| :--- | :--- | :--- |
+| **SKILL.md** | Platform overview, core modules, skill workflows, and use cases. | Designers, Product Managers |
+| **API_SPECIFICATION.yaml** | Complete REST API specification in OpenAPI 3.1 format (68 endpoints). | API Developers |
+| **ENDPOINTS_SUMMARY.md** | Quick lookup table for all 68 endpoints, organized by module. | API Developers |
+| **MODULES_ARCHITECTURE.md** | Complete architecture for all 9 modules, including database schema and data flow. | Backend Engineers |
+| **IMPLEMENTATION_GUIDE.md** | Developer guide, quick start, API development workflow, and testing strategy. | Backend Engineers |
 
-### 🗄️ Database & Persistence
-- SQLite + Drizzle ORM (Phase 1)
-- PostgreSQL + Redis (planned Phase 2)
-- Schema versioning and migrations
-- Encrypted credential storage
+---
 
-## 🚀 Quick Start
+## 🛠️ Technology Stack
+
+| Component | Technology | Details |
+| :--- | :--- | :--- |
+| **Monorepo** | pnpm | Efficient dependency management |
+| **Frontend (IDE)** | Electron 38.2, Next.js 15, React 19 | Desktop application framework and UI |
+| **Backend (API)** | Express.js / Hono, Node.js 20+ | High-performance API server |
+| **Database** | SQLite (Phase 1), PostgreSQL (Phase 2) | Persistence layer |
+| **ORM** | Drizzle ORM | Type-safe database access |
+| **Testing** | Jest, Playwright, SuperTest | Unit, E2E, and API testing |
+| **AI Integration** | AWS Bedrock, OpenAI, Anthropic, Google, OpenRouter | Multi-provider LLM support |
+
+---
+
+## 🚀 Quick Start (Development)
 
 ### Prerequisites
 - Node.js >= 20.0.0
@@ -75,210 +65,62 @@ bl1nk Skill Builder is a comprehensive desktop IDE specifically designed for AI 
 git clone https://github.com/bl1nk-org/bl1nk-skill-platform.git
 cd bl1nk-skill-platform
 
-# Install dependencies
+# Install dependencies (Monorepo)
 pnpm install
 
 # Copy environment variables
 cp .env.example .env
 
-# Start development
+# Start development (Client and Server)
 pnpm dev
 ```
 
-### First Run
-
-1. Configure API credentials in Settings
-2. Browse 501 pre-built agents
-3. Create or import a skill
-4. Test with the integrated chat interface
-
-## 📚 Documentation
-
-- [Architecture](./docs/Architecture.md) - System design and tech stack
-- [Security](./docs/SECURITY.md) - Security guidelines and best practices
-- [Contributing](./CONTRIBUTING.md) - Development guidelines
-- [Roadmap](./docs/roadmap.md) - Project roadmap and phases
-- [Rule Systems](./docs/RULE_SYSTEMS.md) - AI assistant rules documentation
-
-## 🏗️ Project Structure
-
-```
-bl1nk-skill-platfrom/
-├── apps/
-│   ├── client/          # Electron + Next.js frontend
-│   └── server/          # Express + tRPC backend
-├── packages/
-│   └── shared/          # Shared types and utilities
-├── agents/              # 501 agent templates (organized by category)
-│   ├── development/     # 138 agents
-│   ├── writing/         # 115 agents
-│   ├── education/       # 62 agents
-│   ├── data/            # 51 agents
-│   ├── creative/        # 48 agents
-│   └── business/        # 36 agents
-├── skill/               # 15 skill categories
-├── __tests__/           # 74+ E2E tests (organized by feature)
-└── scripts/             # Build and validation scripts
-```
-
-## 🛠️ Development
-
 ### Available Commands
 
-```bash
-# Development
-pnpm dev                    # Start all services
-pnpm build                  # Build all packages
-pnpm test:e2e              # Run E2E tests
-pnpm test:unit             # Run unit tests
+| Command | Description |
+| :--- | :--- |
+| `pnpm dev` | Start all services (Client IDE and Server API) |
+| `pnpm build` | Build all packages |
+| `pnpm test:e2e` | Run End-to-End tests (Playwright) |
+| `pnpm test:unit` | Run unit tests |
+| `pnpm validate` | Run all checks (format, lint, type-check) |
+| `pnpm validate:agents` | Validate 501 agent configurations |
+| `pnpm health` | Project health check |
 
-# Code Quality
-pnpm lint                   # Lint all packages
-pnpm format                 # Format code
-pnpm type-check            # TypeScript check
-pnpm validate              # Run all checks
+---
 
-# Validation
-pnpm validate:skills       # Validate 15 skills
-pnpm validate:agents       # Validate 501 agents
-pnpm health                # Project health check
+## 🔒 Security Features
 
-# Database
-cd apps/client && pnpm db:studio    # Drizzle Studio
-cd apps/server && pnpm prisma:studio # Prisma Studio
+The platform is designed with security in mind, especially for credential management:
 
-# Packaging
-cd apps/client
-pnpm package               # Package app
-pnpm make                  # Create installers
-```
-
-## 🧪 Testing
-
-```bash
-# Run all tests
-pnpm test
-
-# E2E tests (74+ specs)
-pnpm test:e2e
-
-# Unit tests
-pnpm test:unit
-
-# Validate project
-pnpm validate:skills       # ✅ 15 skills
-pnpm validate:agents       # ✅ 501 agents
-pnpm health                # ✅ 7/7 systems
-```
-
-## 📦 Building & Packaging
-
-```bash
-# Build for production
-pnpm build
-
-# Package Electron app
-cd apps/client
-pnpm package
-
-# Create installers
-pnpm make
-
-# Supported platforms
-# - Windows: x64, arm64 (.exe via Squirrel)
-# - macOS: x64, arm64 (.dmg, .zip with code signing)
-# - Linux: x64 (.deb, .rpm, AppImage)
-```
-
-## 🔒 Security
-
-This project follows security best practices for Electron desktop applications:
-
-- ✅ Context isolation enabled
-- ✅ Node integration disabled
-- ✅ Security fuses enabled
-- ✅ AES-256-GCM credential encryption
-- ✅ Path traversal protection
-- ✅ Symlink loop detection
-- ✅ Comprehensive security documentation
+- ✅ **AES-256-GCM** encryption for API credentials
+- ✅ **JWT** authentication for API access
+- ✅ **Input validation** with Zod schemas
+- ✅ **Rate limiting** on sensitive endpoints
+- ✅ **Context isolation** in the Electron client
+- ✅ **Path traversal** and **Symlink loop** protection
 
 See [SECURITY.md](./docs/SECURITY.md) for detailed guidelines.
 
-To report security vulnerabilities, see [.github/SECURITY.md](./.github/SECURITY.md).
+---
 
-## 🗺️ Roadmap
+## 🗺️ Implementation Roadmap
 
-### ✅ Phase 0-1: Core Features (Complete)
-- Core skill management with versioning
-- 501 agent template library
-- Multi-provider AI integration (7 providers)
-- Encrypted credential management
-- SQLite + Drizzle ORM
-- Electron desktop packaging
-- Monaco editor integration
-- 74+ E2E tests
-- Security hardening
+| Phase | Status | Key Milestones |
+| :--- | :--- | :--- |
+| **Phase 1** | ✅ Complete | Core skill management, 501 agent library, Multi-provider AI, SQLite + Drizzle, Electron packaging. |
+| **Phase 2** | 🔄 Current | REST API v1 with OpenAPI spec, Comprehensive design documentation, **PostgreSQL + Redis migration**, **CI/CD automation**, Cloud synchronization. |
+| **Phase 3** | 📅 Planned | Multi-user authentication, Advanced skill organization, Observability dashboard, Automated backups. |
+| **Phase 4** | 📅 Future | Cloud sync for skills, Skill marketplace, Advanced access controls, Enterprise features. |
 
-### 🚀 Phase 2: API & Infrastructure (Current)
-- ✅ REST API v1 with OpenAPI spec
-- ✅ Automation and validation scripts
-- ✅ Security documentation
-- ⏳ PostgreSQL + Redis migration
-- ⏳ CI/CD automation
-- ⏳ Cloud synchronization
-
-### 📅 Phase 3: UX & Security Polish
-- Multi-user authentication
-- Advanced skill organization
-- Observability dashboard
-- Automated backups
-
-### 📅 Phase 4: Collaboration & Distribution
-- Cloud sync for skills
-- Skill marketplace
-- Team collaboration
-- Public gallery
-
-See [roadmap.md](./docs/roadmap.md) for detailed timeline.
-
-## 📊 Project Stats
-
-- **Agents**: 501 pre-configured templates
-- **Skills**: 15 categories with documentation
-- **Tests**: 74+ E2E specifications
-- **API Endpoints**: 20+ REST endpoints
-- **Security Issues Fixed**: 16 (all critical resolved)
-- **Documentation**: 10+ KB security guides
-- **Tech Stack**: TypeScript 5.8, Next.js 15, React 19, Electron 38
+---
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for:
-
-- Development setup
-- Code standards
-- Testing guidelines
-- Pull request process
-- Security considerations
+We welcome contributions! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for development setup, code standards, and the pull request process.
 
 ## 📄 License
 
 MIT License - see [LICENSE](./LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Built with [Electron](https://www.electronjs.org/)
-- Powered by [Next.js](https://nextjs.org/) and [React](https://react.dev/)
-- AI integration via [Vercel AI SDK](https://sdk.vercel.ai/)
-- Code editing with [Monaco Editor](https://microsoft.github.io/monaco-editor/)
-
-## 📞 Support
-
-- 📖 [Documentation](./docs/)
-- 🐛 [Issue Tracker](https://github.com/bl1nk-org/bl1nk-skill-platform/issues)
-- 💬 [Discussions](https://github.com/bl1nk-org/bl1nk-skill-platform/discussions)
-- 🔒 [Security Policy](./.github/SECURITY.md)
-
----
 
 **Made with ❤️ by the bl1nk team**

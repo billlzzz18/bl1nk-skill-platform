@@ -1,6 +1,6 @@
-import { prisma } from '../db/client'
-import { encrypt, decrypt, encryptJson, decryptJson } from './encryption.service'
-import { logger } from '../utils/logger'
+import { prisma } from '../db/client.js'
+import { encrypt, decrypt, encryptJson, decryptJson } from './encryption.service.js'
+import { logger } from '../utils/logger.js'
 import type { BedrockCredentials, OpenRouterCredentials, Provider } from '@claude-builder/shared'
 
 /**

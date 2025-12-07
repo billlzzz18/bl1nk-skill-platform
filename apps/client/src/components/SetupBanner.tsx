@@ -29,7 +29,7 @@ import { usePostHog } from "posthog-js/react";
 import { useLanguageModelProviders } from "@/hooks/useLanguageModelProviders";
 import { useScrollAndNavigateTo } from "@/hooks/useScrollAndNavigateTo";
 // @ts-ignore
-import logo from "../../assets/logo.svg";
+// import logo from "../../assets/logo.svg";
 import { OnboardingBanner } from "./home/OnboardingBanner";
 import { showError } from "@/lib/toast";
 import { useSettings } from "@/hooks/useSettings";
@@ -347,7 +347,7 @@ export function SetupBanner() {
                 onClick={handleDyadProSetupClick}
                 tabIndex={isNodeSetupComplete ? 0 : -1}
                 leadingIcon={
-                  <img src={logo} alt="bl1nk Logo" className="w-6 h-6 mr-0.5" />
+                  <div className="w-6 h-6 mr-0.5 bg-blue-600 rounded flex items-center justify-center text-white text-xs font-bold">B</div>
                 }
                 title="Setup bl1nk Pro"
                 subtitle="Access all AI models with one plan"
@@ -387,7 +387,7 @@ export function SetupBanner() {
 
 function NodeJsHelpCallout() {
   return (
-    <div className="mt-3 p-3 bg-(--background-lighter) border rounded-lg text-sm">
+    <div className="mt-3 p-3 bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg text-sm">
       <p>
         If you run into issues, read our{" "}
         <a

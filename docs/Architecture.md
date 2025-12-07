@@ -89,8 +89,8 @@
 6. `pnpm publish` - Publish to GitHub releases.
 
 **Database Migrations**:
-- Drizzle: `pnpm --filter @claude-builder/client db:generate && db:push`
-- Prisma: `pnpm --filter @claude-builder/server prisma:migrate`
+- Drizzle: `pnpm --filter bl1nk-skill-ide db:generate && db:push`
+- Prisma: `pnpm --filter bl1nk-skill-builder-server prisma:migrate`
 
 **Platform Support**:
 - Windows: x64, arm64 (.exe via Squirrel)

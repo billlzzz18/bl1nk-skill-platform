@@ -2,11 +2,11 @@ import { initTRPC, TRPCError } from '@trpc/server'
 import { z } from 'zod'
 import { BedrockRuntimeClient, InvokeModelCommand } from '@aws-sdk/client-bedrock-runtime'
 import axios from 'axios'
-import { Context } from '../context'
-import { credentialService } from '../services/credential.service'
-import { settingsService } from '../services/settings.service'
-import { logger } from '../utils/logger'
-import { handleError } from '../utils/errors'
+import { Context } from '../context.js'
+import { credentialService } from '../services/credential.service.js'
+import { settingsService } from '../services/settings.service.js'
+import { logger } from '../utils/logger.js'
+import { handleError } from '../utils/errors.js'
 
 const t = initTRPC.context<Context>().create()
 

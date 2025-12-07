@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "commonjs",
-    "lib": ["ES2020", "DOM"],
+    "target": "ES2022",
+    "module": "NodeNext",
+    "lib": ["ES2022", "DOM"],
     "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
@@ -10,15 +10,24 @@
     "skipDefaultLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "@claude-builder/shared": ["../../packages/shared/src"],
-      "@claude-builder/shared/*": ["../../packages/shared/src/*"]
+      "@claude-builder/shared/*": ["../../packages/shared/src/*"],
+      "sdk": ["../../specs/main/generated/sdk/index.ts"]
     },
-    "noEmit": false
+    "noEmit": false,
+    "noImplicitAny": false,
+    "useUnknownInCatchVariables": false
   },
   "include": ["src/**/*", "../../packages/shared/src/**/*"],
-  "exclude": ["node_modules", "dist", "../../node_modules/sdk/apis/index.ts"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "../../node_modules/sdk/apis/index.ts",
+    "src/**/__tests__/**",
+    "**/*.test.ts"
+  ]
 }

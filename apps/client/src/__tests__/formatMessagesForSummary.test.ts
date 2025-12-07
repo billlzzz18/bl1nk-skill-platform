@@ -1,4 +1,17 @@
+import { vi } from "vitest";
 import { formatMessagesForSummary } from "../ipc/handlers/chat_stream_handlers";
+
+// Mock electron-log
+vi.mock("electron-log", () => ({
+  default: {
+    scope: vi.fn(() => ({
+      log: vi.fn(),
+      error: vi.fn(),
+      warn: vi.fn(),
+      info: vi.fn(),
+    })),
+  },
+}));
 
 describe("formatMessagesForSummary", () => {
   it("should return all messages when there are 8 or fewer messages", () => {

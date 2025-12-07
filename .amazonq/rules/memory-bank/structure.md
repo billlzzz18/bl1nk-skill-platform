@@ -2,361 +2,357 @@
 
 ## Repository Organization
 
-### Monorepo Architecture
-This is a **pnpm workspace monorepo** with three main workspaces:
-- `apps/client` - Electron + Next.js frontend
-- `apps/server` - Node.js + tRPC backend
-- `packages/shared` - Shared types and utilities
-
-## Directory Structure
+This is a **pnpm monorepo** with a clear separation between client (desktop IDE), server (API), and shared packages.
 
 ```
-claude-skill-builder/
-├── apps/
-│   ├── client/              # Electron + Next.js frontend application
-│   │   ├── src/             # Source code
-│   │   │   ├── components/  # React components
-│   │   │   ├── ipc/         # IPC handlers and utilities
-│   │   │   ├── routes/      # Next.js routes
-│   │   │   └── stores/      # Jotai state management
-│   │   ├── assets/          # Static assets
-│   │   ├── drizzle/         # Database migrations
-│   │   ├── public/          # Public static files
-│   │   ├── workers/         # Web workers
-│   │   └── forge.config.ts  # Electron Forge configuration
-│   │
-│   └── server/              # Backend API server
-│       ├── src/             # Server source code
-│       │   ├── routers/     # tRPC routers
-│       │   └── index.ts     # Server entry point
-│       └── prisma/          # Prisma schema and migrations
-│
-├── packages/
-│   ├── shared/              # Shared code between client/server
-│   │   ├── src/             # Shared utilities
-│   │   ├── api.ts           # API types
-│   │   ├── tools.ts         # Tool definitions
-│   │   └── ExtensionMessage.ts  # Message types
-│   │
-│   └── benchmark/           # Performance benchmarking
-│
-├── skill/                   # Skill templates and definitions
-│   ├── algorithmic-art/     # Algorithmic art generation skill
-│   ├── brand-guidelines/    # Brand guideline creation
-│   ├── canvas-design/       # Canvas design skill
-│   ├── document-skills/     # Document processing (PDF, DOCX, XLSX, PPTX)
-│   ├── frontend-design/     # Frontend design skill
-│   ├── internal-comms/      # Internal communications
-│   ├── mcp-builder/         # MCP server builder skill
-│   ├── notion-knowledge-capture/  # Notion integration
-│   ├── skill-creator/       # Meta-skill for creating skills
-│   ├── slack-gif-creator/   # Slack GIF generation
-│   ├── template-skill/      # Template for new skills
-│   ├── theme-factory/       # Theme generation
-│   ├── webapp-testing/      # Web app testing skill
-│   └── web-artifacts-builder/  # Web artifact generation
-│
-├── agents/                  # 500+ agent JSON configurations
-│   ├── [agent-name].json    # Individual agent definitions
-│   └── ...                  # (500+ files)
-│
-├── scripts/                 # Build and utility scripts
-│   ├── builders/            # Agent builder scripts
-│   ├── commands/            # CLI commands
-│   ├── validators/          # Validation scripts
-│   │   ├── validate-skills.js
-│   │   └── validate-agents.js
-│   └── health-check.js      # Project health monitoring
-│
-├── specs/                   # Specifications and contracts
-│   ├── 001-skill-builder-core/  # Core feature spec
-│   ├── 002-skill-ide-core/      # IDE feature spec
-│   └── main/
-│       ├── openapi.yaml     # OpenAPI contract
-│       └── generated/       # Generated code from specs
-│
-├── __tests__/               # Test suites
-│   ├── e2e/                 # Playwright E2E tests (80+ specs)
-│   │   ├── fixtures/        # Test fixtures
-│   │   ├── helpers/         # Test helpers
-│   │   └── *.spec.ts        # Test specifications
-│   └── unit/                # Unit tests
-│
-├── docs/                    # Documentation
-│   ├── Architecture.md      # Architecture documentation
-│   ├── roadmap.md           # Project roadmap
-│   └── TERMS_OF_SERVICE.md  # Legal documents
-│
-├── .amazonq/                # Amazon Q AI rules
-│   └── rules/
-│       ├── memory-bank/     # Memory bank documentation
-│       ├── autotasks.md     # Automation rules
-│       ├── docgen.md        # Documentation generation
-│       └── file-organize.md # File organization rules
-│
-├── .claude/                 # Claude AI configuration
-│   ├── commands/            # Custom Claude commands
-│   └── settings.local.json  # Local settings
-│
-├── .cursor/                 # Cursor IDE configuration
-│   └── rules/               # Cursor-specific rules
-│
-├── .github/                 # GitHub configuration
-│   ├── workflows/           # CI/CD workflows (planned)
-│   └── instructions/        # GitHub-specific instructions
-│
-├── .specify/                # Specification templates
-│   ├── memory/              # Memory templates
-│   ├── scripts/             # Specification scripts
-│   └── templates/           # Document templates
-│
-├── workers/                 # Worker scripts
-│   ├── tsc/                 # TypeScript compiler worker
-│   ├── proxy_server.js      # Proxy server
-│   └── component-selector-client.js
-│
-└── logs/                    # Application logs
-    └── openai/              # OpenAI API logs
+bl1nk-skill-platform/
+├── apps/                      # Application packages
+│   ├── client/               # Electron desktop IDE
+│   └── server/               # Express/tRPC API server
+├── packages/                  # Shared packages
+│   └── shared/               # Common utilities and types
+├── agents/                    # 501 pre-built agent definitions
+├── skill/                     # 30+ skill templates
+├── scripts/                   # Build and validation scripts
+├── docs/                      # Documentation (EN/TH)
+├── specs/                     # Technical specifications
+└── __tests__/                # E2E test suites
 ```
 
-## Core Components
+## Core Directories
 
-### 1. Client Application (apps/client)
+### `/apps/client` - Desktop IDE (Electron)
 
-#### Source Structure
+The main user-facing application built with Electron, React, and Next.js.
+
 ```
-src/
-├── components/              # React UI components
-│   ├── ui/                  # Reusable UI components (Radix UI)
-│   ├── skill/               # Skill-specific components
-│   ├── agent/               # Agent management components
-│   └── editor/              # Monaco editor components
-│
-├── ipc/                     # Inter-Process Communication
-│   ├── handlers/            # IPC message handlers
-│   └── utils/               # IPC utilities
-│       ├── lm_studio_utils.ts
-│       └── replacePromptReference.ts
-│
-├── routes/                  # Next.js routing
-│   ├── root.tsx             # Root layout
-│   └── [feature]/           # Feature-specific routes
-│
-├── stores/                  # State management (Jotai)
-│   ├── skillStore.ts        # Skill state
-│   ├── agentStore.ts        # Agent state
-│   └── credentialStore.ts   # Credential state
-│
-└── lib/                     # Utility libraries
-    ├── db.ts                # Database client
-    ├── ai.ts                # AI provider integrations
-    └── utils.ts             # General utilities
+apps/client/
+├── src/
+│   ├── components/           # React UI components
+│   │   ├── preview_panel/   # Preview and security panels
+│   │   ├── editor/          # Monaco editor integration
+│   │   └── ui/              # Reusable UI components (Radix)
+│   ├── ipc/                 # Electron IPC handlers
+│   │   ├── handlers/        # Main process handlers
+│   │   └── processors/      # Response processors
+│   ├── utils/               # Utility functions
+│   │   ├── codebase.ts     # Codebase analysis
+│   │   └── ai/             # AI provider integrations
+│   ├── __tests__/          # Unit tests (Vitest)
+│   └── workers/            # Web workers for background tasks
+├── drizzle/                # Database migrations
+├── assets/                 # Static assets
+├── forge.config.ts         # Electron Forge configuration
+├── vite.*.config.mts       # Vite configurations (main/renderer/preload)
+└── vitest.config.ts        # Vitest test configuration
 ```
 
-#### Key Technologies
-- **Electron**: Desktop application framework
-- **Next.js 15**: React framework with App Router
-- **React 19**: UI library
-- **Jotai**: Atomic state management
-- **TanStack Query**: Server state management
-- **Drizzle ORM**: Database operations
-- **Monaco Editor**: Code editor
-- **Radix UI**: Accessible component primitives
-- **Tailwind CSS**: Styling
+**Key Technologies**:
+- Electron 38.2 for desktop app framework
+- React 19 + Next.js 15 for UI
+- Monaco Editor for code editing
+- Jotai for state management
+- TanStack Query for data fetching
+- Drizzle ORM + better-sqlite3 for local database
+- Tailwind CSS 4 for styling
 
-### 2. Server Application (apps/server)
+### `/apps/server` - API Server
 
-#### Structure
+Backend API server (currently in design phase, transitioning to implementation).
+
 ```
-src/
-├── routers/                 # tRPC routers
-│   ├── skill.ts             # Skill CRUD operations
-│   ├── credential.ts        # Credential management
-│   └── index.ts             # Router aggregation
-│
-├── services/                # Business logic
-│   ├── skillService.ts      # Skill operations
-│   └── credentialService.ts # Credential operations
-│
-└── index.ts                 # Server entry point
+apps/server/
+├── src/
+│   ├── routes/             # API route handlers
+│   ├── services/           # Business logic
+│   ├── middleware/         # Express middleware
+│   └── index.ts           # Server entry point
+├── prisma/                # Prisma schema and migrations
+└── package.json
 ```
 
-#### Key Technologies
-- **tRPC**: Type-safe API layer
-- **Prisma**: Database ORM
-- **Express**: HTTP server
-- **Zod**: Schema validation
-- **AWS SDK**: Bedrock integration
+**Key Technologies**:
+- Express.js for HTTP server
+- tRPC for type-safe APIs
+- Prisma for database ORM
+- PostgreSQL (Phase 2 target)
+- Redis for caching
+- Zod for validation
 
-### 3. Shared Package (packages/shared)
+### `/packages/shared` - Shared Code
 
-#### Purpose
-Shared types, utilities, and constants used by both client and server.
+Common utilities, types, and logic shared between client and server.
 
-#### Key Files
-- `api.ts` - API type definitions
-- `tools.ts` - Tool definitions for MCP
-- `ExtensionMessage.ts` - IPC message types
-- `context-mentions.ts` - Context handling
-- `language.ts` - Internationalization
-- `mcp.ts` - Model Context Protocol utilities
-
-## Data Architecture
-
-### Database Schema (SQLite + Drizzle)
-
-#### Core Tables
-1. **Skill**
-   - id, name, description, content, metadata
-   - Created/updated timestamps
-   - User associations
-
-2. **SkillVersion**
-   - id, skillId, version, content, metadata
-   - Snapshot of skill at specific point in time
-   - Restore capability
-
-3. **ApiCredential**
-   - id, provider, credentials (encrypted), config
-   - Active status, created/updated timestamps
-   - Provider-specific settings
-
-4. **TestMessage**
-   - id, conversationId, role, content, timestamp
-   - Ephemeral chat history for testing
-
-5. **AppSettings**
-   - key, value pairs
-   - Application configuration storage
-
-### Relationships
 ```
-Skill (1) ──→ (N) SkillVersion
-User (1) ──→ (N) Skill
-User (1) ──→ (N) ApiCredential
+packages/shared/
+├── src/                   # TypeScript source
+├── utils/                 # Utility functions
+├── api.ts                # API client utilities
+├── context-mentions.ts   # Context handling
+├── mcp.ts                # MCP protocol utilities
+├── tools.ts              # Tool definitions
+└── ExtensionMessage.ts   # Message types
 ```
 
-## Skill System Architecture
+**Exports**:
+- Type definitions for agents, skills, providers
+- API request/response utilities
+- Validation schemas
+- Common constants
 
-### Skill Definition Format
-Each skill is a directory containing:
-- `SKILL.md` - Skill documentation and instructions
-- `LICENSE.txt` - License information
-- Additional resources (templates, scripts, examples)
+### `/agents` - Agent Library
 
-### Agent Configuration Format
-JSON files with structure:
+501 pre-configured AI agents organized by category.
+
+```
+agents/
+├── business/             # 35+ business agents
+├── creative/             # 48+ creative agents
+├── data/                 # 50+ data analysis agents
+├── development/          # 150+ development agents
+├── education/            # 60+ education agents
+├── writing/              # 100+ writing agents
+└── other/                # 58+ specialized agents
+```
+
+**Agent Structure** (JSON):
 ```json
 {
-  "author": "string",
-  "identifier": "string",
+  "author": "agent-creator",
+  "identifier": "unique-id",
   "meta": {
-    "title": "string",
-    "description": "string",
-    "tags": ["array"]
+    "title": "Agent Name",
+    "description": "What this agent does",
+    "tags": ["category", "feature"]
   },
-  "systemRole": "string"
+  "systemRole": "Detailed instructions for the agent..."
 }
 ```
 
-## Build & Deployment Architecture
+### `/skill` - Skill Templates
 
-### Build System
-- **pnpm workspaces**: Monorepo management
-- **Electron Forge**: Desktop app packaging
-- **Vite**: Fast build tool
-- **TypeScript**: Type safety across all packages
+30+ reusable skill templates for common AI development tasks.
 
-### Build Outputs
-- `apps/client/.vite/` - Electron build artifacts
-- `apps/client/.next/` - Next.js build
-- `apps/server/dist/` - Compiled server code
-- `out/` - Packaged Electron applications
-
-### Deployment Targets
-1. **Desktop**: Windows, macOS, Linux installers
-2. **Docker**: Containerized deployment (planned)
-3. **AWS**: Cloud infrastructure (planned)
-
-## Testing Architecture
-
-### E2E Tests (Playwright)
-80+ test specifications covering:
-- Skill creation and management
-- Agent configuration
-- Provider integration
-- Context management
-- File operations
-- UI interactions
-
-### Test Organization
 ```
-__tests__/e2e/
-├── fixtures/                # Test data and fixtures
-├── helpers/                 # Test utilities
-├── snapshots/               # Visual regression snapshots
-└── *.spec.ts                # Test specifications
+skill/
+├── mcp-builder/          # MCP server creation
+├── file-organizer/       # File organization automation
+├── canvas-design/        # Design system creation
+├── web-artifacts-builder/ # Web component builder
+├── skill-creator/        # Meta-skill for creating skills
+└── template-skill/       # Base template
 ```
 
-## Configuration Files
+**Skill Structure**:
+- `SKILL.md` - Main documentation and instructions
+- `LICENSE.txt` - Licensing information
+- `scripts/` - Helper scripts (optional)
+- `templates/` - Code templates (optional)
+- `examples/` - Usage examples (optional)
 
-### Root Level
-- `package.json` - Workspace configuration
-- `pnpm-workspace.yaml` - Workspace definitions
-- `docker-compose.yml` - Docker services
-- `.env` - Environment variables
-- `.prettierrc` - Code formatting
-- `.lintstagedrc.json` - Pre-commit hooks
+### `/scripts` - Automation Scripts
 
-### Client Level
-- `forge.config.ts` - Electron Forge configuration
-- `next.config.js` - Next.js configuration
-- `tailwind.config.js` - Tailwind CSS configuration
-- `drizzle.config.ts` - Database configuration
-- `vite.*.config.mts` - Vite configurations (main, renderer, preload, worker)
+Build, validation, and maintenance scripts.
 
-### Server Level
-- `prisma/schema.prisma` - Database schema
-- `tsconfig.json` - TypeScript configuration
+```
+scripts/
+├── validators/           # Validation scripts
+│   ├── validate-agents.js    # Validate 501 agents
+│   └── validate-skills.js    # Validate skill structure
+├── builders/             # Build utilities
+├── formatters/           # Code formatters
+├── parsers/              # Data parsers
+└── health-check.js       # Project health monitoring
+```
+
+### `/docs` - Documentation
+
+Comprehensive documentation in English and Thai.
+
+```
+docs/
+├── en/                   # English documentation
+│   ├── 00_overview/
+│   ├── 01_architecture/
+│   ├── 02_api/
+│   ├── 03_database/
+│   ├── 04_deployment/
+│   ├── 05_adrs/         # Architecture Decision Records
+│   ├── 06_guides/
+│   └── 07_references/
+├── th/                   # Thai documentation (mirror structure)
+├── Architecture.md
+├── SECURITY.md
+└── roadmap.md
+```
+
+### `/specs` - Technical Specifications
+
+Detailed specifications for features and APIs.
+
+```
+specs/
+├── 000-bl1nk-core-logic/     # Core logic spec
+├── 001-skill-builder-core/   # Skill builder spec
+│   ├── spec.md
+│   ├── plan.md
+│   ├── tasks.md
+│   └── checklists/
+├── 002-skill-ide-core/       # IDE spec
+└── main/                     # Main API specification
+    ├── openapi.yaml          # OpenAPI 3.1 spec (68 endpoints)
+    └── plan.md
+```
+
+### `/__tests__` - E2E Tests
+
+Playwright-based end-to-end tests.
+
+```
+__tests__/
+└── e2e/
+    ├── apps/             # App-level tests
+    ├── chat/             # Chat functionality tests
+    ├── context/          # Context handling tests
+    ├── editing/          # Editor tests
+    ├── integrations/     # Integration tests
+    ├── providers/        # LLM provider tests
+    ├── ui/               # UI component tests
+    ├── fixtures/         # Test fixtures
+    ├── helpers/          # Test utilities
+    └── setup/            # Test setup
+```
 
 ## Architectural Patterns
 
-### Frontend Patterns
-- **Component Composition**: Radix UI primitives + custom components
-- **Atomic State**: Jotai atoms for granular state management
-- **Server State**: TanStack Query for API data
-- **IPC Communication**: Electron IPC for main/renderer communication
+### 1. **Monorepo with Workspaces**
+- pnpm workspaces for dependency management
+- Shared packages via `workspace:*` protocol
+- Independent versioning per package
+- Parallel development and testing
 
-### Backend Patterns
-- **tRPC Procedures**: Type-safe API endpoints
-- **Service Layer**: Business logic separation
-- **Repository Pattern**: Database access abstraction
-- **Validation Layer**: Zod schemas for input validation
+### 2. **Client-Server Separation**
+- Desktop client (Electron) for UI and local operations
+- API server for backend logic and data persistence
+- Shared types and utilities via `/packages/shared`
+- IPC for client-server communication in Electron
 
-### Data Flow
+### 3. **Database Strategy**
+- **Phase 1**: SQLite with Drizzle ORM (client-side)
+- **Phase 2**: PostgreSQL with Prisma (server-side)
+- Migration path defined for data portability
+
+### 4. **State Management**
+- Jotai atoms for global state
+- TanStack Query for server state
+- Zustand for complex state machines
+- React Context for component-level state
+
+### 5. **Type Safety**
+- TypeScript throughout
+- Zod schemas for runtime validation
+- tRPC for type-safe APIs
+- Shared types in `/packages/shared`
+
+### 6. **Testing Strategy**
+- **Unit Tests**: Vitest for component and utility testing
+- **E2E Tests**: Playwright for full application flows
+- **API Tests**: SuperTest for server endpoints
+- **Validation**: Custom scripts for agents and skills
+
+### 7. **Security Architecture**
+- Credential encryption (AES-256-GCM)
+- Context isolation in Electron
+- Input validation at all boundaries
+- Rate limiting on sensitive operations
+- Path traversal protection
+
+## Key Configuration Files
+
+### Root Level
+- `pnpm-workspace.yaml` - Workspace configuration
+- `package.json` - Root scripts and dependencies
+- `.eslintrc.json` - ESLint configuration
+- `.prettierrc` - Code formatting rules
+- `playwright.config.ts` - E2E test configuration
+- `docker-compose.yml` - PostgreSQL and Redis services
+
+### Client (`apps/client`)
+- `forge.config.ts` - Electron Forge configuration
+- `vite.main.config.mts` - Main process Vite config
+- `vite.renderer.config.mts` - Renderer process Vite config
+- `vite.preload.config.mts` - Preload script Vite config
+- `vitest.config.ts` - Unit test configuration
+- `drizzle.config.ts` - Database configuration
+- `tsconfig.json` - TypeScript configuration
+
+### Server (`apps/server`)
+- `tsconfig.json` - TypeScript configuration
+- `prisma/schema.prisma` - Database schema (Phase 2)
+
+## Module Relationships
+
 ```
-UI Component → Jotai Atom → tRPC Client → tRPC Router → Service → Database
-                                                      ↓
-                                                  External API
+┌─────────────────────────────────────────────────┐
+│                  Desktop IDE                     │
+│              (apps/client)                       │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐      │
+│  │   UI     │  │  Editor  │  │ Preview  │      │
+│  └────┬─────┘  └────┬─────┘  └────┬─────┘      │
+│       │             │              │             │
+│       └─────────────┴──────────────┘             │
+│                     │                            │
+│              ┌──────▼──────┐                     │
+│              │  IPC Layer  │                     │
+│              └──────┬──────┘                     │
+│                     │                            │
+│              ┌──────▼──────┐                     │
+│              │   SQLite    │                     │
+│              └─────────────┘                     │
+└─────────────────────────────────────────────────┘
+                      │
+                      │ (Future: REST API)
+                      ▼
+┌─────────────────────────────────────────────────┐
+│                  API Server                      │
+│              (apps/server)                       │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐      │
+│  │  Routes  │  │ Services │  │   Auth   │      │
+│  └────┬─────┘  └────┬─────┘  └────┬─────┘      │
+│       │             │              │             │
+│       └─────────────┴──────────────┘             │
+│                     │                            │
+│              ┌──────▼──────┐                     │
+│              │ PostgreSQL  │                     │
+│              └─────────────┘                     │
+└─────────────────────────────────────────────────┘
 ```
 
-## Integration Points
+## Data Flow
 
-### External Services
-- AWS Bedrock (Claude, Titan models)
-- OpenRouter (Multi-provider LLM access)
-- Anthropic API (Direct Claude access)
-- OpenAI API (GPT models)
-- Google AI (Gemini models)
+1. **User Interaction** → React Components
+2. **State Update** → Jotai/Zustand
+3. **IPC Call** → Electron Main Process
+4. **Business Logic** → IPC Handlers
+5. **Database Operation** → Drizzle ORM → SQLite
+6. **AI Provider Call** → Provider SDK → LLM API
+7. **Response Processing** → Response Processor
+8. **UI Update** → React Re-render
 
-### Local Services
-- LM Studio (Local LLM server)
-- Ollama (Local model management)
-- PostgreSQL (Planned)
-- Redis (Planned)
+## Build Process
 
-### File System
-- Skill templates (read/write)
-- Agent configurations (read/write)
-- User data (SQLite database)
-- Logs and cache
+1. **Development**: `pnpm dev` - Starts all services in parallel
+2. **Type Check**: `pnpm type-check` - Validates TypeScript across workspaces
+3. **Lint**: `pnpm lint` - Runs ESLint on all packages
+4. **Format**: `pnpm format` - Applies Prettier formatting
+5. **Test**: `pnpm test:unit` + `pnpm test:e2e` - Runs all tests
+6. **Build**: `pnpm build` - Builds all packages
+7. **Package**: Electron Forge packages the desktop app
+
+## Deployment Strategy
+
+- **Desktop App**: Electron Forge → Platform-specific installers (DMG, EXE, DEB, RPM)
+- **Auto-Updates**: update-electron-app for seamless updates
+- **Server**: Docker containers → Cloud deployment (AWS/GCP/Azure)
+- **Database**: Managed PostgreSQL (Neon, Supabase, or self-hosted)
+- **CI/CD**: GitHub Actions for automated builds and tests

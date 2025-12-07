@@ -15,7 +15,7 @@ import {
 import fs from "node:fs";
 import git from "isomorphic-git";
 import { db } from "../db";
-import { cleanFullResponse } from "@/ipc/utils/cleanFullResponse";
+import { cleanFullResponse } from "../ipc/utils/cleanFullResponse";
 
 // Mock fs with default export
 vi.mock("node:fs", async () => {

@@ -66,7 +66,7 @@ describe("readSettings", () => {
             "name": "auto",
             "provider": "auto",
           },
-          "selectedTemplateId": "react",
+          "selectedTemplateId": "default",
           "telemetryConsent": "unset",
           "telemetryUserId": "[scrubbed]",
         }
@@ -312,7 +312,7 @@ describe("readSettings", () => {
             "name": "auto",
             "provider": "auto",
           },
-          "selectedTemplateId": "react",
+          "selectedTemplateId": "default",
           "telemetryConsent": "unset",
           "telemetryUserId": "[scrubbed]",
         }

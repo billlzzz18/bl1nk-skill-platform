@@ -47,6 +47,8 @@
     "src/trpc/provider.tsx",
     "src/stores/*.ts",
     "src/lib/utils.ts",
+    "src/routes/**/*.ts",
+    "src/routes/**/*.tsx",
     "../server/src/routers/_app.ts",
     "../../packages/shared/src/**/*.ts"
   ],

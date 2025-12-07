@@ -2,10 +2,10 @@ import { Router, Request, Response } from 'express'
 import rateLimit from 'express-rate-limit'
 import { z } from 'zod'
 import { PrismaClient } from '@prisma/client'
-import { logger } from '../utils/logger'
-import { NotFoundError } from '../utils/errors'
+import { logger } from '../utils/logger.js'
+import { NotFoundError } from '../utils/errors.js'
 import { ResponseError } from 'sdk'
-import { getBl1nkClient, CLOUD_WORKSPACE_ID } from '../services/bl1nkCloud.client'
+import { getBl1nkClient, CLOUD_WORKSPACE_ID } from '../services/bl1nkCloud.client.js'
 
 const router = Router()
 const prisma = new PrismaClient()
@@ -114,7 +114,7 @@ router.get('/auth/me', authRateLimiter, async (req: Request, res: Response) => {
   }
 })
 
-// ... (โค้ดข้างบน)
+
 // GET /v1/skills - List skills
 router.get('/skills', async (req: Request, res: Response) => {
   try {
@@ -138,15 +138,13 @@ router.get('/skills', async (req: Request, res: Response) => {
         const response = await client.skills.workspacesWorkspaceIdSkillsGet({
           workspaceId,
           search,
-          perPage, // ✅ ถูกต้อง
-          page, // ✅ ถูกต้อง
-          // ลบ sortBy และ sortOrder ออกเพื่อแก้ Type Error
+          perPage,
+          page,
         })
         
         const items = response.data ?? []
         const meta = response.meta ?? {}
         
-        // แก้ไข: ลบโค้ดที่ซ้ำซ้อนและผิดไวยากรณ์ออก แล้วคำนวณค่าที่จำเป็น
         const perPageMeta = 
           meta.perPage != null && !Number.isNaN(Number(meta.perPage)) ? Number(meta.perPage) : perPage
         const pageMeta = 
@@ -154,8 +152,6 @@ router.get('/skills', async (req: Request, res: Response) => {
         const totalItems =
           meta.totalItems != null && !Number.isNaN(Number(meta.totalItems)) ? Number(meta.totalItems) : items.length
         const calculatedOffset = (pageMeta - 1) * perPageMeta;
-        // ลบโค้ดผิดพลาดในบรรทัด 143-145 (เดิม) ออกไป
-        
         return res.json({
           items,
           total: totalItems,

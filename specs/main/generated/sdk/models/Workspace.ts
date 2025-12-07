@@ -12,14 +12,14 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
-import type { WorkspaceStats } from './WorkspaceStats';
+import { mapValues } from '../runtime.js';
+import type { WorkspaceStats } from './WorkspaceStats.js';
 import {
     WorkspaceStatsFromJSON,
     WorkspaceStatsFromJSONTyped,
     WorkspaceStatsToJSON,
     WorkspaceStatsToJSONTyped,
-} from './WorkspaceStats';
+} from './WorkspaceStats.js';
 
 /**
  * 

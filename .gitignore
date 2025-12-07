@@ -34,6 +34,9 @@ Thumbs.db
 *.swo
 .vscode/
 
+# Git merge conflict artifacts
+*.rej
+
 # Prisma
 prisma/migrations/
 
@@ -44,3 +47,7 @@ logs/
 #Ignore vscode AI rules
 .github\instructions\codacy.instructions.md
 /.codacy-coverage
+
+# Merge conflict artifacts
+*.rej
+*.orig

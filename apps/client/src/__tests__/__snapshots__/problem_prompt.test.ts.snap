@@ -7,12 +7,10 @@ exports[`problem_prompt > createConciseProblemFixPrompt > should format a concis
 \`\`\`
 SNIPPET
 \`\`\`
-
 2. src/components/Modal.tsx:35:20 - Property 'isOpen' does not exist on type 'IntrinsicAttributes & ModalProps'. (TS2339)
 \`\`\`
 SNIPPET
 \`\`\`
-
 
 Please fix all errors in a concise way."
 `;
@@ -24,7 +22,6 @@ exports[`problem_prompt > createConciseProblemFixPrompt > should format a concis
 \`\`\`
 SNIPPET
 \`\`\`
-
 
 Please fix all errors in a concise way."
 `;
@@ -39,7 +36,6 @@ exports[`problem_prompt > createProblemFixPrompt > should format a single error 
 SNIPPET
 \`\`\`
 
-
 Please fix all errors in a concise way."
 `;
 
@@ -50,22 +46,18 @@ exports[`problem_prompt > createProblemFixPrompt > should format multiple errors
 \`\`\`
 SNIPPET
 \`\`\`
-
 2. src/components/Button.tsx:8:12 - Type 'string | undefined' is not assignable to type 'string'. (TS2322)
 \`\`\`
 SNIPPET
 \`\`\`
-
 3. src/hooks/useApi.ts:42:5 - Argument of type 'unknown' is not assignable to parameter of type 'string'. (TS2345)
 \`\`\`
 SNIPPET
 \`\`\`
-
 4. src/utils/helpers.ts:45:8 - Function lacks ending return statement and return type does not include 'undefined'. (TS2366)
 \`\`\`
 SNIPPET
 \`\`\`
-
 
 Please fix all errors in a concise way."
 `;
@@ -77,22 +69,18 @@ exports[`problem_prompt > createProblemFixPrompt > should handle realistic React
 \`\`\`
 SNIPPET
 \`\`\`
-
 2. src/components/UserProfile.tsx:25:15 - Object is possibly 'null'. (TS2531)
 \`\`\`
 SNIPPET
 \`\`\`
-
 3. src/hooks/useLocalStorage.ts:18:12 - Type 'string | null' is not assignable to type 'T'. (TS2322)
 \`\`\`
 SNIPPET
 \`\`\`
-
 4. src/types/api.ts:45:3 - Duplicate identifier 'UserRole'. (TS2300)
 \`\`\`
 SNIPPET
 \`\`\`
-
 
 Please fix all errors in a concise way."
 `;
@@ -106,22 +94,18 @@ exports[`problem_prompt > realistic TypeScript error scenarios > should handle c
 \`\`\`
 SNIPPET
 \`\`\`
-
 2. src/components/SearchInput.tsx:15:45 - Type '(value: string) => void' is not assignable to type 'ChangeEventHandler<HTMLInputElement>'. (TS2322)
 \`\`\`
 SNIPPET
 \`\`\`
-
 3. src/api/userService.ts:8:1 - Function lacks ending return statement and return type does not include 'undefined'. (TS2366)
 \`\`\`
 SNIPPET
 \`\`\`
-
 4. src/utils/dataProcessor.ts:34:25 - Object is possibly 'undefined'. (TS2532)
 \`\`\`
 SNIPPET
 \`\`\`
-
 
 Please fix all errors in a concise way."
 `;
