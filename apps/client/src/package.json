@@ -120,7 +120,7 @@
     "kysely": "latest",
     "lexical": "latest",
     "lexical-beautiful-mentions": "latest",
-    "lucide-react": "^0.454.0",
+    "lucide-react": "^0.554.0",
     "monaco-editor": "latest",
     "mysql2": "latest",
     "net": "latest",
