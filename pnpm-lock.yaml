@@ -15,8 +15,8 @@ importers:
         specifier: '>=0.25.0'
         version: 0.27.1
       hono:
-        specifier: '>=4.11.7'
-        version: 4.11.7
+        specifier: '>=4.10.3'
+        version: 4.10.8
       sdk:
         specifier: file:specs/main/generated/sdk
         version: file:specs/main/generated/sdk
@@ -377,8 +377,8 @@ importers:
         specifier: ^5.22.0
         version: 5.22.0(prisma@5.22.0)
       '@trpc/server':
-        specifier: ^11.0.0
-        version: 11.7.2(typescript@5.9.3)
+        specifier: ^11.8.0
+        version: 11.8.0(typescript@5.9.3)
       axios:
         specifier: ^1.7.0
         version: 1.13.2
@@ -3466,8 +3466,8 @@ packages:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
     engines: {node: '>= 10'}
 
-  '@trpc/server@11.7.2':
-    resolution: {integrity: sha512-AgB26PXY69sckherIhCacKLY49rxE2XP5h38vr/KMZTbLCL1p8IuIoKPjALTcugC2kbyQ7Lbqo2JDVfRSmPmfQ==}
+  '@trpc/server@11.8.0':
+    resolution: {integrity: sha512-DphyQnLuyX2nwJCQGWQ9zYz4hZGvRhSBqDhQ0SH3tDhQ3PU4u68xofA0pJ741Ir4InEAFD+TtJVLAQy+wVOkiQ==}
     peerDependencies:
       typescript: '>=5.7.2'
 
@@ -5614,8 +5614,8 @@ packages:
   lexical@0.38.2:
     resolution: {integrity: sha512-JJmfsG3c4gwBHzUGffbV7ifMNkKAWMCnYE3xJl87gty7hjyV5f3xq7eqTjP5HFYvO4XpjJvvWO2/djHp5S10tw==}
 
-  lib0@0.2.117:
-    resolution: {integrity: sha512-DeXj9X5xDCjgKLU/7RR+/HQEVzuuEUiwldwOGsHK/sfAfELGWEyTcf0x+uOvCvK3O2zPmZePXWL85vtia6GyZw==}
+  lib0@0.2.115:
+    resolution: {integrity: sha512-noaW4yNp6hCjOgDnWWxW0vGXE3kZQI5Kqiwz+jIWXavI9J9WyfJ9zjsbQlQlgjIbHBrvlA/x3TSIXBUJj+0L6g==}
     engines: {node: '>=16'}
     hasBin: true
 
@@ -11225,7 +11225,7 @@ snapshots:
 
   '@tootallnate/once@2.0.0': {}
 
-  '@trpc/server@11.7.2(typescript@5.9.3)':
+  '@trpc/server@11.8.0(typescript@5.9.3)':
     dependencies:
       typescript: 5.9.3
 
@@ -13757,7 +13757,7 @@ snapshots:
 
   lexical@0.38.2: {}
 
-  lib0@0.2.117:
+  lib0@0.2.115:
     dependencies:
       isomorphic.js: 0.2.5
 
@@ -16120,7 +16120,7 @@ snapshots:
 
   yjs@13.6.27:
     dependencies:
-      lib0: 0.2.117
+      lib0: 0.2.115
 
   yocto-queue@0.1.0: {}
 
