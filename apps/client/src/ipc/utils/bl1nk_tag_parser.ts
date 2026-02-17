@@ -9,7 +9,7 @@ export function getBl1nkWriteTags(fullResponse: string): {
   content: string;
   description?: string;
 }[] {
-  const bl1nkWriteRegex = /<bl1nk-write([^>]*)>([\s\S]*?)</bl1nk-write>/gi;
+  const bl1nkWriteRegex = new RegExp('<bl1nk-write([^>]*)>([\\s\\S]*?)</bl1nk-write>', 'gi');
   const pathRegex = /path="([^"]+)"/;
   const descriptionRegex = /description="([^"]+)"/;
 
@@ -51,8 +51,7 @@ export function getBl1nkRenameTags(fullResponse: string): {
   from: string;
   to: string;
 }[] {
-  const bl1nkRenameRegex =
-    /<bl1nk-rename from="([^"]+)" to="([^"]+)"[^>]*>([\s\S]*?)</bl1nk-rename>/g;
+  const bl1nkRenameRegex = new RegExp('<bl1nk-rename from="([^"]+)" to="([^"]+)"[^>]*>([\\s\\S]*?)</bl1nk-rename>', 'g');
   let match;
   const tags: { from: string; to: string }[] = [];
   while ((match = bl1nkRenameRegex.exec(fullResponse)) !== null) {
@@ -65,8 +64,7 @@ export function getBl1nkRenameTags(fullResponse: string): {
 }
 
 export function getBl1nkDeleteTags(fullResponse: string): string[] {
-  const bl1nkDeleteRegex =
-    /<bl1nk-delete path="([^"]+)"[^>]*>([\s\S]*?)</bl1nk-delete>/g;
+  const bl1nkDeleteRegex = new RegExp('<bl1nk-delete path="([^"]+)"[^>]*>([\\s\\S]*?)</bl1nk-delete>', 'g');
   let match;
   const paths: string[] = [];
   while ((match = bl1nkDeleteRegex.exec(fullResponse)) !== null) {
@@ -76,8 +74,7 @@ export function getBl1nkDeleteTags(fullResponse: string): string[] {
 }
 
 export function getBl1nkAddDependencyTags(fullResponse: string): string[] {
-  const bl1nkAddDependencyRegex =
-    /<bl1nk-add-dependency packages="([^"]+)">[^<]*<\/bl1nk-add-dependency>/g;
+  const bl1nkAddDependencyRegex = new RegExp('<bl1nk-add-dependency packages="([^"]+)">[^<]*</bl1nk-add-dependency>', 'g');
   let match;
   const packages: string[] = [];
   while ((match = bl1nkAddDependencyRegex.exec(fullResponse)) !== null) {
@@ -87,8 +84,7 @@ export function getBl1nkAddDependencyTags(fullResponse: string): string[] {
 }
 
 export function getBl1nkChatSummaryTag(fullResponse: string): string | null {
-  const bl1nkChatSummaryRegex =
-    /<bl1nk-chat-summary>([\s\S]*?)</bl1nk-chat-summary>/g;
+  const bl1nkChatSummaryRegex = new RegExp('<bl1nk-chat-summary>([\\s\\S]*?)</bl1nk-chat-summary>', 'g');
   const match = bl1nkChatSummaryRegex.exec(fullResponse);
   if (match && match[1]) {
     return match[1].trim();
@@ -97,8 +93,7 @@ export function getBl1nkChatSummaryTag(fullResponse: string): string | null {
 }
 
 export function getBl1nkExecuteSqlTags(fullResponse: string): SqlQuery[] {
-  const bl1nkExecuteSqlRegex =
-    /<bl1nk-execute-sql([^>]*)>([\s\S]*?)</bl1nk-execute-sql>/g;
+  const bl1nkExecuteSqlRegex = new RegExp('<bl1nk-execute-sql([^>]*)>([\\s\\S]*?)</bl1nk-execute-sql>', 'g');
   const descriptionRegex = /description="([^"]+)"/;
   let match;
   const queries: { content: string; description?: string }[] = [];
@@ -126,8 +121,7 @@ export function getBl1nkExecuteSqlTags(fullResponse: string): SqlQuery[] {
 }
 
 export function getBl1nkCommandTags(fullResponse: string): string[] {
-  const bl1nkCommandRegex =
-    /<bl1nk-command type="([^"]+)"[^>]*></bl1nk-command>/g;
+  const bl1nkCommandRegex = new RegExp('<bl1nk-command type="([^"]+)"[^>]*></bl1nk-command>', 'g');
   let match;
   const commands: string[] = [];
 
@@ -143,8 +137,7 @@ export function getBl1nkSearchReplaceTags(fullResponse: string): {
   content: string;
   description?: string;
 }[] {
-  const bl1nkSearchReplaceRegex =
-    /<bl1nk-search-replace([^>]*)>([\s\S]*?)</bl1nk-search-replace>/gi;
+  const bl1nkSearchReplaceRegex = new RegExp('<bl1nk-search-replace([^>]*)>([\\s\\S]*?)</bl1nk-search-replace>', 'gi');
   const pathRegex = /path="([^"]+)"/;
   const descriptionRegex = /description="([^"]+)"/;
 

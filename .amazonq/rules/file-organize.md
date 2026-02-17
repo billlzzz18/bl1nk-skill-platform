@@ -163,7 +163,7 @@ When a user requests file organization help:
    ## Proposed Structure
    
    ```
-   [Directory]/
+  [Directory]/
    ├── Work/
    │   ├── Projects/
    │   ├── Documents/

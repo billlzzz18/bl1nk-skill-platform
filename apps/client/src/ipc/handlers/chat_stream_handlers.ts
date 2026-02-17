@@ -50,7 +50,7 @@ import * as os from "os";
 import * as crypto from "crypto";
 import { readFile, writeFile, unlink } from "fs/promises";
 import { getMaxTokens, getTemperature } from "../utils/token_utils";
-import { MAX_CHAT_TURNS_IN_CONTEXT } from "@/constants/settings_constants";
+import { MAX_CHAT_TURNS_IN_CONTEXT } from "../../constants/settings_constants";
 import { validateChatContext } from "../utils/context_paths_utils";
 import { GoogleGenerativeAIProviderOptions } from "@ai-sdk/google";
 import { mcpServers } from "../../db/schema";
@@ -61,7 +61,7 @@ import { getExtraProviderOptions } from "../utils/thinking_utils";
 import { safeSend } from "../utils/safe_sender";
 import { cleanFullResponse } from "../utils/cleanFullResponse";
 import { generateProblemReport } from "../processors/tsc";
-import { createProblemFixPrompt } from "@/shared/problem_prompt";
+import { createProblemFixPrompt } from "../../shared/problem_prompt";
 import { AsyncVirtualFileSystem } from "../../../shared/VirtualFilesystem";
 import {
   getBl1nkAddDependencyTags,
@@ -73,14 +73,14 @@ import { fileExists } from "../utils/file_utils";
 import { FileUploadsState } from "../utils/file_uploads_state";
 import { OpenAIResponsesProviderOptions } from "@ai-sdk/openai";
 import { extractMentionedAppsCodebases } from "../utils/mention_apps";
-import { parseAppMentions } from "@/shared/parse_mention_apps";
+import { parseAppMentions } from "../../shared/parse_mention_apps";
 import { prompts as promptsTable } from "../../db/schema";
 import { inArray } from "drizzle-orm";
 import { replacePromptReference } from "../utils/replacePromptReference";
 import { mcpManager } from "../utils/mcp_manager";
 import z from "zod";
-import { isTurboEditsV2Enabled } from "@/lib/schemas";
-import { AI_STREAMING_ERROR_MESSAGE_PREFIX } from "@/shared/texts";
+import { isTurboEditsV2Enabled } from "../../lib/schemas";
+import { AI_STREAMING_ERROR_MESSAGE_PREFIX } from "../../shared/texts";
 import { getCurrentCommitHash } from "../utils/git_utils";
 import {
   processChatMessagesWithVersionedFiles as getVersionedFiles,
@@ -1303,7 +1303,7 @@ ${problemReport.problems
       if (!abortController.signal.aborted && fullResponse) {
         // Scrape from: <bl1nk-chat-summary>Renaming profile file</dyad-chat-title>
         const chatTitle = fullResponse.match(
-          /<bl1nk-chat-summary>(.*?)</bl1nk-chat-summary>/,
+          new RegExp('<bl1nk-chat-summary>(.*?)</bl1nk-chat-summary>', 's'),
         );
         if (chatTitle) {
           await db
@@ -1476,7 +1476,7 @@ async function replaceTextAttachmentWithContent(
       // Replace the placeholder tag with the full content
       const escapedPath = filePath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       const tagPattern = new RegExp(
-        `<bl1nk-text-attachment filename="[^"]*" type="[^"]*" path="${escapedPath}">\\s*<\\/dyad-text-attachment>`,
+        `<bl1nk-text-attachment filename="[^"]*" type="[^"]*" path="${escapedPath}">\\s*<\\/bl1nk-text-attachment>`,
         "g",
       );
 
@@ -1568,13 +1568,12 @@ function removeThinkingTags(text: string): string {
 }
 
 export function removeProblemReportTags(text: string): string {
-  const problemReportRegex =
-    /<bl1nk-problem-report[^>]*>[\s\S]*?</bl1nk-problem-report>/g;
+  const problemReportRegex = new RegExp('<bl1nk-problem-report[^>]*>[\\s\\S]*?</bl1nk-problem-report>', 'g');
   return text.replace(problemReportRegex, "").trim();
 }
 
 export function removeBl1nkTags(text: string): string {
-  const dyadRegex = /<bl1nk-[^>]*>[\s\S]*?</bl1nk-[^>]*>/g;
+  const dyadRegex = new RegExp('<bl1nk-[^>]*>[\\s\\S]*?</bl1nk-[^>]*>', 'g');
   return text.replace(dyadRegex, "").trim();
 }
 
@@ -1595,7 +1594,7 @@ export function hasUnclosedBl1nkWrite(text: string): boolean {
 
   // Look for a closing tag after the last opening tag
   const textAfterLastOpen = text.substring(lastOpenIndex);
-  const hasClosingTag = /</bl1nk-write>/.test(textAfterLastOpen);
+  const hasClosingTag = new RegExp('</bl1nk-write>').test(textAfterLastOpen);
 
   return !hasClosingTag;
 }
@@ -1607,7 +1606,7 @@ function escapeBl1nkTags(text: string): string {
   // and are mishandled by:
   // 1. FE markdown parser
   // 2. Main process response processor
-  return text.replace(/<bl1nk/g, "＜bl1nk").replace(/</bl1nk/g, "＜/bl1nk");
+  return text.replace(new RegExp('<bl1nk', 'g'), "＜bl1nk").replace(new RegExp('</bl1nk', 'g'), "＜/bl1nk");
 }
 
 const CODEBASE_PROMPT_PREFIX = "This is my codebase.";
@@ -1637,7 +1636,7 @@ async function getMcpTools(event: IpcMainInvokeEvent): Promise<ToolSet> {
       const toolSet = await client.tools();
       for (const [name, tool] of Object.entries(toolSet)) {
         const key = `${String(s.name || "").replace(/[^a-zA-Z0-9_-]/g, "-")}__${String(name).replace(/[^a-zA-Z0-9_-]/g, "-")}`;
-        const original = tool;
+        const original = tool as { description?: string; inputSchema?: any; execute?: (args: any, execCtx: any) => any };
         mcpToolSet[key] = {
           description: original?.description,
           inputSchema: original?.inputSchema,

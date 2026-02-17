@@ -10,9 +10,6 @@ export function getBl1nkAppPath(appPath: string): string {
   return path.join(os.homedir(), "bl1nk-apps", appPath);
 }
 
-// Backward compatibility alias
-export const getBl1nkAppPath = getBl1nkAppPath;
-
 export function getTypeScriptCachePath(): string {
   const electron = getElectron();
   return path.join(electron!.app.getPath("sessionData"), "typescript-cache");

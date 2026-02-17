@@ -1,4 +1,4 @@
-import { CodebaseFile, CodebaseFileReference } from "@/utils/codebase";
+import { CodebaseFile, CodebaseFileReference } from "../../utils/codebase";
 import { ModelMessage } from "@ai-sdk/provider-utils";
 import crypto from "node:crypto";
 import log from "electron-log";
@@ -33,7 +33,7 @@ export function parseFilesFromMessage(content: string): string[] {
   const matches: TagMatch[] = [];
 
   // Parse <bl1nk-read path="$filePath"></bl1nk-read>
-  const dyadReadRegex = /<bl1nk-read\s+path="([^"]+)"\s*></bl1nk-read>/gs;
+  const dyadReadRegex = new RegExp('<bl1nk-read\\s+path="([^"]+)"\\s*></bl1nk-read>', 'gs');
   let match: RegExpExecArray | null;
   while ((match = dyadReadRegex.exec(content)) !== null) {
     const filePath = normalizePath(match[1].trim());

@@ -1,5 +1,5 @@
-import Redis from 'ioredis'
-import { logger } from './logger'
+import { Redis } from 'ioredis'
+import { logger } from './logger.js'
 
 let redisClient: Redis | null = null
 

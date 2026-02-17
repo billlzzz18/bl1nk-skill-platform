@@ -1,9 +1,9 @@
 import { initTRPC } from '@trpc/server'
-import { Context } from '../context'
-import { skillRouter } from './skill.router'
-import { credentialRouter } from './credential.router'
-import { settingsRouter } from './settings.router'
-import { chatRouter } from './chat.router'
+import { Context } from '../context.js'
+import { skillRouter } from './skill.router.js'
+import { credentialRouter } from './credential.router.js'
+import { settingsRouter } from './settings.router.js'
+import { chatRouter } from './chat.router.js'
 
 const t = initTRPC.context<Context>().create()
 

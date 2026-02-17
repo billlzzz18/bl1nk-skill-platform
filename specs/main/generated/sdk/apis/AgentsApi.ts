@@ -13,7 +13,7 @@
  */
 
 
-import * as runtime from '../runtime';
+import * as runtime from '../runtime.js';
 import type {
   Agent,
   AgentTestRequest,
@@ -22,7 +22,7 @@ import type {
   TestResponse,
   UpdateAgentRequest,
   WorkspacesWorkspaceIdAgentsGet200Response,
-} from '../models/index';
+} from '../models/index.js';
 import {
     AgentFromJSON,
     AgentToJSON,
@@ -38,7 +38,7 @@ import {
     UpdateAgentRequestToJSON,
     WorkspacesWorkspaceIdAgentsGet200ResponseFromJSON,
     WorkspacesWorkspaceIdAgentsGet200ResponseToJSON,
-} from '../models/index';
+} from '../models/index.js';
 
 export interface WorkspacesWorkspaceIdAgentsAgentIdDeleteRequest {
     workspaceId: string;

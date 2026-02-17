@@ -1,12 +1,12 @@
 /* tslint:disable */
 /* eslint-disable */
-export { AgentsApi } from './AgentsApi';
-export { AuthApi } from './AuthApi';
-export { KnowledgeApi } from './KnowledgeApi';
-export { MemoryApi } from './MemoryApi';
-export { ProvidersApi } from './ProvidersApi';
-export { SkillsApi } from './SkillsApi';
-export { TestingApi } from './TestingApi';
-export { ToolsApi } from './ToolsApi';
-export { UsersApi } from './UsersApi';
-export { WorkspacesApi } from './WorkspacesApi';
+export { AgentsApi } from './AgentsApi.js';
+export { AuthApi } from './AuthApi.js';
+export { KnowledgeApi } from './KnowledgeApi.js';
+export { MemoryApi } from './MemoryApi.js';
+export { ProvidersApi } from './ProvidersApi.js';
+export { SkillsApi } from './SkillsApi.js';
+export { TestingApi } from './TestingApi.js';
+export { ToolsApi } from './ToolsApi.js';
+export { UsersApi } from './UsersApi.js';
+export { WorkspacesApi } from './WorkspacesApi.js';

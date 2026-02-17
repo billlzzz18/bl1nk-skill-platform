@@ -1,6 +1,6 @@
 import type { ReactNode } from "react"
-import { TRPCProvider } from "@/trpc/provider"
-import "./globals.css"
+// import { TRPCProvider } from "@/trpc/provider"
+import "../styles/globals.css"
 
 export const metadata = {
   title: "Claude Skill Builder",
@@ -17,9 +17,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className="dark">
       <body className="min-h-screen bg-gray-900 text-white antialiased">
-        <TRPCProvider>
+        {/* <TRPCProvider> */}
           {children}
-        </TRPCProvider>
+        {/* </TRPCProvider> */}
       </body>
     </html>
   )

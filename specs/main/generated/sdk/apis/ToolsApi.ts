@@ -13,13 +13,13 @@
  */
 
 
-import * as runtime from '../runtime';
+import * as runtime from '../runtime.js';
 import type {
   ApiError,
   CreateToolRequest,
   Tool,
   UpdateToolRequest,
-} from '../models/index';
+} from '../models/index.js';
 import {
     ApiErrorFromJSON,
     ApiErrorToJSON,
@@ -29,7 +29,7 @@ import {
     ToolToJSON,
     UpdateToolRequestFromJSON,
     UpdateToolRequestToJSON,
-} from '../models/index';
+} from '../models/index.js';
 
 export interface WorkspacesWorkspaceIdToolsGetRequest {
     workspaceId: string;

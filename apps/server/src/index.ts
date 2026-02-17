@@ -3,13 +3,23 @@ import cors, { type CorsOptions } from 'cors'
 import helmet from 'helmet'
 import crypto from 'crypto'
 import { createExpressMiddleware } from '@trpc/server/adapters/express'
-import { appRouter } from './routers/_app'
-import { createContext } from './context'
-import { logger } from './utils/logger'
-import { validateEncryptionConfig } from './services/encryption.service'
-import restRouter from './routers/rest.router'
-import { rateLimitMiddleware } from './utils/rateLimiter'
+import { appRouter } from './routers/_app.js'
+import { createContext } from './context.js'
+import { logger } from './utils/logger.js'
+import { validateEncryptionConfig } from './services/encryption.service.js'
+import restRouter from './routers/rest.router.js'
+import { rateLimitMiddleware } from './utils/rateLimiter.js'
 import dotenv from 'dotenv'
+
+declare global {
+  namespace Express {
+    interface Response {
+      locals: {
+        cspNonce?: string
+      }
+    }
+  }
+}
 
 // Load environment variables
 dotenv.config()
@@ -74,7 +84,7 @@ const corsOptions: CorsOptions = {
 
 // CSP nonce middleware for inline assets
 app.use((req, res, next) => {
-  res.locals.cspNonce = crypto.randomBytes(16).toString('base64')
+  (res as any).locals.cspNonce = crypto.randomBytes(16).toString('base64')
   next()
 })
 
@@ -87,12 +97,12 @@ app.use(
         scriptSrc: [
           "'self'",
           ...(isProduction ? [] : ["'unsafe-inline'"]), // Allow inline scripts in non-production for convenience
-          (req, res) => `'nonce-${res.locals.cspNonce}'`,
+          (req, res) => `'nonce-${(res as any).locals.cspNonce}'`,
         ],
         styleSrc: [
           "'self'",
           ...(isProduction ? [] : ["'unsafe-inline'"]), // Allow inline styles in non-production for convenience
-          (req, res) => `'nonce-${res.locals.cspNonce}'`,
+          (req, res) => `'nonce-${(res as any).locals.cspNonce}'`,
         ],
         imgSrc: ["'self'", 'data:', 'https:'], // Allow images from HTTPS sources
         connectSrc: ["'self'"], // Allow API calls to same origin
@@ -113,7 +123,16 @@ app.use(
 
 // Middleware
 app.use(cors(corsOptions))
-app.use(rateLimitMiddleware)
+
+// Conditionally enable rate limiting (requires Redis)
+const rateLimitEnabled = process.env.API_RATE_LIMIT_ENABLED !== 'false'
+if (rateLimitEnabled) {
+  app.use(rateLimitMiddleware)
+  logger.info('Rate limiting enabled (requires Redis)')
+} else {
+  logger.warn('Rate limiting disabled - not recommended for production')
+}
+
 app.use(express.json({ limit: '1mb' })) // Limit request body size to prevent DoS
 
 // tRPC endpoint
