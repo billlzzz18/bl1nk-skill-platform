@@ -531,4 +531,20 @@ describe("parseEnvFile and serializeEnvFile integration", () => {
 
     expect(parsed).toEqual(originalEnvVars);
   });
+
+  it("should handle backslashes correctly (round-trip)", () => {
+    const originalEnvVars = [
+      { key: "BACKSLASH", value: "a\\b" },
+      { key: "DOUBLE_BACKSLASH", value: "a\\\\b" },
+      { key: "ESCAPED_QUOTE", value: 'a\\"b' },
+      { key: "BACKSLASH_BEFORE_QUOTE", value: 'a\\"b' },
+      { key: "BACKSLASH_AT_END", value: "a\\" },
+      { key: "COMPLEX_BACKSLASH", value: "a\\\\\"b" },
+    ];
+
+    const serialized = serializeEnvFile(originalEnvVars);
+    const parsed = parseEnvFile(serialized);
+
+    expect(parsed).toEqual(originalEnvVars);
+  });
 });
