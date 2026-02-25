@@ -536,10 +536,13 @@ describe("parseEnvFile and serializeEnvFile integration", () => {
     const originalEnvVars = [
       { key: "BACKSLASH", value: "a\\b" },
       { key: "DOUBLE_BACKSLASH", value: "a\\\\b" },
+      // Backslash immediately before a quote
       { key: "ESCAPED_QUOTE", value: 'a\\"b' },
-      { key: "BACKSLASH_BEFORE_QUOTE", value: 'a\\"b' },
+      // Backslash earlier in the string, quote later
+      { key: "BACKSLASH_BEFORE_QUOTE", value: 'a\\b"' },
       { key: "BACKSLASH_AT_END", value: "a\\" },
-      { key: "COMPLEX_BACKSLASH", value: "a\\\\\"b" },
+      // Combination of backslash and escaped quote in different positions
+      { key: "COMPLEX_BACKSLASH", value: 'a\\b\\"c' },
     ];
 
     const serialized = serializeEnvFile(originalEnvVars);
