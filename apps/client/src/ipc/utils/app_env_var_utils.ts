@@ -164,7 +164,7 @@ export function serializeEnvFile(envVars: EnvVar[]): string {
     .map(({ key, value }) => {
       // Add quotes if value contains spaces or special characters
       const needsQuotes = /[\s#"'=&?]/.test(value);
-      const escapedValue = value.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+      const escapedValue = value.replace(/"/g, '\\"');
       const quotedValue = needsQuotes ? `"${escapedValue}"` : value;
       return `${key}=${quotedValue}`;
     })
