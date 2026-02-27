@@ -7,9 +7,6 @@ import { getBl1nkAppPath } from "@/paths/paths";
 import { EnvVar } from "../ipc_types";
 import path from "path";
 import fs from "fs";
-import log from "electron-log";
-
-const logger = log.scope("app_env_var_utils");
 
 export const ENV_FILE_NAME = ".env.local";
 
@@ -76,10 +73,7 @@ export async function updateDbPushEnvVar({
     const envFileContents = serializeEnvFile(envVars);
     await fs.promises.writeFile(getEnvFilePath({ appPath }), envFileContents);
   } catch (error) {
-    logger.error(
-      `Failed to update DB push environment variable for app ${appPath}: ${error}`,
-    );
-    throw error;
+    throw new Error(`Failed to update DB push environment variable`);
   }
 }
 
@@ -129,18 +123,24 @@ export function parseEnvFile(content: string): EnvVar[] {
       // Handle quoted values with potential inline comments
       let cleanValue = value;
       if (value.startsWith('"')) {
-        // Find the closing quote, handling escaped quotes
+        // Find the closing quote, handling escaped quotes and escaped backslashes
         let endQuoteIndex = -1;
+        let isEscaped = false;
         for (let i = 1; i < value.length; i++) {
-          if (value[i] === '"' && value[i - 1] !== "\\") {
+          if (value[i] === '"' && !isEscaped) {
             endQuoteIndex = i;
             break;
+          }
+          if (value[i] === "\\") {
+            isEscaped = !isEscaped;
+          } else {
+            isEscaped = false;
           }
         }
         if (endQuoteIndex !== -1) {
           cleanValue = value.slice(1, endQuoteIndex);
-          // Unescape escaped quotes
-          cleanValue = cleanValue.replace(/\\"/g, '"');
+          // Unescape escaped quotes and backslashes
+          cleanValue = cleanValue.replace(/\\"/g, '"').replace(/\\\\/g, "\\");
         }
       } else if (value.startsWith("'")) {
         // Find the closing quote for single quotes
@@ -164,7 +164,7 @@ export function serializeEnvFile(envVars: EnvVar[]): string {
     .map(({ key, value }) => {
       // Add quotes if value contains spaces or special characters
       const needsQuotes = /[\s#"'=&?]/.test(value);
-      const escapedValue = value.replace(/"/g, '\\"');
+      const escapedValue = value.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
       const quotedValue = needsQuotes ? `"${escapedValue}"` : value;
       return `${key}=${quotedValue}`;
     })

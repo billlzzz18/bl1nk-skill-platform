@@ -45,10 +45,7 @@ export function registerAppEnvVarsHandlers() {
 
         return envVars;
       } catch (error) {
-        console.error("Error getting app environment variables:", error);
-        throw new Error(
-          `Failed to get environment variables: ${error instanceof Error ? error.message : "Unknown error"}`,
-        );
+        throw new Error("Failed to get environment variables");
       }
     },
   );
@@ -75,10 +72,7 @@ export function registerAppEnvVarsHandlers() {
         // Write to .env.local file
         await fs.promises.writeFile(envFilePath, content, "utf8");
       } catch (error) {
-        console.error("Error setting app environment variables:", error);
-        throw new Error(
-          `Failed to set environment variables: ${error instanceof Error ? error.message : "Unknown error"}`,
-        );
+        throw new Error("Failed to set environment variables");
       }
     },
   );
