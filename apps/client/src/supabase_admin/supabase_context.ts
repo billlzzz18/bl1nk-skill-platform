@@ -1,5 +1,8 @@
 import { IS_TEST_BUILD } from "@/ipc/utils/test_utils";
-import { getSupabaseClient } from "./supabase_management_client";
+import {
+  getSupabaseClient,
+  listSupabaseFunctions,
+} from "./supabase_management_client";
 import { SUPABASE_SCHEMA_QUERY } from "./supabase_schema_query";
 
 async function getPublishableKey({ projectId }: { projectId: string }) {
@@ -74,7 +77,9 @@ export async function getSupabaseContext({
   const secrets = await supabase.getSecrets(supabaseProjectId);
   const secretNames = secrets?.map((secret) => secret.name);
 
-  // TODO: include EDGE FUNCTIONS and SECRETS!
+  const functions = await listSupabaseFunctions({
+    supabaseProjectId,
+  });
 
   const context = `
   # Supabase Context
@@ -85,8 +90,11 @@ export async function getSupabaseContext({
   ## Publishable key (aka anon key)
   ${publishableKey}
 
-  ## Secret names (environmental variables)
+  ## Secrets (environment variables)
   ${JSON.stringify(secretNames)}
+
+  ## Edge Functions
+  ${JSON.stringify(functions)}
 
   ## Schema
   ${JSON.stringify(schema)}
