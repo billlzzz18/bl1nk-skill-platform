@@ -1,48 +1,65 @@
 # Architecture Overview
 
 ## System Design
-Human-First AI Platform with intelligent orchestration and progressive model escalation.
+The bl1nk Skill Builder is designed as a desktop-first IDE using a monorepo structure. It leverages Electron to provide a native experience with a Next.js frontend and a Node.js backend.
 
-### Core Architecture Concepts
-- **Agent ≠ Tool ≠ Skill ≠ Flow**: Clear separation of concerns for scalability
-- **Runtime Orchestrator**: Intelligent decision engine for model/agent/tool/context selection
-- **Progressive Escalation**: Start with cost-effective models, escalate only when needed
-- **Memory-Driven Context**: Use conversation history and user preferences for better decisions
+## Architecture Layers
+1.  **Presentation Layer (Next.js + React 19)**: Responsible for the UI/UX, including the skill editor (Monaco), chat interface, and settings.
+2.  **API Layer (tRPC + REST)**: Provides type-safe communication between the frontend and backend.
+3.  **Business Logic Layer**: Handles skill management, versioning, and multi-provider AI integration.
+4.  **Data Layer (Prisma/Drizzle + SQLite)**: Manages persistence for skills, versions, and credentials.
 
-## Architecture Components
-
-### Client (Electron + Next.js)
-- **Framework**: Electron 38 + Next.js 15 + React 19
-- **UI**: Monaco Editor, Tailwind CSS
-- **State Management**: Jotai atoms
-- **IPC**: Electron IPC for client-server communication
-
-### Server (Express + tRPC)
-- **Framework**: Express.js + tRPC for type-safe APIs
-- **Database**: SQLite + Drizzle ORM
-- **Validation**: Zod schemas for runtime validation
-
-### Runtime Orchestrator (Control Plane)
-- **Query/Intent Router**: Classifies requests (doc_qa_rag, tool_exec, creative, etc.)
-- **Model Router**: Progressive escalation (Haiku → Sonnet → specialized models)
-- **Context Manager**: Dynamic chunking based on doc_type and memory
-- **Tool/Action Router**: MCP tool selection with reliability scoring
-- **Multi-agent Coordinator**: Teams for complex tasks (Router → Retriever → Writer → Verifier)
-
-### Shared Libraries
-- **Schemas**: Zod validation schemas shared between client/server
-- **Types**: TypeScript types auto-generated from schemas
-- **Data Models**: ModelProfile, AgentTemplate, FlowGraph, ToolDescriptor, SkillDescriptor
-
-## Layers
-1. **Presentation** (React + Electron)
-2. **Application** (tRPC procedures)
-3. **Domain** (Business logic)
-4. **Infrastructure** (Database, File system, External APIs)
-
-## Communication Flow
+## System Diagram
+```mermaid
+graph TD
+    A[Electron App] --> B[Next.js Frontend]
+    B -- tRPC/IPC --> C[Express Backend]
+    C --> D[SQLite Database]
+    C --> E[AI Providers]
+    E --> E1[AWS Bedrock]
+    E --> E2[Anthropic]
+    E --> E3[OpenRouter]
+    E --> E4[Local Models]
 ```
-User Input → React Components → IPC → tRPC Server → Business Logic → Database
-                      ↓
-                UI Updates ← Response ← Validation ← Data Access
+
+## System Context
+The bl1nk Skill Builder interacts with various AI providers to facilitate the creation and testing of AI skills.
+
+```mermaid
+C4Context
+    title System Context diagram for bl1nk Skill Builder
+
+    Person(developer, "AI Developer", "Creates and manages AI skills.")
+    System(ide, "bl1nk Skill Builder", "Desktop IDE for AI development.")
+
+    System_Ext(bedrock, "AWS Bedrock", "Cloud LLM Provider")
+    System_Ext(anthropic, "Anthropic", "Cloud LLM Provider")
+    System_Ext(openrouter, "OpenRouter", "Unified LLM API")
+    System_Ext(local, "Local Models", "Ollama/LM Studio")
+
+    Rel(developer, ide, "Uses", "Desktop App")
+    Rel(ide, bedrock, "Integrates with", "HTTPS/SDK")
+    Rel(ide, anthropic, "Integrates with", "HTTPS/SDK")
+    Rel(ide, openrouter, "Integrates with", "HTTPS/REST")
+    Rel(ide, local, "Integrates with", "Localhost/REST")
+```
+
+## Containers
+The system is divided into two primary containers: the Client (UI & Electron) and the Server (Business Logic & Persistence).
+
+```mermaid
+C4Container
+    title Container diagram for bl1nk Skill Builder
+
+    Person(developer, "AI Developer", "Creates and manages AI skills.")
+
+    System_Boundary(ide_boundary, "bl1nk Skill Builder") {
+        Container(client, "Desktop Client", "Electron, Next.js, React", "Provides the IDE interface.")
+        Container(server, "Backend Server", "Node.js, Express, tRPC", "Handles logic and persistence.")
+        ContainerDb(db, "Local Storage", "SQLite, Prisma/Drizzle", "Stores skills, settings, and credentials.")
+    }
+
+    Rel(developer, client, "Uses", "GUI")
+    Rel(client, server, "Communicates with", "tRPC/IPC")
+    Rel(server, db, "Reads from/Writes to", "SQL")
 ```
