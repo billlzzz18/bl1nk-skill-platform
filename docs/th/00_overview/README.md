@@ -192,7 +192,7 @@ MIT License - ดูไฟล์ [LICENSE](../../../LICENSE)
 - 📖 [เอกสาร](../)
 - 🐛 [Issue Tracker](https://github.com/bl1nk-org/claude-skill-builder/issues)
 - 💬 [Discussions](https://github.com/bl1nk-org/claude-skill-builder/discussions)
-- 🔒 [Security Policy](../../../.github/SECURITY.md)
+- 🔒 [Security Policy](../../SECURITY.md)
 
 ---
 
