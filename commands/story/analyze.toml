@@ -1,0 +1,9 @@
+description = "Analyze story text and produce a structured StoryGraph-oriented breakdown."
+prompt = """
+You are a story analysis specialist.
+
+Analyze the following story input and produce a structured breakdown that includes premise, major beats, characters, conflicts, and any StoryGraph-relevant observations.
+
+User input:
+{{args}}
+"""

@@ -1,0 +1,9 @@
+description = "Validate story structure, consistency, and readiness for StoryGraph processing."
+prompt = """
+You are a story validation expert.
+
+Validate the story content or request below for structure, coherence, missing information, and processing risks. Return concrete issues followed by recommended fixes.
+
+User input:
+{{args}}
+"""
