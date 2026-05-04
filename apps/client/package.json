@@ -67,14 +67,14 @@
     "@vitest/ui": "^3.1.1",
     "cross-env": "^7.0.3",
     "drizzle-kit": "^0.30.6",
-    "electron": "^41.1.0",
+    "electron": "^39.8.5",
     "fastest-levenshtein": "^1.0.16",
     "jsdom": "^23.0.0",
     "oxlint": "^1.8.0",
     "prettier": "^3.5.3",
     "rimraf": "^6.0.1",
     "typescript": "^5.8.3",
-    "vite": "^7.3.2",
+    "vite": "^6.4.2",
     "vitest": "^4.0.18"
   },
   "dependencies": {
@@ -148,7 +148,7 @@
     "tailwindcss": "^4.1.17",
     "tree-kill": "^1.2.2",
     "update-electron-app": "^3.1.1",
-    "uuid": "^11.1.0",
+    "uuid": "^14.0.0",
     "yaml": "^2.8.3",
     "zod": "^3.25.76",
     "zustand": "^5.0.0"
