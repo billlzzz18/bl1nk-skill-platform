@@ -124,3 +124,4 @@ We welcome contributions! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for de
 MIT License - see [LICENSE](./LICENSE) file for details.
 
 **Made with ❤️ by the bl1nk team**
+
