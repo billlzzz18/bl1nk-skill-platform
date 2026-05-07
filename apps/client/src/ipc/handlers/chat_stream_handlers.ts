@@ -1631,12 +1631,31 @@ async function getMcpTools(event: IpcMainInvokeEvent): Promise<ToolSet> {
       .select()
       .from(mcpServers)
       .where(eq(mcpServers.enabled, true as any));
-    for (const s of servers) {
-      const client = await mcpManager.getClient(s.id);
-      const toolSet = await client.tools();
+
+    const results = await Promise.all(
+      servers.map(async (s) => {
+        try {
+          const client = await mcpManager.getClient(s.id);
+          const toolSet = await client.tools();
+          return { s, toolSet };
+        } catch (e) {
+          logger.warn(`Failed to get tools for MCP server ${s.name} (${s.id})`, e);
+          return null;
+        }
+      }),
+    );
+
+    for (const result of results) {
+      if (!result) continue;
+      const { s, toolSet } = result;
+
       for (const [name, tool] of Object.entries(toolSet)) {
         const key = `${String(s.name || "").replace(/[^a-zA-Z0-9_-]/g, "-")}__${String(name).replace(/[^a-zA-Z0-9_-]/g, "-")}`;
-        const original = tool as { description?: string; inputSchema?: any; execute?: (args: any, execCtx: any) => any };
+        const original = tool as {
+          description?: string;
+          inputSchema?: any;
+          execute?: (args: any, execCtx: any) => any;
+        };
         mcpToolSet[key] = {
           description: original?.description,
           inputSchema: original?.inputSchema,
