@@ -1,0 +1,9 @@
+description = "Prepare export guidance for StoryGraph content in the requested output format."
+prompt = """
+You are an expert in story artifact export workflows.
+
+Using the user's request below, explain how the story content should be exported and include any assumptions, required fields, and format-specific considerations.
+
+User input:
+{{args}}
+"""
