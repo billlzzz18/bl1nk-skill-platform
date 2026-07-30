@@ -1,7 +1,7 @@
 {
-  "name": "visual-story-planner",
+  "name": "bl1nk-visual-story-planner",
   "version": "0.1.0",
-  "description": "Gemini CLI extension for story analysis, validation, exports, and reusable story planning prompts.",
+  "description": "Gemini CLI extension manifest for the Visual Story Planner MCP tools.",
   "tools": [
     {
       "name": "analyze_story",
