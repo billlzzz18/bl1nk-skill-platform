@@ -2,10 +2,10 @@ import { db } from "../../db";
 import { messages } from "../../db/schema";
 import { eq } from "drizzle-orm";
 import { Message } from "../ipc_types";
-import { exec } from "node:child_process";
+import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 
-export const execPromise = promisify(exec);
+export const execFilePromise = promisify(execFile);
 
 export async function executeAddDependency({
   packages,
@@ -16,15 +16,27 @@ export async function executeAddDependency({
   message: Message;
   appPath: string;
 }) {
-  const packageStr = packages.join(" ");
+  let installResults = "";
 
-  const { stdout, stderr } = await execPromise(
-    `(pnpm add ${packageStr}) || (npm install --legacy-peer-deps ${packageStr})`,
-    {
-      cwd: appPath,
-    },
-  );
-  const installResults = stdout + (stderr ? `\n${stderr}` : "");
+  try {
+    const { stdout, stderr } = await execFilePromise(
+      process.platform === "win32" ? "pnpm.cmd" : "pnpm",
+      ["add", ...packages],
+      { cwd: appPath, shell: false }
+    );
+    installResults = stdout + (stderr ? `\n${stderr}` : "");
+  } catch (_pnpmErr: any) {
+    try {
+      const { stdout, stderr } = await execFilePromise(
+        process.platform === "win32" ? "npm.cmd" : "npm",
+        ["install", "--legacy-peer-deps", ...packages],
+        { cwd: appPath, shell: false }
+      );
+      installResults = stdout + (stderr ? `\n${stderr}` : "");
+    } catch (npmErr: any) {
+      installResults = npmErr.message || String(npmErr);
+    }
+  }
 
   // Update the message content with the installation results
   const updatedContent = message.content.replace(
