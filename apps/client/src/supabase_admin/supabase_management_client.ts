@@ -223,6 +223,61 @@ export async function listSupabaseBranches({
   return jsonResponse;
 }
 
+export async function listSupabaseFunctions({
+  supabaseProjectId,
+}: {
+  supabaseProjectId: string;
+}): Promise<
+  Array<{
+    id: string;
+    slug: string;
+    name: string;
+    status: string;
+    version: number;
+    import_map: boolean;
+    verify_jwt: boolean;
+    created_at: number;
+    updated_at: number;
+  }>
+> {
+  if (IS_TEST_BUILD) {
+    return [
+      {
+        id: "test-function-id",
+        slug: "test-function",
+        name: "Test Function",
+        status: "ACTIVE",
+        version: 1,
+        import_map: true,
+        verify_jwt: true,
+        created_at: Date.now(),
+        updated_at: Date.now(),
+      },
+    ];
+  }
+
+  logger.info(`Listing Supabase functions for project: ${supabaseProjectId}`);
+  const supabase = await getSupabaseClient();
+
+  const response = await fetch(
+    `https://api.supabase.com/v1/projects/${supabaseProjectId}/functions`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${(supabase as any).options.accessToken}`,
+      },
+    },
+  );
+
+  if (response.status !== 200) {
+    throw await createResponseError(response, "list functions");
+  }
+
+  logger.info(`Listed Supabase functions for project: ${supabaseProjectId}`);
+  const jsonResponse = await response.json();
+  return jsonResponse;
+}
+
 export async function deploySupabaseFunctions({
   supabaseProjectId,
   functionName,
