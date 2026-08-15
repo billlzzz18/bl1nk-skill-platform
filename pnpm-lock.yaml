@@ -274,8 +274,8 @@ importers:
         specifier: ^0.30.6
         version: 0.30.6
       electron:
-        specifier: 38.2.2
-        version: 38.2.2
+        specifier: 39.8.5
+        version: 39.8.5
       oxlint:
         specifier: ^1.8.0
         version: 1.59.0
@@ -6914,6 +6914,11 @@ packages:
 
   nanoid@3.3.13:
     resolution: {integrity: sha512-sPdqC6ByMVVGvF1ynvvMo0/o+oD1VX7DaHhijt1bFgjvBkHBib4t49GoNDhf2NDta4oeUNlaGbSt5K7qjZ955Q==}
+    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
+    hasBin: true
+
+  nanoid@3.3.12:
+    resolution: {integrity: sha512-ZB9RH/39qpq5Vu6Y+NmUaFhQR6pp+M2Xt76XBnEwDaGcVAqhlvxrl3B2bKS5D3NH3QR76v3aSrKaF/Kiy7lEtQ==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
@@ -13746,7 +13751,7 @@ snapshots:
       - supports-color
     optional: true
 
-  electron@38.2.2:
+  electron@39.8.5:
     dependencies:
       '@electron/get': 2.0.3
       '@types/node': 22.19.11
@@ -15801,6 +15806,8 @@ snapshots:
   mute-stream@1.0.0: {}
 
   nanoid@3.3.13: {}
+
+  nanoid@3.3.12: {}
 
   napi-build-utils@2.0.0: {}
 
