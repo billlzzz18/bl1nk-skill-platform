@@ -1651,15 +1651,11 @@ async function getMcpTools(event: IpcMainInvokeEvent): Promise<ToolSet> {
 
       for (const [name, tool] of Object.entries(toolSet)) {
         const key = `${String(s.name || "").replace(/[^a-zA-Z0-9_-]/g, "-")}__${String(name).replace(/[^a-zA-Z0-9_-]/g, "-")}`;
-        const original = tool as {
-          description?: string;
-          inputSchema?: any;
-          execute?: (args: any, execCtx: any) => any;
-        };
+        const original: ToolSet[string] = tool;
         mcpToolSet[key] = {
-          description: original?.description,
-          inputSchema: original?.inputSchema,
-          execute: async (args: any, execCtx: any) => {
+          description: original.description,
+          inputSchema: original.inputSchema,
+          execute: async (args, execCtx) => {
             const inputPreview =
               typeof args === "string"
                 ? args
