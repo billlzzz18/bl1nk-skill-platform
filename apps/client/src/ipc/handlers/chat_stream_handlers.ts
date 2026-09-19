@@ -1652,6 +1652,10 @@ async function getMcpTools(event: IpcMainInvokeEvent): Promise<ToolSet> {
       for (const [name, tool] of Object.entries(toolSet)) {
         const key = `${String(s.name || "").replace(/[^a-zA-Z0-9_-]/g, "-")}__${String(name).replace(/[^a-zA-Z0-9_-]/g, "-")}`;
         const original: ToolSet[string] = tool;
+        if (!original.inputSchema || typeof original.execute !== "function") {
+          logger.warn(`Skipping malformed tool ${name} from MCP server ${s.name} (${s.id})`);
+          continue;
+        }
         mcpToolSet[key] = {
           description: original.description,
           inputSchema: original.inputSchema,
